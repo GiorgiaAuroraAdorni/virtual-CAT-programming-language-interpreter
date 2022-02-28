@@ -129,9 +129,8 @@ class Board {
   }
 
   bool lDownLeft(List<int> colors) {
-    if (
-    !move.validatePosition(move.column, move.row + 3) ||
-    !move.validatePosition(move.column - 2, move.row + 3)) {
+    if (!move.validatePosition(move.column, move.row + 3) ||
+        !move.validatePosition(move.column - 2, move.row + 3)) {
       return false;
     }
     down(
@@ -149,9 +148,8 @@ class Board {
   }
 
   bool lDownRight(List<int> colors) {
-    if (
-    !move.validatePosition(move.column, move.row + 3) ||
-    !move.validatePosition(move.column + 2, move.row + 3)) {
+    if (!move.validatePosition(move.column, move.row + 3) ||
+        !move.validatePosition(move.column + 2, move.row + 3)) {
       return false;
     }
     down(
@@ -186,9 +184,8 @@ class Board {
   }
 
   bool lLeftDown(List<int> colors) {
-    if (
-    !move.validatePosition(move.column-3, move.row) ||
-    !move.validatePosition(move.column - 3, move.row + 2)) {
+    if (!move.validatePosition(move.column - 3, move.row) ||
+        !move.validatePosition(move.column - 3, move.row + 2)) {
       return false;
     }
     left(
