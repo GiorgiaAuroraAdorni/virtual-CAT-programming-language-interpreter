@@ -4,15 +4,30 @@ import 'package:test/scaffolding.dart';
 import '../bin/board.dart';
 
 void main() {
+  test("Creation and toString", () {
+    Board board = Board();
+    expect(board, isNotNull);
+    expect(
+      board.toString(),
+      equals("[      0, 0      ]\n"
+          "[      0, 0      ]\n"
+          "[0, 0, 0, 0, 0, 0]\n"
+          "[0, 0, 0, 0, 0, 0]\n"
+          "[      0, 0      ]\n"
+          "[      0, 0      ]"),
+    );
+  });
   color();
   fillEmpty();
   down();
   up();
+  left();
+  right();
   square();
 }
 
 void color() {
-  group("Basic color command",(){
+  group("Basic color command", () {
     test("Color default cell", () {
       Board board = Board();
       expect(board.color(1), isTrue);
@@ -36,14 +51,14 @@ void color() {
 void down() {
   test("Color down from starting position", () {
     Board board = Board();
-    expect(board.down([1]), isFalse);
+    expect(board.down([1]), isTrue);
     expect(
       board.getBoard,
       equals([
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
       ]),
@@ -413,5 +428,141 @@ void up() {
     );
     expect(board.move.column, equals(2));
     expect(board.move.row, equals(5));
+  });
+  test("Color up from position 3 2 color", () {
+    Board board = Board();
+    expect(board.move.toPosition(3, 2), isTrue);
+    expect(board.up([1]), isTrue);
+    expect(
+      board.getBoard,
+      equals([
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+      ]),
+    );
+    expect(board.move.column, equals(2));
+    expect(board.move.row, equals(0));
+  });
+  test("Color up from position 3 2 color alternated", () {
+    Board board = Board();
+    expect(board.move.toPosition(3, 2), isTrue);
+    expect(board.up([1, 2]), isTrue);
+    expect(
+      board.getBoard,
+      equals([
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+      ]),
+    );
+    expect(board.move.column, equals(2));
+    expect(board.move.row, equals(0));
+  });
+}
+
+void left() {
+  group("Color direction left", () {
+    test("Color left from starting position", () {
+      Board board = Board();
+      expect(board.left([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 1, 1, 1, 1, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(0));
+      expect(board.move.row, equals(3));
+    });
+  });
+  group("Color direction left", () {
+    test("Color left from starting position", () {
+      Board board = Board();
+      expect(board.move.down(), isTrue);
+      expect(board.left([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(2));
+      expect(board.move.row, equals(4));
+    });
+  });
+}
+
+void right() {
+  group("Color direction right", () {
+    test("Color right from starting position", () {
+      Board board = Board();
+      expect(board.right([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 1, 1, 1, 1, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(5));
+      expect(board.move.row, equals(3));
+    });
+    test("Color right from position 3 5", () {
+      Board board = Board();
+      expect(board.move.toPosition(3, 5), isTrue);
+      expect(board.right([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 1, 1, 1, 1, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(5));
+      expect(board.move.row, equals(3));
+    });
+    test("Color right from starting position", () {
+      Board board = Board();
+      expect(board.move.down(), isTrue);
+      expect(board.right([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(3));
+      expect(board.move.row, equals(4));
+    });
   });
 }

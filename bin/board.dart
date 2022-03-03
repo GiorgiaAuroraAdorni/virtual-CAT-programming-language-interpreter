@@ -101,11 +101,19 @@ class Board {
   }
 
   bool down(List<int> colors, [int? n]) {
-    n = (n == null)
-        ? (((move.column == 2 || move.column == 3) ? 5 : 3) - move.row) as int?
-        : n - 1;
+    if (n == null) {
+      if (move.column == 2 || move.column == 3) {
+        move.toPosition(0, move.column);
+        n = 5;
+      } else {
+        move.toPosition(2, move.column);
+        n = 1;
+      }
+    } else {
+      n = n - 1;
+    }
     int j = 0;
-    if (n! < 1 ||
+    if (n < 1 ||
         !move.validatePosition(move.column, move.row + n) ||
         !color(colors[j])) {
       return false;
@@ -167,9 +175,19 @@ class Board {
   }
 
   bool left(List<int> colors, [int? n]) {
-    n = (n == null) ? move.column : n - 1;
+    if (n == null) {
+      if (move.row == 2 || move.row == 3) {
+        move.toPosition(move.row, 5);
+        n = 5;
+      } else {
+        move.toPosition(move.row, 3);
+        n = 1;
+      }
+    } else {
+      n = n - 1;
+    }
     int j = 0;
-    if (n! < 1 ||
+    if (n < 1 ||
         !move.validatePosition(move.column - n, move.row) ||
         !color(colors[j])) {
       return false;
@@ -298,11 +316,19 @@ class Board {
   }
 
   bool right(List<int> colors, [int? n]) {
-    n = (n == null)
-        ? (((move.row == 2 || move.row == 3) ? 5 : 3) - move.column) as int?
-        : n - 1;
+    if (n == null) {
+      if (move.row == 2 || move.row == 3) {
+        move.toPosition(move.row, 0);
+        n = 5;
+      } else {
+        move.toPosition(move.row, 2);
+        n = 1;
+      }
+    } else {
+      n = n - 1;
+    }
     int j = 0;
-    if (n! < 1 ||
+    if (n < 1 ||
         !move.validatePosition(move.column + n, move.row) ||
         !color(colors[j])) {
       return false;
@@ -339,14 +365,22 @@ class Board {
       '${_board[2]}\n'
       '${_board[3]}\n'
       '[      ${_board[4][2]}, ${_board[4][3]}      ]\n'
-      '[      ${_board[5][2]}, ${_board[5][3]}      ]\n';
+      '[      ${_board[5][2]}, ${_board[5][3]}      ]';
 
   bool up(List<int> colors, [int? n]) {
-    n = (n == null)
-        ? ((move.column == 2 || move.column == 2) ? move.row : move.row - 2)
-        : n - 1;
+    if (n == null) {
+      if (move.column == 2 || move.column == 3) {
+        move.toPosition(5, move.column);
+        n = 5;
+      } else {
+        move.toPosition(3, move.column);
+        n = 1;
+      }
+    } else {
+      n = n - 1;
+    }
     int j = 0;
-    if (n! < 1 ||
+    if (n < 1 ||
         !move.validatePosition(move.column, move.row - n) ||
         !color(colors[j])) {
       return false;
