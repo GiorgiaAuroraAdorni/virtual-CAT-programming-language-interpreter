@@ -12,40 +12,24 @@ void main() {
 }
 
 void color() {
-  test("Color default cell", () {
-    Board board = Board();
-    expect(board.color(1), isTrue);
-    expect(
-      board.getBoard,
-      equals([
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-      ]),
-    );
-    expect(board.move.column, equals(0));
-    expect(board.move.row, equals(3));
-  });
-  test("Color cell 5 2", () {
-    Board board = Board();
-    expect(board.move.toPosition(5, 2), isTrue);
-    expect(board.color(1), isTrue);
-    expect(
-      board.getBoard,
-      equals([
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0],
-      ]),
-    );
-    expect(board.move.column, equals(2));
-    expect(board.move.row, equals(5));
+  group("Basic color command",(){
+    test("Color default cell", () {
+      Board board = Board();
+      expect(board.color(1), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(0));
+      expect(board.move.row, equals(3));
+    });
   });
 }
 

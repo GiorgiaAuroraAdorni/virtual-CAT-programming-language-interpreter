@@ -1,32 +1,26 @@
 import 'board.dart';
 
-void main(List<String> arguments) {
+class Inter {
   Board b = Board();
-  // b.move.toPosition(5, 2);
-  // print(b.up([1]));
-  print(b.move.diagonalUpRight());
-  print(b.square([1]));
-  // print(b.lUpLeft([1]));
-  // print(b.up([1,2]));
-  // b.move.right();
-  // print(b.down([2,1]));
-  // print(b);
-  // b.move.left();
-  // print(b.diagonalUpRight([3]));
-  // b.move.down();
-  // print(b.diagonalUpLeft([4]));
-  // print(b);
-  // b.move.right();
-  // print(b.diagonalDownLeft([5]));
-  // b.move.up();
-  // print(b.diagonalDownRight([6]));
-  // print(b);
-  // b.move.toPosition(2, 0);
-  // b.move.right();
-  // print(b.right([7]));
-  // b.move.down();
-  // b.move.left();
-  // print(b.left([8]));
-  print(b);
-  print(b.getBoard);
+
+  var colors = {
+    'green': 1,
+    'red': 2,
+    'blue': 3,
+    'yellow': 4,
+  };
+
+  void parse(String command) {
+    String normalized = command.toLowerCase();
+    var re = RegExp(r"[\\(,\\)]");
+    print(normalized.split(re));
+    print(b);
+  }
+}
+
+void main(List<String> arguments) {
+  Inter interpreter = Inter();
+  interpreter.parse("PAINT(RED)");
+  interpreter.parse("PAINT([green, yellow], :, diagonal up right)");
+  interpreter.parse("COPY(PAINT(red) GO(right)PAINT(yellow) GO(up) PAINT(green) GO(left) PAINT(blue),[C1 C3 C5 A3 F3])");
 }
