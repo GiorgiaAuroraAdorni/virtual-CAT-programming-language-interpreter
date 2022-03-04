@@ -24,6 +24,10 @@ void main() {
   left();
   right();
   square();
+  diagonalUpRight();
+  diagonalUpLeft();
+  diagonalDownRight();
+  diagonalDownLeft();
 }
 
 void color() {
@@ -563,6 +567,358 @@ void right() {
       );
       expect(board.move.column, equals(3));
       expect(board.move.row, equals(4));
+    });
+  });
+}
+
+void diagonalUpRight() {
+  group("Diagonal up right coloring", () {
+    test("Starting position invalid input", () {
+      Board board = Board();
+      expect(board.diagonalUpRight([1], -1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalUpRight([1], 0), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalUpRight([1], 1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Start position color all diagonal", () {
+      Board board = Board();
+      expect(board.diagonalUpRight([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(0));
+      expect(board.move.column, equals(3));
+    });
+    test("Position 2 1 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.diagonalUpRight(), isTrue);
+      expect(board.diagonalUpRight([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(0));
+      expect(board.move.column, equals(3));
+    });
+    test("Position 2 0 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.up(), isTrue);
+      expect(board.diagonalUpRight([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(0));
+      expect(board.move.column, equals(2));
+    });
+    test("Position 5 3 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.toPosition(5, 3), isTrue);
+      expect(board.diagonalUpRight([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(5));
+    });
+  });
+}
+
+void diagonalUpLeft() {
+  group("Diagonal up left coloring", () {
+    test("Starting position invalid input", () {
+      Board board = Board();
+      expect(board.diagonalUpLeft([1], -1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalUpLeft([1], 0), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalUpLeft([1], 1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Start position color all diagonal", () {
+      Board board = Board();
+      expect(board.diagonalUpLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Position 2 1 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.diagonalUpRight(), isTrue);
+      expect(board.diagonalUpLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(2));
+      expect(board.move.column, equals(1));
+    });
+    test("Position 2 5 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.toPosition(2, 5), isTrue);
+      expect(board.diagonalUpLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(0));
+      expect(board.move.column, equals(3));
+    });
+    test("Position 5 3 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.toPosition(5, 3), isTrue);
+      expect(board.diagonalUpLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(2));
+      expect(board.move.column, equals(0));
+    });
+  });
+}
+
+void diagonalDownRight(){
+  group("Diagonal down right coloring", () {
+    test("Starting position invalid input", () {
+      Board board = Board();
+      expect(board.diagonalDownRight([1], -1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalDownRight([1], 0), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalDownRight([1], 1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Start position color all diagonal", () {
+      Board board = Board();
+      expect(board.diagonalDownRight([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(5));
+      expect(board.move.column, equals(2));
+    });
+    test("Position 2 1 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.diagonalUpRight(), isTrue);
+      expect(board.diagonalDownRight([1]), isFalse);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(4));
+      expect(board.move.column, equals(3));
+    });
+    test("Position 2 5 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.toPosition(2, 5), isTrue);
+      expect(board.diagonalDownRight([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(2));
+      expect(board.move.column, equals(5));
+    });
+    test("Position 5 3 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.toPosition(5, 3), isTrue);
+      expect(board.diagonalDownRight([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(5));
+      expect(board.move.column, equals(3));
+    });
+  });
+}
+
+void diagonalDownLeft() {
+  group("Diagonal down left coloring", () {
+    test("Starting position invalid input", () {
+      Board board = Board();
+      expect(board.diagonalDownLeft([1], -1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalDownLeft([1], 0), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+      expect(board.diagonalDownLeft([1], 1), isFalse);
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Start position color all diagonal", () {
+      Board board = Board();
+      expect(board.diagonalDownLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Position 2 1 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.diagonalUpRight(), isTrue);
+      expect(board.diagonalDownLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Position 2 0 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.up(), isTrue);
+      expect(board.diagonalDownLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(2));
+      expect(board.move.column, equals(0));
+    });
+    test("Position 5 3 color all diagonal", () {
+      Board board = Board();
+      expect(board.move.toPosition(5, 3), isTrue);
+      expect(board.diagonalDownLeft([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(5));
+      expect(board.move.column, equals(3));
     });
   });
 }

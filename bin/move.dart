@@ -28,9 +28,14 @@ class Move {
       return true;
     }
 
-    if (_column == 5 && row == 3 && n == 1) {
+    if (_column == 5 && _row == 3 && n == 1) {
       _column = 3;
       _row = 5;
+
+      return true;
+    } else if (_column == 2 && _row == 0 && n == 1) {
+      _column = 0;
+      _row = 2;
 
       return true;
     }
@@ -60,9 +65,14 @@ class Move {
       return true;
     }
 
-    if (_column == 0 && row == 3 && n == 1) {
+    if (_column == 0 && _row == 3 && n == 1) {
       _column = 2;
       _row = 5;
+
+      return true;
+    } else if (_column == 3 && _row == 0 && n == 1) {
+      _column = 5;
+      _row = 2;
 
       return true;
     }
@@ -95,6 +105,11 @@ class Move {
     if (_column == 5 && row == 2 && n == 1) {
       _column = 3;
       _row = 0;
+
+      return true;
+    } else if (_column == 2 && row == 5 && n == 1) {
+      _column = 0;
+      _row = 3;
 
       return true;
     }
@@ -131,6 +146,11 @@ class Move {
     if (_column == 0 && _row == 2 && n == 1) {
       _column = 2;
       _row = 0;
+
+      return true;
+    } else if(_column == 3 && _row == 5 && n == 1){
+      _column = 5;
+      _row = 3;
 
       return true;
     }
