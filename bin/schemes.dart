@@ -6,8 +6,10 @@ import 'dart:convert';
 
 import 'cross.dart';
 
+/// Construct Schemes object starting from a JSON String.
 Schemes schemesFromJson(String str) => Schemes.fromJson(json.decode(str));
 
+/// Contains a Map of Cross schemes build from a JSON String.
 class Schemes {
   final Map<int, Cross> schemas;
 

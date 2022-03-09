@@ -10,6 +10,8 @@ class CrossBasicColoring {
 
   List<List<int>> get getBoard => _cross.getCross;
 
+  Cross get getCross => _cross;
+
   /// Color the current position.
   bool color(int color) {
     if (move.validatePosition(move.column, move.row)) {
@@ -21,6 +23,11 @@ class CrossBasicColoring {
     return false;
   }
 
+  /// Color in diagonal with a direction down left from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the diagonal is colored.
+  /// Return true on success.
   bool diagonalDownLeft(List<int> colors, [int? n]) {
     if (n == null) {
       while (move.diagonalUpRight()) {
@@ -47,6 +54,11 @@ class CrossBasicColoring {
     return true;
   }
 
+  /// Color in diagonal with a direction down right from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the diagonal is colored.
+  /// Return true on success.
   bool diagonalDownRight(List<int> colors, [int? n]) {
     if (n == null) {
       while (move.diagonalUpLeft()) {
@@ -73,6 +85,11 @@ class CrossBasicColoring {
     return true;
   }
 
+  /// Color in diagonal with a direction up left from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the diagonal is colored.
+  /// Return true on success.
   bool diagonalUpLeft(List<int> colors, [int? n]) {
     if (n == null) {
       while (move.diagonalDownRight()) {
@@ -99,6 +116,11 @@ class CrossBasicColoring {
     return true;
   }
 
+  /// Color in diagonal with a direction up right from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the diagonal is colored.
+  /// Return true on success.
   bool diagonalUpRight(List<int> colors, [int? n]) {
     if (n == null) {
       while (move.diagonalDownLeft()) {
@@ -125,6 +147,11 @@ class CrossBasicColoring {
     return true;
   }
 
+  /// Color down from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the column is colored.
+  /// Return true on success.
   bool down(List<int> colors, [int? n]) {
     if (n == null) {
       if (move.column == 2 || move.column == 3) {
@@ -152,7 +179,7 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Color all the cells that has the default color.
+  /// Colors with a [color] all the cells that has the default color.
   void fillEmpty(int color) {
     for (var line in _cross.cross) {
       for (int i = 0; i < 6; i++) {
@@ -161,6 +188,11 @@ class CrossBasicColoring {
     }
   }
 
+  /// Color left from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the row is colored.
+  /// Return true on success.
   bool left(List<int> colors, [int? n]) {
     if (n == null) {
       if (move.row == 2 || move.row == 3) {
@@ -188,6 +220,11 @@ class CrossBasicColoring {
     return true;
   }
 
+  /// Color right from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the row is colored.
+  /// Return true on success.
   bool right(List<int> colors, [int? n]) {
     if (n == null) {
       if (move.row == 2 || move.row == 3) {
@@ -215,6 +252,11 @@ class CrossBasicColoring {
     return true;
   }
 
+  /// Color up from a current position defined by the movement.
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the column is colored.
+  /// Return true on success.
   bool up(List<int> colors, [int? n]) {
     if (n == null) {
       if (move.column == 2 || move.column == 3) {
@@ -240,5 +282,10 @@ class CrossBasicColoring {
     }
 
     return true;
+  }
+
+  @override
+  String toString() {
+    return _cross.toString();
   }
 }

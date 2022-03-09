@@ -1,6 +1,10 @@
 import 'cross_basic_coloring.dart';
 
 class CrossColoring extends CrossBasicColoring {
+  /// Color with an L shape with direction down left from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lDownLeft(List<int> colors) {
     if (!move.validatePosition(move.column, move.row + 3) ||
         !move.validatePosition(move.column - 2, move.row + 3)) {
@@ -20,6 +24,10 @@ class CrossColoring extends CrossBasicColoring {
     return true;
   }
 
+  /// Color with an L shape with direction down right from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lDownRight(List<int> colors) {
     if (!move.validatePosition(move.column, move.row + 3) ||
         !move.validatePosition(move.column + 2, move.row + 3)) {
@@ -39,6 +47,10 @@ class CrossColoring extends CrossBasicColoring {
     return true;
   }
 
+  /// Color with an L shape with direction left down from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lLeftDown(List<int> colors) {
     if (!move.validatePosition(move.column - 3, move.row) ||
         !move.validatePosition(move.column - 3, move.row + 2)) {
@@ -58,6 +70,10 @@ class CrossColoring extends CrossBasicColoring {
     return true;
   }
 
+  /// Color with an L shape with direction left up from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lLeftUp(List<int> colors) {
     if (!move.validatePosition(move.column - 3, move.row) ||
         !move.validatePosition(move.column - 3, move.row - 2)) {
@@ -77,6 +93,10 @@ class CrossColoring extends CrossBasicColoring {
     return true;
   }
 
+  /// Color with an L shape with direction right down from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lRightDown(List<int> colors) {
     if (!move.validatePosition(move.column + 3, move.row) ||
         !move.validatePosition(move.column + 3, move.row + 2)) {
@@ -96,6 +116,10 @@ class CrossColoring extends CrossBasicColoring {
     return true;
   }
 
+  /// Color with an L shape with direction right up from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lRightUp(List<int> colors) {
     if (!move.validatePosition(move.column + 3, move.row) ||
         !move.validatePosition(move.column + 3, move.row - 2)) {
@@ -115,6 +139,10 @@ class CrossColoring extends CrossBasicColoring {
     return true;
   }
 
+  /// Color with an L shape with direction up left from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lUpLeft(List<int> colors) {
     if (!move.validatePosition(move.column, move.row - 3) ||
         !move.validatePosition(move.column - 2, move.row - 3)) {
@@ -134,6 +162,10 @@ class CrossColoring extends CrossBasicColoring {
     return true;
   }
 
+  /// Color with an L shape with direction up right from a starting position
+  ///
+  /// Requires a list of [colors].
+  /// Return true on success.
   bool lUpRight(List<int> colors) {
     if (!move.validatePosition(move.column, move.row - 3) ||
         !move.validatePosition(move.column + 2, move.row - 3)) {
@@ -154,6 +186,8 @@ class CrossColoring extends CrossBasicColoring {
   }
 
   /// Color with a square shape from the current position.
+  ///
+  /// Requires a list of [colors].
   bool square(List<int> colors) {
     if (move.validatePosition(move.row, move.column + 1) &&
         move.validatePosition(move.row - 1, move.column) &&
@@ -174,34 +208,74 @@ class CrossColoring extends CrossBasicColoring {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction down left right from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagDownLeftRight(List<int> colors, [int? n]) {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction down right left from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagDownRightLeft(List<int> colors, [int? n]) {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction left down up from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagLeftDownUp(List<int> colors, [int? n]) {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction left up down from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagLeftUpDown(List<int> colors, [int? n]) {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction right down up from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagRightDownUp(List<int> colors, [int? n]) {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction right up down from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagRightUpDown(List<int> colors, [int? n]) {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction up left right from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagUpLeftRight(List<int> colors, [int? n]) {
     return false;
   }
 
+  /// Color with an zig-zag pattern with direction up right left from a starting position
+  ///
+  /// Requires a list of [colors] and a number [n] of cells to color.
+  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// Return true on success.
   bool zigzagUpRightLeft(List<int> colors, [int? n]) {
     return false;
   }

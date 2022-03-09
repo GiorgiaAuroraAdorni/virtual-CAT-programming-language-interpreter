@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:path/path.dart';
 
-import 'CAT_interpreter.dart';
+import 'cat_interpreter.dart';
 
 void main(List<String> arguments) {
   var pathToFile = join(dirname(Platform.script.toFilePath()), 'schemas.json');
@@ -12,7 +12,7 @@ void main(List<String> arguments) {
   interpreter.board.move.diagonalDownRight();
   interpreter.board.up([1, 2]);
   interpreter.validateOnScheme("PAINT(RED)", 1);
-  print(interpreter.board.getBoard);
+  print(interpreter.board);
   // Inter interpreter = Inter();
   // interpreter.parse("PAINT(RED)");
   interpreter

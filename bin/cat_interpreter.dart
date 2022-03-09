@@ -60,7 +60,7 @@ class CATInterpreter {
 
   void validateOnScheme(String code, int schemeIndex) {
     Cross? toValidate = schemes.schemas[schemeIndex];
-    print(board.getBoard == toValidate);
+    print(board.getCross == toValidate);
     parse(code);
     // print(_validate(board.getBoard, toValidate!));
     // printBoard(board.getBoard);

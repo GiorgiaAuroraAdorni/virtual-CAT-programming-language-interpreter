@@ -26,7 +26,7 @@ class Cross {
   List<List<int>> get getCross => cross;
 
   @override
-  int get hashCode => Object.hash(cross, colors);
+  int get hashCode => Object.hash(cross, colors, this);
 
   @override
   bool operator ==(Object other) {
