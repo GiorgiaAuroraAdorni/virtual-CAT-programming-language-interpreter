@@ -1,7 +1,6 @@
-import 'basic_board.dart';
+import 'cross_basic_coloring.dart';
 
-class Board extends BasicBoard {
-
+class CrossColoring extends CrossBasicColoring {
   bool lDownLeft(List<int> colors) {
     if (!move.validatePosition(move.column, move.row + 3) ||
         !move.validatePosition(move.column - 2, move.row + 3)) {
@@ -162,16 +161,48 @@ class Board extends BasicBoard {
       int row = move.row;
       int column = move.column;
       color(colors[0 % colors.length]);
-      move.toPosition(row,column + 1);
+      move.toPosition(row, column + 1);
       color(colors[1 % colors.length]);
-      move.toPosition(row-1,column + 1);
+      move.toPosition(row - 1, column + 1);
       color(colors[2 % colors.length]);
-      move.toPosition(row-1,column);
+      move.toPosition(row - 1, column);
       color(colors[3 % colors.length]);
 
       return true;
     }
 
+    return false;
+  }
+
+  bool zigzagDownLeftRight(List<int> colors, [int? n]) {
+    return false;
+  }
+
+  bool zigzagDownRightLeft(List<int> colors, [int? n]) {
+    return false;
+  }
+
+  bool zigzagLeftDownUp(List<int> colors, [int? n]) {
+    return false;
+  }
+
+  bool zigzagLeftUpDown(List<int> colors, [int? n]) {
+    return false;
+  }
+
+  bool zigzagRightDownUp(List<int> colors, [int? n]) {
+    return false;
+  }
+
+  bool zigzagRightUpDown(List<int> colors, [int? n]) {
+    return false;
+  }
+
+  bool zigzagUpLeftRight(List<int> colors, [int? n]) {
+    return false;
+  }
+
+  bool zigzagUpRightLeft(List<int> colors, [int? n]) {
     return false;
   }
 }

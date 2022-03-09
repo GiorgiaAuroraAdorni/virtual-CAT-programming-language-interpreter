@@ -1,4 +1,4 @@
-class Move {
+class CrossBasicMoves {
   int _column = 0;
   int _row = 3;
 
@@ -148,7 +148,7 @@ class Move {
       _row = 0;
 
       return true;
-    } else if(_column == 3 && _row == 5 && n == 1){
+    } else if (_column == 3 && _row == 5 && n == 1) {
       _column = 5;
       _row = 3;
 

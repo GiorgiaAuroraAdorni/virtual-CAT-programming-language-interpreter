@@ -1,7 +1,7 @@
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
-import '../bin/board.dart';
+import '../bin/cross_coloring.dart';
 
 void main() {
   lRightDown();
@@ -16,7 +16,7 @@ void main() {
 
 void lDownLeft() {
   test("Color L down left from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lDownLeft([1]), isFalse);
     expect(
       board.getBoard,
@@ -33,7 +33,7 @@ void lDownLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L down left from position 0 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownLeft([1]), isTrue);
     expect(
@@ -51,7 +51,7 @@ void lDownLeft() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 2 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(2, 2), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -69,7 +69,7 @@ void lDownLeft() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 0 2 alternating colors", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownLeft([1, 2]), isTrue);
     expect(
@@ -87,7 +87,7 @@ void lDownLeft() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 5 3", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(5, 3), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -105,7 +105,7 @@ void lDownLeft() {
     expect(board.move.row, equals(5));
   });
   test("Color L down left from position 5 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -123,7 +123,7 @@ void lDownLeft() {
     expect(board.move.row, equals(5));
   });
   test("Color L down left from position 4 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(4, 2), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -144,7 +144,7 @@ void lDownLeft() {
 
 void lDownRight() {
   test("Color L down right from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lDownRight([1]), isFalse);
     expect(
       board.getBoard,
@@ -161,7 +161,7 @@ void lDownRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L down left from position 0 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownRight([1]), isTrue);
     expect(
@@ -179,7 +179,7 @@ void lDownRight() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 2 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(2, 2), isTrue);
     expect(board.lDownRight([1]), isFalse);
     expect(
@@ -197,7 +197,7 @@ void lDownRight() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 0 2 alternating colors", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownRight([1, 2]), isTrue);
     expect(
@@ -215,7 +215,7 @@ void lDownRight() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 3 0", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(3, 0), isTrue);
     expect(board.lDownRight([1]), isFalse);
     expect(
@@ -236,7 +236,7 @@ void lDownRight() {
 
 void lLeftDown() {
   test("Color L left down from position 5 3", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(5), isTrue);
     expect(board.lLeftDown([1]), isTrue);
     expect(
@@ -254,7 +254,7 @@ void lLeftDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L left down from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lLeftDown([1]), isFalse);
     expect(
       board.getBoard,
@@ -271,7 +271,7 @@ void lLeftDown() {
     expect(board.move.row, equals(3));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(5), isTrue);
     expect(board.lLeftDown([1, 2]), isTrue);
     expect(
@@ -289,7 +289,7 @@ void lLeftDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(3), isTrue);
     expect(board.lLeftDown([1, 2]), isFalse);
     expect(
@@ -310,7 +310,7 @@ void lLeftDown() {
 
 void lLeftUp() {
   test("Color L left up from position 5 3", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(5), isTrue);
     expect(board.lLeftUp([1]), isTrue);
     expect(
@@ -328,7 +328,7 @@ void lLeftUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L left down from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lLeftUp([1]), isFalse);
     expect(
       board.getBoard,
@@ -345,7 +345,7 @@ void lLeftUp() {
     expect(board.move.row, equals(3));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(5), isTrue);
     expect(board.lLeftUp([1, 2]), isTrue);
     expect(
@@ -363,7 +363,7 @@ void lLeftUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(3), isTrue);
     expect(board.lLeftUp([1, 2]), isFalse);
     expect(
@@ -384,7 +384,7 @@ void lLeftUp() {
 
 void lRightDown() {
   test("Color L right down from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lRightDown([1]), isTrue);
     expect(
       board.getBoard,
@@ -401,7 +401,7 @@ void lRightDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L right down from starting position alternating", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lRightDown([1, 2]), isTrue);
     expect(
       board.getBoard,
@@ -418,7 +418,7 @@ void lRightDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L right down from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(2), isTrue);
     expect(board.lRightDown([1]), isFalse);
     expect(
@@ -439,7 +439,7 @@ void lRightDown() {
 
 void lRightUp() {
   test("Color L right up from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lRightUp([1]), isTrue);
     expect(
       board.getBoard,
@@ -456,7 +456,7 @@ void lRightUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L right up from starting position alternating", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lRightUp([1, 2]), isTrue);
     expect(
       board.getBoard,
@@ -473,7 +473,7 @@ void lRightUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L right up from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.right(2), isTrue);
     expect(board.lRightUp([1]), isFalse);
     expect(
@@ -494,7 +494,7 @@ void lRightUp() {
 
 void lUpLeft() {
   test("Color L up left from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lUpLeft([1]), isFalse);
     expect(
       board.getBoard,
@@ -511,7 +511,7 @@ void lUpLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L up left from position 5 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpLeft([1]), isTrue);
     expect(
@@ -529,7 +529,7 @@ void lUpLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L up left from position 3 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(3, 2), isTrue);
     expect(board.lUpLeft([1]), isFalse);
     expect(
@@ -547,7 +547,7 @@ void lUpLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L up left from position 5 2 alternated colors", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpLeft([1, 2]), isTrue);
     expect(
@@ -568,7 +568,7 @@ void lUpLeft() {
 
 void lUpRight() {
   test("Color L up right from starting position", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.lUpRight([1]), isFalse);
     expect(
       board.getBoard,
@@ -585,7 +585,7 @@ void lUpRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L up right from position 5 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpRight([1]), isTrue);
     expect(
@@ -603,7 +603,7 @@ void lUpRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L up right from position 3 2", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(3, 2), isTrue);
     expect(board.lUpRight([1]), isFalse);
     expect(
@@ -621,7 +621,7 @@ void lUpRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L up right from position 5 2 alternated colors", () {
-    Board board = Board();
+    CrossColoring board = CrossColoring();
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpRight([1, 2]), isTrue);
     expect(

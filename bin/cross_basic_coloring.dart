@@ -1,25 +1,19 @@
-import 'move.dart';
+import 'cross.dart';
+import 'cross_basic_moves.dart';
 
-class BasicBoard {
-  final List<List<int>> _board = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-  ];
+class CrossBasicColoring {
+  final Cross _cross = Cross();
 
-  final Move move = Move();
+  final CrossBasicMoves move = CrossBasicMoves();
 
   final int _defaultColor = 0;
 
-  List<List<int>> get getBoard => _board;
+  List<List<int>> get getBoard => _cross.getCross;
 
   /// Color the current position.
   bool color(int color) {
     if (move.validatePosition(move.column, move.row)) {
-      _board[move.row][move.column] = color;
+      _cross.cross[move.row][move.column] = color;
 
       return true;
     }
@@ -29,9 +23,11 @@ class BasicBoard {
 
   bool diagonalDownLeft(List<int> colors, [int? n]) {
     if (n == null) {
-      while (move.diagonalUpRight());
+      while (move.diagonalUpRight()) {
+        continue;
+      }
       n = ((move.row == 3 && move.column == 5) ||
-          (move.row == 0 && move.column == 2))
+              (move.row == 0 && move.column == 2))
           ? 1
           : move.column - move.row;
     } else {
@@ -53,9 +49,11 @@ class BasicBoard {
 
   bool diagonalDownRight(List<int> colors, [int? n]) {
     if (n == null) {
-      while (move.diagonalUpLeft());
+      while (move.diagonalUpLeft()) {
+        continue;
+      }
       n = ((move.row == 0 && move.column == 3) ||
-          (move.row == 3 && move.column == 0))
+              (move.row == 3 && move.column == 0))
           ? 1
           : move.column + 3;
     } else {
@@ -77,9 +75,11 @@ class BasicBoard {
 
   bool diagonalUpLeft(List<int> colors, [int? n]) {
     if (n == null) {
-      while (move.diagonalDownRight());
+      while (move.diagonalDownRight()) {
+        continue;
+      }
       n = ((move.row == 2 && move.column == 5) ||
-          (move.row == 5 && move.column == 2))
+              (move.row == 5 && move.column == 2))
           ? 1
           : move.row - 2;
     } else {
@@ -101,9 +101,11 @@ class BasicBoard {
 
   bool diagonalUpRight(List<int> colors, [int? n]) {
     if (n == null) {
-      while (move.diagonalDownLeft());
+      while (move.diagonalDownLeft()) {
+        continue;
+      }
       n = ((move.row == 2 && move.column == 0) ||
-          (move.row == 5 && move.column == 3))
+              (move.row == 5 && move.column == 3))
           ? 1
           : move.row - move.column;
     } else {
@@ -152,7 +154,7 @@ class BasicBoard {
 
   /// Color all the cells that has the default color.
   void fillEmpty(int color) {
-    for (var line in _board) {
+    for (var line in _cross.cross) {
       for (int i = 0; i < 6; i++) {
         line[i] = line[i] == _defaultColor ? color : line[i];
       }
@@ -212,14 +214,6 @@ class BasicBoard {
 
     return true;
   }
-
-  @override
-  String toString() => '[      ${_board[0][2]}, ${_board[0][3]}      ]\n'
-      '[      ${_board[1][2]}, ${_board[1][3]}      ]\n'
-      '${_board[2]}\n'
-      '${_board[3]}\n'
-      '[      ${_board[4][2]}, ${_board[4][3]}      ]\n'
-      '[      ${_board[5][2]}, ${_board[5][3]}      ]';
 
   bool up(List<int> colors, [int? n]) {
     if (n == null) {
