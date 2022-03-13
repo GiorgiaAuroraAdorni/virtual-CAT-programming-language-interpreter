@@ -252,6 +252,11 @@ class CrossBasicColoring {
     return true;
   }
 
+  @override
+  String toString() {
+    return _cross.toString();
+  }
+
   /// Color up from a current position defined by the movement.
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
@@ -282,10 +287,5 @@ class CrossBasicColoring {
     }
 
     return true;
-  }
-
-  @override
-  String toString() {
-    return _cross.toString();
   }
 }

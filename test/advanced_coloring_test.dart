@@ -12,6 +12,7 @@ void main() {
   lDownRight();
   lUpLeft();
   lUpRight();
+  zigzagRightUpDown();
 }
 
 void lDownLeft() {
@@ -637,5 +638,14 @@ void lUpRight() {
     );
     expect(board.move.column, equals(4));
     expect(board.move.row, equals(3));
+  });
+}
+
+void zigzagRightUpDown(){
+  group("zig-zag left up down",() {
+    test("starting position",() {
+      CrossColoring board = CrossColoring();
+      expect(board.zigzagRightUpDown([1]), isTrue);
+    });
   });
 }

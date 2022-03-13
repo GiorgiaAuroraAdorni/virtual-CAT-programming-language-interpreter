@@ -1,4 +1,5 @@
 import 'package:colorize/colorize.dart';
+
 import 'cross.dart';
 import 'cross_coloring.dart';
 import 'helper.dart';
@@ -129,6 +130,17 @@ class CATInterpreter {
 
   List<Cross> get getStates => _states;
 
+  void reset() {
+    _states = <Cross>[];
+    board = CrossColoring();
+  }
+
+  void validateOnScheme(String code, int schemeIndex) {
+    Cross? toValidate = schemes.schemas[schemeIndex];
+    _parse(code);
+    print(board.getCross == toValidate);
+  }
+
   void _move(List<String> command) {
     List<String> splited = command[0].split(" ");
     int repetitions;
@@ -217,16 +229,5 @@ class CATInterpreter {
       }
       print(board);
     }
-  }
-
-  void reset() {
-    _states = <Cross>[];
-    board = CrossColoring();
-  }
-
-  void validateOnScheme(String code, int schemeIndex) {
-    Cross? toValidate = schemes.schemas[schemeIndex];
-    _parse(code);
-    print(board.getCross == toValidate);
   }
 }
