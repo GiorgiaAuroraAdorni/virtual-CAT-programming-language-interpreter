@@ -645,7 +645,7 @@ void zigzagRightUpDown(){
   group("zig-zag left up down",() {
     test("starting position",() {
       CrossColoring board = CrossColoring();
-      expect(board.zigzagRightUpDown([1]), isTrue);
+      expect(board.zigzagRightUpDown([1]), isFalse);
     });
   });
 }
