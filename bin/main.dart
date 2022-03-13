@@ -9,12 +9,17 @@ void main(List<String> arguments) {
   var pathToFile = join(dirname(Platform.script.toFilePath()), 'schemas.json');
   var json = File(pathToFile).readAsStringSync();
   CATInterpreter interpreter = CATInterpreter(json);
-  int schema = int.parse(arguments[0]);
-  while(true){
-    var line = stdin.readLineSync(encoding: utf8);
-    String command = line.toString();
-    interpreter.validateOnScheme(command,schema);
+  for(var i in interpreter.schemes.schemas.values){
+    print(i);
+    print("");
   }
+  // int schema = int.parse(arguments[0]);
+  // while(true){
+  //   var line = stdin.readLineSync(encoding: utf8);
+  //   print(line);
+  //   String command = line.toString();
+  //   interpreter.validateOnScheme(command,schema);
+  // }
   // interpreter.board.fillEmpty(3);
   // interpreter.board.move.diagonalDownRight();
   // interpreter.board.up([1, 2]);

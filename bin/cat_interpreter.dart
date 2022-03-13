@@ -54,6 +54,7 @@ class CATInterpreter {
     "down": board.down,
     "left": board.left,
     "right": board.right,
+    "square": board.square,
     "diagonal": {
       "up": {
         "left": board.diagonalUpLeft,
@@ -64,14 +65,66 @@ class CATInterpreter {
         "right": board.diagonalDownRight,
       },
     },
+    "l": {
+      "up": {
+        "left": board.lUpLeft,
+        "right": board.lUpRight,
+      },
+      "down": {
+        "left": board.lDownLeft,
+        "right": board.lDownRight,
+      },
+      "left": {
+        "up": board.lLeftUp,
+        "down": board.lLeftDown,
+      },
+      "right": {
+        "up": board.lRightUp,
+        "down": board.lRightDown,
+      },
+    },
+    "zig-zag": {
+      "left": {
+        "up": {
+          "down": board.zigzagLeftUpDown,
+        },
+        "down": {
+          "up": board.zigzagLeftDownUp,
+        },
+      },
+      "right": {
+        "up": {
+          "down": board.zigzagRightUpDown,
+        },
+        "down": {
+          "up": board.zigzagRightDownUp,
+        },
+      },
+      "up": {
+        "left": {
+          "right": board.zigzagUpLeftRight,
+        },
+        "right": {
+          "left": board.zigzagUpRightLeft,
+        },
+      },
+      "down": {
+        "left": {
+          "right": board.zigzagDownLeftRight,
+        },
+        "right": {
+          "left": board.zigzagDownRightLeft,
+        },
+      },
+    },
   };
 
-  late final Schemes _schemes;
+  late final Schemes schemes;
 
   List<Cross> _states = <Cross>[];
 
   CATInterpreter(String json) {
-    _schemes = schemesFromJson(json);
+    schemes = schemesFromJson(json);
   }
 
   List<Cross> get getStates => _states;
@@ -88,9 +141,12 @@ class CATInterpreter {
     Function toExecute = () => {};
     if (_directions.containsKey(splited[0])) {
       dynamic found = _directions[splited[0]];
-      toExecute = () => found is Function
-          ? found(repetitions)
-          : found[splited[1]][splited[2]](repetitions);
+      int i = 1;
+      while (found is! Function) {
+        found = found[splited[i]];
+        i++;
+      }
+      toExecute = () => found(repetitions);
     } else {
       var coordinates = splited[0].split("");
       toExecute = () => board.move
@@ -99,7 +155,6 @@ class CATInterpreter {
     if (!toExecute.call()) {
       color("Invalid move", front: Styles.RED);
     }
-    // print(board.move);
   }
 
   void _paint(List<String> command) {
@@ -170,7 +225,7 @@ class CATInterpreter {
   }
 
   void validateOnScheme(String code, int schemeIndex) {
-    Cross? toValidate = _schemes.schemas[schemeIndex];
+    Cross? toValidate = schemes.schemas[schemeIndex];
     _parse(code);
     print(board.getCross == toValidate);
   }
