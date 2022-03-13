@@ -1,4 +1,4 @@
-import 'cross_basic_coloring.dart';
+import "cross_basic_coloring.dart";
 
 class CrossColoring extends CrossBasicColoring {
   /// Color with an L shape with direction down left from a starting position
@@ -11,7 +11,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     down(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -19,7 +19,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.left();
-    left([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    left(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -34,7 +34,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     down(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -42,7 +42,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.right();
-    right([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    right(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -57,7 +57,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     left(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -65,7 +65,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.down();
-    down([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    down(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -80,7 +80,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     left(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -88,7 +88,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.up();
-    up([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    up(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -103,7 +103,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     right(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -111,7 +111,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.down();
-    down([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    down(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -126,7 +126,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     right(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -134,7 +134,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.up();
-    up([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    up(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -149,7 +149,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     up(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -157,7 +157,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.left();
-    left([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    left(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -172,7 +172,7 @@ class CrossColoring extends CrossBasicColoring {
       return false;
     }
     up(
-      [
+      <int>[
         colors[0 % colors.length],
         colors[1 % colors.length],
         colors[2 % colors.length],
@@ -180,7 +180,7 @@ class CrossColoring extends CrossBasicColoring {
       3,
     );
     move.right();
-    right([colors[3 % colors.length], colors[4 % colors.length]], 2);
+    right(<int>[colors[3 % colors.length], colors[4 % colors.length]], 2);
 
     return true;
   }
@@ -192,8 +192,8 @@ class CrossColoring extends CrossBasicColoring {
     if (move.validatePosition(move.row, move.column + 1) &&
         move.validatePosition(move.row - 1, move.column) &&
         move.validatePosition(move.row, move.column)) {
-      int row = move.row;
-      int column = move.column;
+      final int row = move.row;
+      final int column = move.column;
       color(colors[0 % colors.length]);
       move.toPosition(row, column + 1);
       color(colors[1 % colors.length]);
@@ -208,75 +208,75 @@ class CrossColoring extends CrossBasicColoring {
     return false;
   }
 
-  /// Color with an zig-zag pattern with direction down left right from a starting position
+  /// Color with an zig-zag pattern with direction down left right
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagDownLeftRight(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagDownLeftRight(List<int> colors, [int? n]) => false;
 
-  /// Color with an zig-zag pattern with direction down right left from a starting position
+  /// Color with an zig-zag pattern with direction down right left
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagDownRightLeft(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagDownRightLeft(List<int> colors, [int? n]) => false;
 
-  /// Color with an zig-zag pattern with direction left down up from a starting position
+  /// Color with an zig-zag pattern with direction left down up
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagLeftDownUp(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagLeftDownUp(List<int> colors, [int? n]) => false;
 
-  /// Color with an zig-zag pattern with direction left up down from a starting position
+  /// Color with an zig-zag pattern with direction left up down
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagLeftUpDown(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagLeftUpDown(List<int> colors, [int? n]) => false;
 
-  /// Color with an zig-zag pattern with direction right down up from a starting position
+  /// Color with an zig-zag pattern with direction right down up
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagRightDownUp(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagRightDownUp(List<int> colors, [int? n]) => false;
 
-  /// Color with an zig-zag pattern with direction right up down from a starting position
+  /// Color with an zig-zag pattern with direction right up down
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagRightUpDown(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagRightUpDown(List<int> colors, [int? n]) => false;
 
-  /// Color with an zig-zag pattern with direction up left right from a starting position
+  /// Color with an zig-zag pattern with direction up left right
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagUpLeftRight(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagUpLeftRight(List<int> colors, [int? n]) => false;
 
-  /// Color with an zig-zag pattern with direction up right left from a starting position
+  /// Color with an zig-zag pattern with direction up right left
+  /// from a starting position
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
-  /// If no number [n] of cells is passed all the cells that fits in the patter are colored.
+  /// If no number [n] of cells is passed all the cells
+  /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagUpRightLeft(List<int> colors, [int? n]) {
-    return false;
-  }
+  bool zigzagUpRightLeft(List<int> colors, [int? n]) => false;
 }

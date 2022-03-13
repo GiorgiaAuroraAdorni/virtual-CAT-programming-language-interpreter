@@ -1,7 +1,7 @@
-import 'package:test/expect.dart';
-import 'package:test/scaffolding.dart';
+import "package:test/expect.dart";
+import "package:test/scaffolding.dart";
 
-import '../bin/cross_coloring.dart';
+import "../bin/cross_coloring.dart";
 
 void main() {
   lRightDown();

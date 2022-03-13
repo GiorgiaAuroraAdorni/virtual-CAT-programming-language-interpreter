@@ -1,5 +1,5 @@
-import 'cross.dart';
-import 'cross_basic_moves.dart';
+import "cross.dart";
+import "cross_basic_moves.dart";
 
 class CrossBasicColoring {
   final Cross _cross = Cross();
@@ -23,28 +23,30 @@ class CrossBasicColoring {
     return false;
   }
 
-  /// Color in diagonal with a direction down left from a current position defined by the movement.
+  /// Color in diagonal with a direction down left from
+  /// a current position defined by the movement.
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
   /// If no number [n] of cells is passed all the diagonal is colored.
   /// Return true on success.
   bool diagonalDownLeft(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       while (move.diagonalUpRight()) {
         continue;
       }
-      n = ((move.row == 3 && move.column == 5) ||
+      param = ((move.row == 3 && move.column == 5) ||
               (move.row == 0 && move.column == 2))
           ? 1
           : move.column - move.row;
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n! < 1 || !color(colors[j])) {
+    if (param < 1 || !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
       if (!move.diagonalDownLeft() || !color(colors[j])) {
         return false;
@@ -54,28 +56,30 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Color in diagonal with a direction down right from a current position defined by the movement.
+  /// Color in diagonal with a direction down right from
+  /// a current position defined by the movement.
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
   /// If no number [n] of cells is passed all the diagonal is colored.
   /// Return true on success.
   bool diagonalDownRight(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       while (move.diagonalUpLeft()) {
         continue;
       }
-      n = ((move.row == 0 && move.column == 3) ||
+      param = ((move.row == 0 && move.column == 3) ||
               (move.row == 3 && move.column == 0))
           ? 1
           : move.column + 3;
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n! < 1 || !color(colors[j])) {
+    if (param < 1 || !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
       if (!move.diagonalDownRight() || !color(colors[j])) {
         return false;
@@ -85,28 +89,30 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Color in diagonal with a direction up left from a current position defined by the movement.
+  /// Color in diagonal with a direction up left from
+  /// a current position defined by the movement.
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
   /// If no number [n] of cells is passed all the diagonal is colored.
   /// Return true on success.
   bool diagonalUpLeft(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       while (move.diagonalDownRight()) {
         continue;
       }
-      n = ((move.row == 2 && move.column == 5) ||
+      param = ((move.row == 2 && move.column == 5) ||
               (move.row == 5 && move.column == 2))
           ? 1
           : move.row - 2;
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n! < 1 || !color(colors[j])) {
+    if (param < 1 || !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
       if (!move.diagonalUpLeft() || !color(colors[j])) {
         return false;
@@ -116,28 +122,30 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Color in diagonal with a direction up right from a current position defined by the movement.
+  /// Color in diagonal with a direction up right from
+  /// a current position defined by the movement.
   ///
   /// Requires a list of [colors] and a number [n] of cells to color.
   /// If no number [n] of cells is passed all the diagonal is colored.
   /// Return true on success.
   bool diagonalUpRight(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       while (move.diagonalDownLeft()) {
         continue;
       }
-      n = ((move.row == 2 && move.column == 0) ||
+      param = ((move.row == 2 && move.column == 0) ||
               (move.row == 5 && move.column == 3))
           ? 1
           : move.row - move.column;
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n! < 1 || !color(colors[j])) {
+    if (param < 1 || !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
       if (!move.diagonalUpRight() || !color(colors[j])) {
         return false;
@@ -153,26 +161,27 @@ class CrossBasicColoring {
   /// If no number [n] of cells is passed all the column is colored.
   /// Return true on success.
   bool down(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       if (move.column == 2 || move.column == 3) {
         move.toPosition(0, move.column);
-        n = 5;
+        param = 5;
       } else {
         move.toPosition(2, move.column);
-        n = 1;
+        param = 1;
       }
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n < 1 ||
-        !move.validatePosition(move.column, move.row + n) ||
+    if (param < 1 ||
+        !move.validatePosition(move.column, move.row + param) ||
         !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
-      !move.down();
+      move.down();
       color(colors[j]);
     }
 
@@ -181,7 +190,7 @@ class CrossBasicColoring {
 
   /// Colors with a [color] all the cells that has the default color.
   void fillEmpty(int color) {
-    for (var line in _cross.cross) {
+    for (final List<int> line in _cross.cross) {
       for (int i = 0; i < 6; i++) {
         line[i] = line[i] == _defaultColor ? color : line[i];
       }
@@ -194,24 +203,25 @@ class CrossBasicColoring {
   /// If no number [n] of cells is passed all the row is colored.
   /// Return true on success.
   bool left(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       if (move.row == 2 || move.row == 3) {
         move.toPosition(move.row, 5);
-        n = 5;
+        param = 5;
       } else {
         move.toPosition(move.row, 3);
-        n = 1;
+        param = 1;
       }
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n < 1 ||
-        !move.validatePosition(move.column - n, move.row) ||
+    if (param < 1 ||
+        !move.validatePosition(move.column - param, move.row) ||
         !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
       move.left();
       color(colors[j]);
@@ -226,24 +236,25 @@ class CrossBasicColoring {
   /// If no number [n] of cells is passed all the row is colored.
   /// Return true on success.
   bool right(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       if (move.row == 2 || move.row == 3) {
         move.toPosition(move.row, 0);
-        n = 5;
+        param = 5;
       } else {
         move.toPosition(move.row, 2);
-        n = 1;
+        param = 1;
       }
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n < 1 ||
-        !move.validatePosition(move.column + n, move.row) ||
+    if (param < 1 ||
+        !move.validatePosition(move.column + param, move.row) ||
         !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
       move.right();
       color(colors[j]);
@@ -253,9 +264,7 @@ class CrossBasicColoring {
   }
 
   @override
-  String toString() {
-    return _cross.toString();
-  }
+  String toString() => _cross.toString();
 
   /// Color up from a current position defined by the movement.
   ///
@@ -263,24 +272,25 @@ class CrossBasicColoring {
   /// If no number [n] of cells is passed all the column is colored.
   /// Return true on success.
   bool up(List<int> colors, [int? n]) {
-    if (n == null) {
+    int? param = n;
+    if (param == null) {
       if (move.column == 2 || move.column == 3) {
         move.toPosition(5, move.column);
-        n = 5;
+        param = 5;
       } else {
         move.toPosition(3, move.column);
-        n = 1;
+        param = 1;
       }
     } else {
-      n = n - 1;
+      param--;
     }
     int j = 0;
-    if (n < 1 ||
-        !move.validatePosition(move.column, move.row - n) ||
+    if (param < 1 ||
+        !move.validatePosition(move.column, move.row - param) ||
         !color(colors[j])) {
       return false;
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < param; i++) {
       j = (j + 1) % colors.length;
       move.up();
       color(colors[j]);

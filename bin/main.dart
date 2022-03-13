@@ -1,23 +1,26 @@
-import 'dart:convert';
-import 'dart:io';
+import "dart:convert";
+import "dart:io";
 
-import 'package:path/path.dart';
+import "package:path/path.dart";
 
-import 'cat_interpreter.dart';
+import "cat_interpreter.dart";
 
 void main(List<String> arguments) {
-  var pathToFile = join(dirname(Platform.script.toFilePath()), 'schemas.json');
-  var json = File(pathToFile).readAsStringSync();
-  CATInterpreter interpreter = CATInterpreter(json);
+  final String pathToFile = join(
+    dirname(Platform.script.toFilePath()),
+    "schemas.json",
+  );
+  final String json = File(pathToFile).readAsStringSync();
+  final CATInterpreter interpreter = CATInterpreter(json);
   // for(var i in interpreter.schemes.schemas.values){
   //   print(i);
   //   print("");
   // }
-  int schema = int.parse(arguments[0]);
+  final int schema = int.parse(arguments[0]);
   while (true) {
-    var line = stdin.readLineSync(encoding: utf8);
+    final String? line = stdin.readLineSync(encoding: utf8);
     print(line);
-    String command = line.toString();
+    final String command = line.toString();
     interpreter.validateOnScheme(command, schema);
   }
   // interpreter.board.fillEmpty(3);

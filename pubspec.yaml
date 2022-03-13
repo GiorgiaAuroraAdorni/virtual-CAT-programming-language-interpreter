@@ -12,6 +12,6 @@ dependencies:
    path: ^1.8.0
 
 dev_dependencies:
+  dart_code_metrics: ^4.11.0
   lints: ^1.0.0
   test: ^1.20.1
-  dart_code_metrics: ^4.11.0

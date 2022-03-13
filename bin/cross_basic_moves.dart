@@ -2,9 +2,9 @@ class CrossBasicMoves {
   int _column = 0;
   int _row = 3;
 
-  get column => _column;
+  int get column => _column;
 
-  get row => _row;
+  int get row => _row;
 
   /// Change position in diagonal down left position by [n] cells.
   ///
@@ -19,8 +19,8 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newRow = _row + n;
-    int newColumn = _column - n;
+    final int newRow = _row + n;
+    final int newColumn = _column - n;
     if (validatePosition(newRow, newColumn)) {
       _column = newColumn;
       _row = newRow;
@@ -56,8 +56,8 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newRow = _row + n;
-    int newColumn = _column + n;
+    final int newRow = _row + n;
+    final int newColumn = _column + n;
     if (validatePosition(newRow, newColumn)) {
       _column = newColumn;
       _row = newRow;
@@ -93,8 +93,8 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newRow = _row - n;
-    int newColumn = _column - n;
+    final int newRow = _row - n;
+    final int newColumn = _column - n;
     if (validatePosition(newRow, newColumn)) {
       _column = newColumn;
       _row = newRow;
@@ -134,8 +134,8 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newRow = _row - n;
-    int newColumn = _column + n;
+    final int newRow = _row - n;
+    final int newColumn = _column + n;
     if (validatePosition(newRow, newColumn)) {
       _column = newColumn;
       _row = newRow;
@@ -171,7 +171,7 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newRow = _row + n;
+    final int newRow = _row + n;
     if (validatePosition(newRow, _column)) {
       _row = newRow;
 
@@ -194,7 +194,7 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newColumn = _column - n;
+    final int newColumn = _column - n;
     if (validatePosition(_row, newColumn)) {
       _column = newColumn;
 
@@ -217,7 +217,7 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newColumn = _column + n;
+    final int newColumn = _column + n;
     if (validatePosition(_row, newColumn)) {
       _column = newColumn;
 
@@ -247,7 +247,7 @@ class CrossBasicMoves {
   }
 
   @override
-  String toString() => 'Row position: $_row\nColumn position:$_column';
+  String toString() => "Row position: $_row\nColumn position:$_column";
 
   /// Change position up position by [n] cells.
   ///
@@ -262,7 +262,7 @@ class CrossBasicMoves {
     if (n <= 0) {
       return false;
     }
-    int newRow = _row - n;
+    final int newRow = _row - n;
     if (validatePosition(newRow, _column)) {
       _row = newRow;
 

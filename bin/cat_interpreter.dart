@@ -1,119 +1,123 @@
-import 'package:colorize/colorize.dart';
+import "package:colorize/colorize.dart";
 
-import 'cross.dart';
-import 'cross_coloring.dart';
-import 'helper.dart';
-import 'schemes.dart';
+import "cross.dart";
+import "cross_coloring.dart";
+import "helper.dart";
+import "schemes.dart";
 
 class CATInterpreter {
+  CATInterpreter(String json) {
+    schemes = schemesFromJson(json);
+  }
+
   CrossColoring board = CrossColoring();
 
-  final _boardColors = {
-    'green': 1,
-    'red': 2,
-    'blue': 3,
-    'yellow': 4,
+  final Map<String, int> _boardColors = <String, int>{
+    "green": 1,
+    "red": 2,
+    "blue": 3,
+    "yellow": 4,
   };
 
-  final _rows = {
-    'f': 0,
-    'e': 1,
-    'd': 2,
-    'c': 3,
-    'b': 4,
-    'a': 5,
+  final Map<String, int> _rows = <String, int>{
+    "f": 0,
+    "e": 1,
+    "d": 2,
+    "c": 3,
+    "b": 4,
+    "a": 5,
   };
 
-  final _columns = {
-    '1': 0,
-    '2': 1,
-    '3': 2,
-    '4': 3,
-    '5': 4,
-    '6': 5,
+  final Map<String, int> _columns = <String, int>{
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 3,
+    "5": 4,
+    "6": 5,
   };
 
-  late final _directions = {
+  late final Map<String, Object> _directions = <String, Object>{
     "up": board.move.up,
     "down": board.move.down,
     "left": board.move.left,
     "right": board.move.right,
-    "diagonal": {
-      "up": {
+    "diagonal": <String, Object>{
+      "up": <String, Function>{
         "left": board.move.diagonalUpLeft,
         "right": board.move.diagonalUpRight,
       },
-      "down": {
+      "down": <String, Function>{
         "left": board.move.diagonalDownLeft,
         "right": board.move.diagonalDownRight,
       },
     },
   };
 
-  late final _coloring = {
+  late final Map<String, Object> _coloring = <String, Object>{
     "up": board.up,
     "down": board.down,
     "left": board.left,
     "right": board.right,
     "square": board.square,
-    "diagonal": {
-      "up": {
+    "diagonal": <String, Object>{
+      "up": <String, Function>{
         "left": board.diagonalUpLeft,
         "right": board.diagonalUpRight,
       },
-      "down": {
+      "down": <String, Function>{
         "left": board.diagonalDownLeft,
         "right": board.diagonalDownRight,
       },
     },
-    "l": {
-      "up": {
+    "l": <String, Object>{
+      "up": <String, Function>{
         "left": board.lUpLeft,
         "right": board.lUpRight,
       },
-      "down": {
+      "down": <String, Function>{
         "left": board.lDownLeft,
         "right": board.lDownRight,
       },
-      "left": {
+      "left": <String, Function>{
         "up": board.lLeftUp,
         "down": board.lLeftDown,
       },
-      "right": {
+      "right": <String, Function>{
         "up": board.lRightUp,
         "down": board.lRightDown,
       },
     },
-    "zig-zag": {
-      "left": {
-        "up": {
+    "zig-zag": <String, Object>{
+      "left": <String, Object>{
+        "up": <String, Function>{
           "down": board.zigzagLeftUpDown,
         },
-        "down": {
+        "down": <String, Function>{
           "up": board.zigzagLeftDownUp,
         },
       },
-      "right": {
-        "up": {
+      "right": <String, Object>{
+        "up": <String, Function>{
           "down": board.zigzagRightUpDown,
         },
-        "down": {
+        "down": <String, Function>{
           "up": board.zigzagRightDownUp,
         },
       },
-      "up": {
-        "left": {
+      "up": <String, Object>{
+        "left": <String, Function>{
           "right": board.zigzagUpLeftRight,
         },
-        "right": {
+        "right": <String, Function>{
           "left": board.zigzagUpRightLeft,
         },
       },
-      "down": {
-        "left": {
+      "down": <String, Object>{
+        "left": <String, Function>{
           "right": board.zigzagDownLeftRight,
         },
-        "right": {
+        "right": <String, Function>{
           "left": board.zigzagDownRightLeft,
         },
       },
@@ -124,10 +128,6 @@ class CATInterpreter {
 
   List<Cross> _states = <Cross>[];
 
-  CATInterpreter(String json) {
-    schemes = schemesFromJson(json);
-  }
-
   List<Cross> get getStates => _states;
 
   void reset() {
@@ -136,13 +136,13 @@ class CATInterpreter {
   }
 
   void validateOnScheme(String code, int schemeIndex) {
-    Cross? toValidate = schemes.schemas[schemeIndex];
+    final Cross? toValidate = schemes.schemas[schemeIndex];
     _parse(code);
     print(board.getCross == toValidate);
   }
 
   void _move(List<String> command) {
-    List<String> splited = command[0].split(" ");
+    final List<String> splited = command[0].split(" ");
     int repetitions;
     try {
       repetitions = int.parse(splited[0]);
@@ -150,17 +150,19 @@ class CATInterpreter {
     } on FormatException {
       repetitions = 1;
     }
-    Function toExecute = () => {};
+    Function toExecute = () => <bool>{};
     if (_directions.containsKey(splited[0])) {
       dynamic found = _directions[splited[0]];
       int i = 1;
-      while (found is! Function) {
+      while (found is Map) {
         found = found[splited[i]];
         i++;
       }
-      toExecute = () => found(repetitions);
+      if (found is Function) {
+        toExecute = () => found(repetitions);
+      }
     } else {
-      var coordinates = splited[0].split("");
+      final List<String> coordinates = splited[0].split("");
       toExecute = () => board.move
           .toPosition(_rows[coordinates[0]]!, _columns[coordinates[1]]!);
     }
@@ -170,28 +172,32 @@ class CATInterpreter {
   }
 
   void _paint(List<String> command) {
-    List<int> colors = [];
-    splitBySquare(command[0]).forEach((e) {
+    final List<int> colors = <int>[];
+    splitBySquare(command[0]).forEach((String e) {
       colors.add(_boardColors[e]!);
     });
-    List<String> splited = command[2].split(" ");
-    Function toExecute = () => {};
+    final List<String> splited = command[2].split(" ");
+    Function toExecute = () => <void>{};
     dynamic found = _coloring[splited[0]];
     try {
-      int repetitions = int.parse(command[1]);
+      final int repetitions = int.parse(command[1]);
       int i = 1;
-      while (found is! Function) {
+      while (found is Map) {
         found = found[splited[i]];
         i++;
       }
-      toExecute = () => found(colors, repetitions);
+      if (found is Function) {
+        toExecute = () => found(colors, repetitions);
+      }
     } on FormatException {
       int i = 1;
-      while (found is! Function) {
+      while (found is Map) {
         found = found[splited[i]];
         i++;
       }
-      toExecute = () => found(colors);
+      if (found is Function) {
+        toExecute = () => found(colors);
+      }
     }
     if (!toExecute.call()) {
       color("Invalid coloring", front: Styles.RED);
@@ -199,12 +205,12 @@ class CATInterpreter {
   }
 
   void _parse(String command) {
-    List<String> commands = normalize(command);
-    List<List<String>> parsed = <List<String>>[];
+    final List<String> commands = normalize(command);
+    final List<List<String>> parsed = <List<String>>[];
     for (int i = 0; i < commands.length; i++) {
       parsed.add(commandSplit(commands[i]));
     }
-    for (var el in parsed) {
+    for (final List<String> el in parsed) {
       switch (el.removeAt(0)) {
         case "paint":
           {
