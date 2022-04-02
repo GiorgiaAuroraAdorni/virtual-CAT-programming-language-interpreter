@@ -17,7 +17,7 @@ class Schemes {
 
   factory Schemes.fromJson(Map<String, dynamic> json) => Schemes(
         schemas: <int, Cross>{
-          for (var k in json["data"])
+          for (Map<String, dynamic> k in json["data"])
             k["index"]: Cross.fromList(
               List<List<int>>.from(
                 k["array"].map((x) => List<int>.from(x.map((x) => x))),

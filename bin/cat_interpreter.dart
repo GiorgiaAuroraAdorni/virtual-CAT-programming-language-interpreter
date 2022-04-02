@@ -1,9 +1,10 @@
 import "package:colorize/colorize.dart";
+import "package:dartx/dartx.dart";
 
-import "cross.dart";
-import "cross_coloring.dart";
-import "helper.dart";
-import "schemes.dart";
+import "src/cross.dart";
+import "src/cross_coloring.dart";
+import "src/helper.dart";
+import "src/schemes.dart";
 
 class CATInterpreter {
   CATInterpreter(String json) {
@@ -13,6 +14,7 @@ class CATInterpreter {
   CrossColoring board = CrossColoring();
 
   final Map<String, int> _boardColors = <String, int>{
+    "white": 0,
     "green": 1,
     "red": 2,
     "blue": 3,
@@ -145,21 +147,23 @@ class CATInterpreter {
     final List<String> splited = command[0].split(" ");
     int repetitions;
     try {
-      repetitions = int.parse(splited[0]);
+      repetitions = splited[0].toInt();
       splited.removeAt(0);
     } on FormatException {
       repetitions = 1;
     }
-    Function toExecute = () => <bool>{};
+    Function0<bool> toExecute = () => false;
     if (_directions.containsKey(splited[0])) {
       dynamic found = _directions[splited[0]];
-      int i = 1;
-      while (found is Map) {
-        found = found[splited[i]];
-        i++;
+      for (final int i in 1.rangeTo(splited.length - 1)) {
+        if (found is Map) {
+          found = found.getOrElse(splited[i], () => toExecute);
+        } else {
+          break;
+        }
       }
       if (found is Function) {
-        toExecute = () => found(repetitions);
+        toExecute = (found as Function1<int, bool>).partial(repetitions);
       }
     } else {
       final List<String> coordinates = splited[0].split("");
@@ -173,42 +177,47 @@ class CATInterpreter {
 
   void _paint(List<String> command) {
     final List<int> colors = <int>[];
-    splitBySquare(command[0]).forEach((String e) {
-      colors.add(_boardColors[e]!);
-    });
-    final List<String> splited = command[2].split(" ");
-    Function toExecute = () => <void>{};
+    for (final String e in splitBySquare(command[0])) {
+      if (_boardColors.containsKey(e)) {
+        colors.add(_boardColors[e]!);
+      } else {
+        color("Invalid color", front: Styles.RED);
+
+        return;
+      }
+    }
+    final List<String> splited = command[2]
+        .split(" ")
+        .where((String element) => element.isNotNullOrEmpty)
+        .toList();
+    Function0<bool> toExecute = () => false;
     dynamic found = _coloring[splited[0]];
-    try {
-      final int repetitions = int.parse(command[1]);
-      int i = 1;
-      while (found is Map) {
-        found = found[splited[i]];
-        i++;
+    for (final int i in 1.rangeTo(splited.length - 1)) {
+      if (found is Map) {
+        found = found.getOrElse(splited[i], () => toExecute);
+      } else {
+        break;
       }
-      if (found is Function) {
-        toExecute = () => found(colors, repetitions);
-      }
-    } on FormatException {
-      int i = 1;
-      while (found is Map) {
-        found = found[splited[i]];
-        i++;
-      }
-      if (found is Function) {
-        toExecute = () => found(colors);
+    }
+    if (found is Function) {
+      try {
+        final int repetitions = command[1].toInt();
+        toExecute = (found as Function2<List<int>, int, bool>)
+            .partial2(colors, repetitions);
+      } on FormatException {
+        toExecute = (found as Function1<List<int>, bool>).partial(colors);
       }
     }
     if (!toExecute.call()) {
-      color("Invalid coloring", front: Styles.RED);
+      color("Invalid coloring command", front: Styles.RED);
     }
   }
 
   void _parse(String command) {
-    final List<String> commands = normalize(command);
+    final List<String> commands = splitCommands(command);
     final List<List<String>> parsed = <List<String>>[];
-    for (int i = 0; i < commands.length; i++) {
-      parsed.add(commandSplit(commands[i]));
+    for (final int i in 0.rangeTo(commands.length - 1)) {
+      parsed.add(splitCommand(commands[i]));
     }
     for (final List<String> el in parsed) {
       switch (el.removeAt(0)) {

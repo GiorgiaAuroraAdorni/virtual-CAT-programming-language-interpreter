@@ -1,7 +1,7 @@
 import "package:test/expect.dart";
 import "package:test/scaffolding.dart";
 
-import "../bin/cross_coloring.dart";
+import "../bin/src/cross_coloring.dart";
 
 void main() {
   lRightDown();
@@ -645,7 +645,18 @@ void zigzagRightUpDown(){
   group("zig-zag left up down",() {
     test("starting position",() {
       CrossColoring board = CrossColoring();
-      expect(board.zigzagRightUpDown([1]), isFalse);
+      expect(board.zigzagRightUpDown([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 1, 0, 1],
+          [1, 0, 1, 0, 1, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
     });
-  });
+  }, skip: "Not implemented");
 }

@@ -8,8 +8,9 @@ environment:
 
 
 dependencies:
-   colorize: ^3.0.0
-   path: ^1.8.0
+  colorize: ^3.0.0
+  dartx: ^1.0.0
+  path: ^1.8.0
 
 dev_dependencies:
   dart_code_metrics: ^4.11.0

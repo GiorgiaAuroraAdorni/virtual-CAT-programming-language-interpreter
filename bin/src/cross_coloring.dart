@@ -260,7 +260,12 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagRightUpDown(List<int> colors, [int? n]) => false;
+  bool zigzagRightUpDown(List<int> colors, [int? n]) {
+    final int column = move.column;
+    final int row = move.row;
+
+    return false;
+  }
 
   /// Color with an zig-zag pattern with direction up left right
   /// from a starting position

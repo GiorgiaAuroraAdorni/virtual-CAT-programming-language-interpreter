@@ -26,14 +26,10 @@ class Cross {
   List<List<int>> get getCross => cross;
 
   @override
-  int get hashCode => Object.hash(cross, colors, this);
+  int get hashCode => Object.hash(cross, colors);
 
   @override
   bool operator ==(Object other) {
-    if (other.runtimeType is! Cross) {
-      return false;
-    }
-
     if (other is Cross) {
       if (cross[0][2] != other.cross[0][2] ||
           cross[0][3] != other.cross[0][3]) {
@@ -58,6 +54,8 @@ class Cross {
           cross[0][3] != other.cross[5][3]) {
         return false;
       }
+    } else {
+      return false;
     }
 
     return true;
