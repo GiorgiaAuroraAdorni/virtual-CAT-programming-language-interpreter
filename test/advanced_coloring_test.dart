@@ -643,7 +643,7 @@ void lUpRight() {
 
 void zigzagRightUpDown(){
   group("zig-zag left up down",() {
-    test("starting position",() {
+    test("starting position", () {
       CrossColoring board = CrossColoring();
       expect(board.zigzagRightUpDown([1]), isTrue);
       expect(
@@ -658,5 +658,147 @@ void zigzagRightUpDown(){
         ]),
       );
     });
-  }, skip: "Not implemented");
+    test("starting position 3 point", () {
+      CrossColoring board = CrossColoring();
+      expect(board.zigzagRightUpDown([1], 3), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [1, 0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("starting position 2 point", () {
+      CrossColoring board = CrossColoring();
+      expect(board.zigzagRightUpDown([1], 2), isFalse);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("starting position alternating", () {
+      CrossColoring board = CrossColoring();
+      expect(board.zigzagRightUpDown([1, 2]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 2, 0, 2, 0, 2],
+          [1, 0, 1, 0, 1, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("position 3 1", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(3, 1), isTrue);
+      expect(board.zigzagRightUpDown([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 1, 0],
+          [0, 1, 0, 1, 0, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("position 3 1 alternating", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(3, 1), isTrue);
+      expect(board.zigzagRightUpDown([1, 2]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 2, 0, 2, 0],
+          [0, 1, 0, 1, 0, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("position 1 2", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(1, 2), isTrue);
+      expect(board.zigzagRightUpDown([1]), isFalse);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("position 3 3", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(3, 3), isTrue);
+      expect(board.zigzagRightUpDown([1]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 1, 0],
+          [0, 0, 0, 1, 0, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("position 3 4", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(3, 4), isTrue);
+      expect(board.zigzagRightUpDown([1]), isFalse);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    test("position 5 2", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(5, 2), isTrue);
+      expect(board.zigzagRightUpDown([1]), isFalse);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+    });
+    //  , skip: "Not implemented"
+  });
 }

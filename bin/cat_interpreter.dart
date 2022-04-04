@@ -167,8 +167,16 @@ class CATInterpreter {
       }
     } else {
       final List<String> coordinates = splited[0].split("");
-      toExecute = () => board.move
-          .toPosition(_rows[coordinates[0]]!, _columns[coordinates[1]]!);
+      if (coordinates.length == 2 &&
+          _rows.containsKey(coordinates[0]) &&
+          _columns.containsKey(coordinates[1])) {
+        toExecute = () => board.move
+            .toPosition(_rows[coordinates[0]]!, _columns[coordinates[1]]!);
+      } else {
+        color("Invalid position", front: Styles.RED);
+
+        return;
+      }
     }
     if (!toExecute.call()) {
       color("Invalid move", front: Styles.RED);
@@ -233,7 +241,13 @@ class CATInterpreter {
           break;
         case "fill_empty":
           {
-            board.fillEmpty(_boardColors[el.first]!);
+            if (_boardColors.containsKey(el.first)) {
+              board.fillEmpty(_boardColors[el.first]!);
+            } else {
+              color("Invalid color", front: Styles.RED);
+
+              return;
+            }
           }
           break;
         default:

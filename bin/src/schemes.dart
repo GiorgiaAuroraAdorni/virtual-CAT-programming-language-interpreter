@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final schemes = schemesFromJson(jsonString);
-
 import "dart:convert";
 
 import "cross.dart";

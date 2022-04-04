@@ -1,23 +1,27 @@
-import "src/helper.dart" as help;
+import "dart:io";
+
+import "package:path/path.dart";
+
+import "cat_interpreter.dart";
 
 void main(List<String> arguments) {
-  var mormalized = help.splitCommands(
-    "paint([red], :, up)\n"
-    "move(left)\n"
-    "paint([blue,yellow], :, down)",
-  );
-  print(mormalized);
-  for (var i in mormalized) {
-    for (var j in help.splitCommand(i)) {
-      print(j);
-    }
-  }
-  // final String pathToFile = join(
-  //   dirname(Platform.script.toFilePath()),
-  //   "schemas.json",
+  // var mormalized = help.splitCommands(
+  //   "paint([red], :, up)\n"
+  //   "move(left)\n"
+  //   "paint([blue,yellow], :, down)",
   // );
-  // final String json = File(pathToFile).readAsStringSync();
-  // final CATInterpreter interpreter = CATInterpreter(json);
+  // print(mormalized);
+  // for (var i in mormalized) {
+  //   for (var j in help.splitCommand(i)) {
+  //     print(j);
+  //   }
+  // }
+  final String pathToFile = join(
+    dirname(Platform.script.toFilePath()),
+    "schemas.json",
+  );
+  final String json = File(pathToFile).readAsStringSync();
+  final CATInterpreter interpreter = CATInterpreter(json);
   // // for(final Cross i in interpreter.schemes.schemas.values){
   // //   print(i);
   // //   print("");

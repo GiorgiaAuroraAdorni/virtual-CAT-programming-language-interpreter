@@ -261,10 +261,32 @@ class CrossColoring extends CrossBasicColoring {
   /// that fits in the patter are colored.
   /// Return true on success.
   bool zigzagRightUpDown(List<int> colors, [int? n]) {
+    int? param = n;
     final int column = move.column;
     final int row = move.row;
+    param ??= 6 - column;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (row != 3 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalUpRight() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalDownRight() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
 
-    return false;
+    return true;
   }
 
   /// Color with an zig-zag pattern with direction up left right
