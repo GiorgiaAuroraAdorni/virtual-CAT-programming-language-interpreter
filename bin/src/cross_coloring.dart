@@ -188,7 +188,7 @@ class CrossColoring extends CrossBasicColoring {
   /// Color with a square shape from the current position.
   ///
   /// Requires a list of [colors].
-  bool square(List<int> colors) {
+  bool square(List<int> colors, [int? n]) {
     if (move.validatePosition(move.row, move.column + 1) &&
         move.validatePosition(move.row - 1, move.column) &&
         move.validatePosition(move.row, move.column)) {
@@ -215,7 +215,34 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagDownLeftRight(List<int> colors, [int? n]) => false;
+  bool zigzagDownLeftRight(List<int> colors, [int? n]) {
+    int? param = n;
+    final int column = move.column;
+    final int row = move.row;
+    param ??= 6 - row;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (column != 3 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalDownLeft() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalDownRight() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
 
   /// Color with an zig-zag pattern with direction down right left
   /// from a starting position
@@ -224,7 +251,34 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagDownRightLeft(List<int> colors, [int? n]) => false;
+  bool zigzagDownRightLeft(List<int> colors, [int? n]) {
+    int? param = n;
+    final int column = move.column;
+    final int row = move.row;
+    param ??= 6 - row;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (column != 2 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalDownRight() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalDownLeft() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
 
   /// Color with an zig-zag pattern with direction left down up
   /// from a starting position
@@ -233,7 +287,34 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagLeftDownUp(List<int> colors, [int? n]) => false;
+  bool zigzagLeftDownUp(List<int> colors, [int? n]) {
+    int? param = n;
+    final int column = move.column;
+    final int row = move.row;
+    param ??= column + 1;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (row != 2 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalDownLeft() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalUpLeft() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
 
   /// Color with an zig-zag pattern with direction left up down
   /// from a starting position
@@ -242,7 +323,34 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagLeftUpDown(List<int> colors, [int? n]) => false;
+  bool zigzagLeftUpDown(List<int> colors, [int? n]) {
+    int? param = n;
+    final int column = move.column;
+    final int row = move.row;
+    param ??= column + 1;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (row != 3 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalUpLeft() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalDownLeft() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
 
   /// Color with an zig-zag pattern with direction right down up
   /// from a starting position
@@ -251,7 +359,34 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagRightDownUp(List<int> colors, [int? n]) => false;
+  bool zigzagRightDownUp(List<int> colors, [int? n]) {
+    int? param = n;
+    final int column = move.column;
+    final int row = move.row;
+    param ??= 6 - column;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (row != 2 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalDownRight() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalUpRight() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
 
   /// Color with an zig-zag pattern with direction right up down
   /// from a starting position
@@ -296,7 +431,34 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagUpLeftRight(List<int> colors, [int? n]) => false;
+  bool zigzagUpLeftRight(List<int> colors, [int? n]) {
+    int? param = n;
+    final int column = move.column;
+    final int row = move.row;
+    param ??= row + 1;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (column != 3 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalUpLeft() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalUpRight() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
 
   /// Color with an zig-zag pattern with direction up right left
   /// from a starting position
@@ -305,5 +467,32 @@ class CrossColoring extends CrossBasicColoring {
   /// If no number [n] of cells is passed all the cells
   /// that fits in the patter are colored.
   /// Return true on success.
-  bool zigzagUpRightLeft(List<int> colors, [int? n]) => false;
+  bool zigzagUpRightLeft(List<int> colors, [int? n]) {
+    int? param = n;
+    final int column = move.column;
+    final int row = move.row;
+    param ??= row + 1;
+    if (param < 3) {
+      return false;
+    }
+    int j = 0;
+    if (column != 2 || !color(colors[j])) {
+      return false;
+    }
+    for (int i = 1; i < param; i++) {
+      j = (j + 1) % colors.length;
+      if (!move.diagonalUpRight() || !color(colors[j])) {
+        return false;
+      }
+      j = (j + 1) % colors.length;
+      i++;
+      if (i < param) {
+        if (!move.diagonalUpLeft() || !color(colors[j])) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
 }
