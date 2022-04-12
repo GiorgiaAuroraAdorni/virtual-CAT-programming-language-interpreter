@@ -2,7 +2,7 @@ import "cross.dart";
 import "cross_basic_moves.dart";
 
 class CrossBasicColoring {
-  final Cross _cross = Cross();
+  Cross _cross = Cross();
 
   final CrossBasicMoves move = CrossBasicMoves();
 
@@ -11,6 +11,11 @@ class CrossBasicColoring {
   List<List<int>> get getBoard => _cross.getCross;
 
   Cross get getCross => _cross;
+
+  void reset() {
+    _cross = Cross();
+    move.toPosition(3, 0);
+  }
 
   /// Color the current position.
   bool color(int color) {

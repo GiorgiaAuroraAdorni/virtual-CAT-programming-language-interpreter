@@ -134,13 +134,14 @@ class CATInterpreter {
 
   void reset() {
     _states = <Cross>[];
-    board = CrossColoring();
+    board.reset();
   }
 
-  void validateOnScheme(String code, int schemeIndex) {
+  bool validateOnScheme(String code, int schemeIndex) {
     final Cross? toValidate = schemes.schemas[schemeIndex];
     _parse(code);
-    print(board.getCross == toValidate);
+
+    return board.getCross == toValidate;
   }
 
   void _move(List<String> command) {
@@ -185,7 +186,7 @@ class CATInterpreter {
 
   void _paint(List<String> command) {
     final List<int> colors = <int>[];
-    for (final String e in splitBySquare(command[0])) {
+    for (final String e in splitByCurly(command[0])) {
       if (_boardColors.containsKey(e)) {
         colors.add(_boardColors[e]!);
       } else {
@@ -193,6 +194,11 @@ class CATInterpreter {
 
         return;
       }
+    }
+    if (command.length == 1) {
+      board.color(colors[0]);
+
+      return;
     }
     final List<String> splited = command[2]
         .split(" ")
@@ -234,7 +240,7 @@ class CATInterpreter {
             _paint(el);
           }
           break;
-        case "move":
+        case "go":
           {
             _move(el);
           }
@@ -256,7 +262,7 @@ class CATInterpreter {
           }
           break;
       }
-      print(board);
+      _states.add(board.getCross.copy());
     }
   }
 }

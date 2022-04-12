@@ -61,7 +61,9 @@ class Cross {
     return true;
   }
 
-  Cross copy() => Cross.fromList(cross);
+  Cross copy() => Cross.fromList(
+        cross.map((List<int> e) => <int>[...e]).toList(),
+      );
 
   @override
   String toString() {
@@ -82,7 +84,7 @@ class Cross {
       '      ${Colorize("o").apply(colors[cross[4][2]]!)} '
       '${Colorize("o").apply(colors[cross[4][3]]!)}      \n'
       '      ${Colorize("o").apply(colors[cross[5][2]]!)}'
-      ' ${Colorize("o").apply(colors[cross[5][3]]!)}      ',
+      ' ${Colorize("o").apply(colors[cross[5][3]]!)}      \n',
     );
 
     return buffer.toString();
