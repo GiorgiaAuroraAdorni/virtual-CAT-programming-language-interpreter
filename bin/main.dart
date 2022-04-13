@@ -4,6 +4,9 @@ import "package:dartx/dartx.dart";
 import "package:path/path.dart";
 
 import "cat_interpreter.dart";
+import 'errors.dart';
+import 'results.dart';
+import 'src/cross.dart';
 
 void main(List<String> arguments) {
   // var mormalized = help.splitCommands(
@@ -28,13 +31,26 @@ void main(List<String> arguments) {
   final int schema = arguments[0].toInt();
   String command =
       "GO(up) PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({blue}, 3, up), MIRROR(horizontal) MIRROR(vertical)";
-  print(interpreter.validateOnScheme(command, 4));
-  print(interpreter.getStates);
+  Pair<Results, CatError> result = interpreter.validateOnScheme(command, 4);
+  List<Cross> states = result.first.getStates;
+  List<String> commads = result.first.getCommands;
+  for (final int i in 0.rangeTo(states.length - 1)) {
+    print(commads[i]);
+    print(states[i]);
+  }
+  print(result.first.completed);
   interpreter.reset();
   command =
-      "GO(C6) PAINT({yellow}), GO(left), PAINT({red}), GO(left), PAINT({blue}, 3, down),  MIRROR(vertical) MIRROR(horizontal)";
-  print(interpreter.validateOnScheme(command, 4));
-  print(interpreter.getStates.last.cross);
+      "GO(C6) PAINT({yellow}), GO(left), PAINT({ciao}), GO(left), PAINT({blue}, 3, down), MIRROR(vertical) MIRROR(horizontal)";
+  result = interpreter.validateOnScheme(command, 4);
+  print(result.second);
+  states = result.first.getStates;
+  commads = result.first.getCommands;
+  for (final int i in 0.rangeTo(states.length - 1)) {
+    print(commads[i]);
+    print(states[i]);
+  }
+  print(result.first.completed);
   // while (true) {
   //   final String? line = stdin.readLineSync(encoding: utf8);
   //   print(line);

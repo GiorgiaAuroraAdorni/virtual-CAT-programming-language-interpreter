@@ -1,6 +1,7 @@
-import "package:colorize/colorize.dart";
 import "package:dartx/dartx.dart";
 
+import 'errors.dart';
+import 'results.dart';
 import "src/cross.dart";
 import "src/cross_coloring.dart";
 import "src/helper.dart";
@@ -128,20 +129,23 @@ class CATInterpreter {
 
   late final Schemes schemes;
 
-  List<Cross> _states = <Cross>[];
+  Results _results = Results();
+  CatError _error = CatError.none;
 
-  List<Cross> get getStates => _states;
+  Results get getResults => _results;
 
   void reset() {
-    _states = <Cross>[];
+    _results = Results();
     board.reset();
   }
 
-  bool validateOnScheme(String code, int schemeIndex) {
+  Pair<Results, CatError> validateOnScheme(String code, int schemeIndex) {
     final Cross? toValidate = schemes.schemas[schemeIndex];
+    _error = CatError.none;
     _parse(code);
+    _results.completed = board.getCross == toValidate;
 
-    return board.getCross == toValidate;
+    return Pair<Results, CatError>(_results, _error);
   }
 
   void _go(List<String> command) {
@@ -174,13 +178,13 @@ class CATInterpreter {
         toExecute = () => board.move
             .toPosition(_rows[coordinates[0]]!, _columns[coordinates[1]]!);
       } else {
-        color("Invalid position", front: Styles.RED);
+        _error = CatError.invalidPosition;
 
         return;
       }
     }
     if (!toExecute.call()) {
-      color("Invalid move", front: Styles.RED);
+      _error = CatError.invalidMove;
     }
   }
 
@@ -190,7 +194,7 @@ class CATInterpreter {
       if (_boardColors.containsKey(e)) {
         colors.add(_boardColors[e]!);
       } else {
-        color("Invalid color", front: Styles.RED);
+        _error = CatError.invalidColor;
 
         return;
       }
@@ -223,7 +227,7 @@ class CATInterpreter {
       }
     }
     if (!toExecute.call()) {
-      color("Invalid coloring command", front: Styles.RED);
+      _error = CatError.invalidColoringCommand;
     }
   }
 
@@ -255,7 +259,7 @@ class CATInterpreter {
           break;
         default:
           {
-            color("Command not implemented", front: Styles.RED);
+            _error = CatError.commandNotImplemented;
           }
           break;
       }
@@ -268,7 +272,14 @@ class CATInterpreter {
     for (final int i in 0.rangeTo(commands.length - 1)) {
       parsed.add(splitCommand(commands[i]));
     }
-    for (final List<String> el in parsed) {
+    execute(commands, parsed, states);
+  }
+
+  void execute(List<String> commands, List<List<String>> parsed, bool states) {
+    parsed.forEachIndexed((List<String> el, int index) {
+      if (_error != CatError.none) {
+        return;
+      }
       switch (el.removeAt(0)) {
         case "paint":
           {
@@ -285,7 +296,7 @@ class CATInterpreter {
             if (_boardColors.containsKey(el.first)) {
               board.fillEmpty(_boardColors[el.first]!);
             } else {
-              color("Invalid color", front: Styles.RED);
+              _error = CatError.invalidColor;
 
               return;
             }
@@ -303,13 +314,14 @@ class CATInterpreter {
           break;
         default:
           {
-            color("Command not implemented", front: Styles.RED);
+            _error = CatError.commandNotImplemented;
+
+            return;
           }
-          break;
       }
       if (states) {
-        _states.add(board.getCross.copy());
+        _results.addResult(commands[index], board.getCross.copy());
       }
-    }
+    });
   }
 }

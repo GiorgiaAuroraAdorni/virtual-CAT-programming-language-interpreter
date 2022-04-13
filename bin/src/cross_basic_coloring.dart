@@ -43,7 +43,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 3 && move.column == 5) ||
-          (move.row == 0 && move.column == 2))
+              (move.row == 0 && move.column == 2))
           ? 1
           : move.column - move.row;
     } else {
@@ -76,7 +76,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 0 && move.column == 3) ||
-          (move.row == 3 && move.column == 0))
+              (move.row == 3 && move.column == 0))
           ? 1
           : move.column + 3;
     } else {
@@ -109,7 +109,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 2 && move.column == 5) ||
-          (move.row == 5 && move.column == 2))
+              (move.row == 5 && move.column == 2))
           ? 1
           : move.row - 2;
     } else {
@@ -142,7 +142,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 2 && move.column == 0) ||
-          (move.row == 5 && move.column == 3))
+              (move.row == 5 && move.column == 3))
           ? 1
           : move.row - move.column;
     } else {
