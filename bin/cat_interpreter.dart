@@ -237,10 +237,32 @@ class CATInterpreter {
         ..write(" go($move) ")
         ..writeAll(toExecute, " ");
     }
-    _parse(buffer.toString());
+    _parse(buffer.toString(), false);
   }
 
-  void _parse(String command) {
+  void _mirror(List<String> command) {
+    if (command.length == 1) {
+      switch (command.first) {
+        case "horizontal":
+          {
+            board.mirrorHorizontal();
+          }
+          break;
+        case "vertical":
+          {
+            board.mirrorVertical();
+          }
+          break;
+        default:
+          {
+            color("Command not implemented", front: Styles.RED);
+          }
+          break;
+      }
+    }
+  }
+
+  void _parse(String command, [bool states = true]) {
     final List<String> commands = splitCommands(command);
     final List<List<String>> parsed = <List<String>>[];
     for (final int i in 0.rangeTo(commands.length - 1)) {
@@ -274,13 +296,20 @@ class CATInterpreter {
             _copy(el);
           }
           break;
+        case "mirror":
+          {
+            _mirror(el);
+          }
+          break;
         default:
           {
             color("Command not implemented", front: Styles.RED);
           }
           break;
       }
-      _states.add(board.getCross.copy());
+      if (states) {
+        _states.add(board.getCross.copy());
+      }
     }
   }
 }

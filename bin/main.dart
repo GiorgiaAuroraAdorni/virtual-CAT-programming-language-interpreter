@@ -26,10 +26,15 @@ void main(List<String> arguments) {
   //   print("");
   // }
   final int schema = arguments[0].toInt();
-  const String command =
-      "COPY({PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down)}, {D1, F4})";
+  String command =
+      "GO(up) PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({blue}, 3, up), MIRROR(horizontal) MIRROR(vertical)";
   print(interpreter.validateOnScheme(command, 4));
   print(interpreter.getStates);
+  interpreter.reset();
+  command =
+      "GO(C6) PAINT({yellow}), GO(left), PAINT({red}), GO(left), PAINT({blue}, 3, down),  MIRROR(vertical) MIRROR(horizontal)";
+  print(interpreter.validateOnScheme(command, 4));
+  print(interpreter.getStates.last.cross);
   // while (true) {
   //   final String? line = stdin.readLineSync(encoding: utf8);
   //   print(line);

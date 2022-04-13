@@ -8,6 +8,7 @@ void main() {
   schema_2();
   schema_3();
   schema_4();
+  other_schemas();
 }
 
 void schema_1() {
@@ -323,6 +324,59 @@ void schema_4() {
           interpreter.validateOnScheme(
               "COPY({PAINT({yellow}, :, up), GO(right), PAINT({red}, :, up), GO(right), PAINT({blue}, :, up)}, {C1, A4})",
               4),
+          isTrue);
+    });
+  });
+}
+
+void other_schemas() {
+  group("Other schemas algorithms", () {
+    test("1", () {
+      const json =
+          '{"data":[{"index":1,"array":[[0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0], [4, 2, 3, 3, 2, 4], [4, 2, 3, 3, 2, 4], [0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0]]}]}';
+      final CATInterpreter interpreter = CATInterpreter(json);
+      interpreter.reset();
+      expect(interpreter.getStates.length, equals(0));
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getCross,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      expect(
+          interpreter.validateOnScheme(
+              "GO(up) PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({blue}, 3, up), MIRROR(horizontal) MIRROR(vertical)",
+              1),
+          isTrue);
+    });
+    test("2", () {
+      const json =
+          '{"data":[{"index":1,"array":[[0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0], [4, 2, 3, 3, 2, 4], [4, 2, 3, 3, 2, 4], [0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0]]}]}';
+      final CATInterpreter interpreter = CATInterpreter(json);
+      interpreter.reset();
+      expect(interpreter.getStates.length, equals(0));
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getCross,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      expect(
+          interpreter.validateOnScheme(
+              "GO(C6) PAINT({yellow}), GO(left), PAINT({red}), GO(left), PAINT({blue}, 3, down),  MIRROR(vertical) MIRROR(horizontal)",
+              1),
           isTrue);
     });
   });

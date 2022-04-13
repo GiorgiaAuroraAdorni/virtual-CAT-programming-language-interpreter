@@ -426,6 +426,24 @@ class CrossColoring extends CrossBasicColoring {
     );
   }
 
+  /// Mirror all the cells coloring horizontally
+  void mirrorHorizontal() {
+    if (move.row <= 2) {
+      mirrorHorizontalUpDown();
+    } else {
+      mirrorHorizontalDownUp();
+    }
+  }
+
+  /// Mirror all the cells coloring vertically
+  void mirrorVertical() {
+    if (move.column <= 2) {
+      mirrorVerticalLeftRight();
+    } else {
+      mirrorVerticalRightLeft();
+    }
+  }
+
   bool _zigzagHelper(
     int param,
     List<int> colors,

@@ -68,7 +68,7 @@ class Cross {
   @override
   String toString() {
     final StringBuffer buffer = StringBuffer(
-      '      ${Colorize("o").apply(colors[cross[0][2]]!)}'
+      '\n      ${Colorize("o").apply(colors[cross[0][2]]!)}'
       ' ${Colorize("o").apply(colors[cross[0][3]]!)}      \n'
       '      ${Colorize("o").apply(colors[cross[1][2]]!)}'
       ' ${Colorize("o").apply(colors[cross[1][3]]!)}      \n',

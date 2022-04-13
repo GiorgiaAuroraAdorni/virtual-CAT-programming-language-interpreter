@@ -1,3 +1,5 @@
+import "package:dartx/dartx.dart";
+
 import "cross.dart";
 import "cross_basic_moves.dart";
 
@@ -41,7 +43,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 3 && move.column == 5) ||
-              (move.row == 0 && move.column == 2))
+          (move.row == 0 && move.column == 2))
           ? 1
           : move.column - move.row;
     } else {
@@ -74,7 +76,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 0 && move.column == 3) ||
-              (move.row == 3 && move.column == 0))
+          (move.row == 3 && move.column == 0))
           ? 1
           : move.column + 3;
     } else {
@@ -107,7 +109,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 2 && move.column == 5) ||
-              (move.row == 5 && move.column == 2))
+          (move.row == 5 && move.column == 2))
           ? 1
           : move.row - 2;
     } else {
@@ -140,7 +142,7 @@ class CrossBasicColoring {
         continue;
       }
       param = ((move.row == 2 && move.column == 0) ||
-              (move.row == 5 && move.column == 3))
+          (move.row == 5 && move.column == 3))
           ? 1
           : move.row - move.column;
     } else {
@@ -302,5 +304,41 @@ class CrossBasicColoring {
     }
 
     return true;
+  }
+
+  /// Mirror all the cells coloring horizontally from up to down
+  void mirrorHorizontalUpDown() {
+    for (final int i in 0.rangeTo(2)) {
+      for (final int j in 0.rangeTo(5)) {
+        _cross.cross[5 - i][j] = _cross.cross[i][j];
+      }
+    }
+  }
+
+  /// Mirror all the cells coloring horizontally from down to up
+  void mirrorHorizontalDownUp() {
+    for (final int i in 3.rangeTo(5)) {
+      for (final int j in 0.rangeTo(5)) {
+        _cross.cross[5 - i][j] = _cross.cross[i][j];
+      }
+    }
+  }
+
+  /// Mirror all the cells coloring vertically from left to right
+  void mirrorVerticalLeftRight() {
+    for (final int i in 0.rangeTo(2)) {
+      for (final int j in 0.rangeTo(5)) {
+        _cross.cross[j][5 - i] = _cross.cross[j][i];
+      }
+    }
+  }
+
+  /// Mirror all the cells coloring vertically from right to left
+  void mirrorVerticalRightLeft() {
+    for (final int i in 3.rangeTo(5)) {
+      for (final int j in 0.rangeTo(5)) {
+        _cross.cross[j][5 - i] = _cross.cross[j][i];
+      }
+    }
   }
 }
