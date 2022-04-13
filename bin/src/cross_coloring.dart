@@ -1,3 +1,5 @@
+import "package:dartx/dartx.dart";
+
 import "cross_basic_coloring.dart";
 
 class CrossColoring extends CrossBasicColoring {
@@ -223,25 +225,16 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (column != 3 || !color(colors[j])) {
+    if (column != 3 || !color(colors[0])) {
       return false;
     }
-    for (int i = 1; i < param; i++) {
-      j = (j + 1) % colors.length;
-      if (!move.diagonalDownLeft() || !color(colors[j])) {
-        return false;
-      }
-      j = (j + 1) % colors.length;
-      i++;
-      if (i < param) {
-        if (!move.diagonalDownRight() || !color(colors[j])) {
-          return false;
-        }
-      }
-    }
 
-    return true;
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalDownLeft,
+      move.diagonalDownRight,
+    );
   }
 
   /// Color with an zig-zag pattern with direction down right left
@@ -259,25 +252,16 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (column != 2 || !color(colors[j])) {
+    if (column != 2 || !color(colors[0])) {
       return false;
     }
-    for (int i = 1; i < param; i++) {
-      j = (j + 1) % colors.length;
-      if (!move.diagonalDownRight() || !color(colors[j])) {
-        return false;
-      }
-      j = (j + 1) % colors.length;
-      i++;
-      if (i < param) {
-        if (!move.diagonalDownLeft() || !color(colors[j])) {
-          return false;
-        }
-      }
-    }
 
-    return true;
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalDownRight,
+      move.diagonalDownLeft,
+    );
   }
 
   /// Color with an zig-zag pattern with direction left down up
@@ -295,25 +279,16 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (row != 2 || !color(colors[j])) {
+    if (row != 2 || !color(colors[0])) {
       return false;
     }
-    for (int i = 1; i < param; i++) {
-      j = (j + 1) % colors.length;
-      if (!move.diagonalDownLeft() || !color(colors[j])) {
-        return false;
-      }
-      j = (j + 1) % colors.length;
-      i++;
-      if (i < param) {
-        if (!move.diagonalUpLeft() || !color(colors[j])) {
-          return false;
-        }
-      }
-    }
 
-    return true;
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalDownLeft,
+      move.diagonalUpLeft,
+    );
   }
 
   /// Color with an zig-zag pattern with direction left up down
@@ -331,25 +306,16 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (row != 3 || !color(colors[j])) {
+    if (row != 3 || !color(colors[0])) {
       return false;
     }
-    for (int i = 1; i < param; i++) {
-      j = (j + 1) % colors.length;
-      if (!move.diagonalUpLeft() || !color(colors[j])) {
-        return false;
-      }
-      j = (j + 1) % colors.length;
-      i++;
-      if (i < param) {
-        if (!move.diagonalDownLeft() || !color(colors[j])) {
-          return false;
-        }
-      }
-    }
 
-    return true;
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalUpLeft,
+      move.diagonalDownLeft,
+    );
   }
 
   /// Color with an zig-zag pattern with direction right down up
@@ -367,25 +333,16 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (row != 2 || !color(colors[j])) {
+    if (row != 2 || !color(colors[0])) {
       return false;
     }
-    for (int i = 1; i < param; i++) {
-      j = (j + 1) % colors.length;
-      if (!move.diagonalDownRight() || !color(colors[j])) {
-        return false;
-      }
-      j = (j + 1) % colors.length;
-      i++;
-      if (i < param) {
-        if (!move.diagonalUpRight() || !color(colors[j])) {
-          return false;
-        }
-      }
-    }
 
-    return true;
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalDownRight,
+      move.diagonalUpRight,
+    );
   }
 
   /// Color with an zig-zag pattern with direction right up down
@@ -403,25 +360,16 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (row != 3 || !color(colors[j])) {
+    if (row != 3 || !color(colors[0])) {
       return false;
     }
-    for (int i = 1; i < param; i++) {
-      j = (j + 1) % colors.length;
-      if (!move.diagonalUpRight() || !color(colors[j])) {
-        return false;
-      }
-      j = (j + 1) % colors.length;
-      i++;
-      if (i < param) {
-        if (!move.diagonalDownRight() || !color(colors[j])) {
-          return false;
-        }
-      }
-    }
 
-    return true;
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalUpRight,
+      move.diagonalDownRight,
+    );
   }
 
   /// Color with an zig-zag pattern with direction up left right
@@ -439,25 +387,16 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (column != 3 || !color(colors[j])) {
+    if (column != 3 || !color(colors[0])) {
       return false;
     }
-    for (int i = 1; i < param; i++) {
-      j = (j + 1) % colors.length;
-      if (!move.diagonalUpLeft() || !color(colors[j])) {
-        return false;
-      }
-      j = (j + 1) % colors.length;
-      i++;
-      if (i < param) {
-        if (!move.diagonalUpRight() || !color(colors[j])) {
-          return false;
-        }
-      }
-    }
 
-    return true;
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalUpLeft,
+      move.diagonalUpRight,
+    );
   }
 
   /// Color with an zig-zag pattern with direction up right left
@@ -475,19 +414,34 @@ class CrossColoring extends CrossBasicColoring {
     if (param < 3) {
       return false;
     }
-    int j = 0;
-    if (column != 2 || !color(colors[j])) {
+    if (column != 2 || !color(colors[0])) {
       return false;
     }
+
+    return _zigzagHelper(
+      param,
+      colors,
+      move.diagonalUpRight,
+      move.diagonalUpLeft,
+    );
+  }
+
+  bool _zigzagHelper(
+    int param,
+    List<int> colors,
+    Function1<int, bool> function1,
+    Function1<int, bool> function2,
+  ) {
+    int j = 0;
     for (int i = 1; i < param; i++) {
       j = (j + 1) % colors.length;
-      if (!move.diagonalUpRight() || !color(colors[j])) {
+      if (!function1.call(1) || !color(colors[j])) {
         return false;
       }
       j = (j + 1) % colors.length;
       i++;
       if (i < param) {
-        if (!move.diagonalUpLeft() || !color(colors[j])) {
+        if (!function2.call(1) || !color(colors[j])) {
           return false;
         }
       }
