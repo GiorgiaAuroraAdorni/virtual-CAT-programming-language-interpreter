@@ -144,7 +144,7 @@ class CATInterpreter {
     return board.getCross == toValidate;
   }
 
-  void _move(List<String> command) {
+  void _go(List<String> command) {
     final List<String> splited = command[0].split(" ");
     int repetitions;
     try {
@@ -227,6 +227,19 @@ class CATInterpreter {
     }
   }
 
+  void _copy(List<String> command) {
+    final List<String> toExecute =
+        splitCommands(command[0].removeSurrounding(prefix: "{", suffix: "}"));
+    final List<String> movements = splitByCurly(command[1]);
+    final StringBuffer buffer = StringBuffer();
+    for (final String move in movements) {
+      buffer
+        ..write(" go($move) ")
+        ..writeAll(toExecute, " ");
+    }
+    _parse(buffer.toString());
+  }
+
   void _parse(String command) {
     final List<String> commands = splitCommands(command);
     final List<List<String>> parsed = <List<String>>[];
@@ -242,7 +255,7 @@ class CATInterpreter {
           break;
         case "go":
           {
-            _move(el);
+            _go(el);
           }
           break;
         case "fill_empty":
@@ -254,6 +267,11 @@ class CATInterpreter {
 
               return;
             }
+          }
+          break;
+        case "copy":
+          {
+            _copy(el);
           }
           break;
         default:

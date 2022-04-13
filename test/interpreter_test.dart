@@ -187,11 +187,32 @@ void schema_3() {
           ]));
       expect(
           interpreter.validateOnScheme(
-              "PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(D1), PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(F3), PAINT({yellow}), GO(right), PAINT({red}), GO(diagonal down left), PAINT({yellow}), GO(right), PAINT({red}), GO(B3), PAINT({yellow}), GO(right), PAINT({red}), GO(diagonal down left), PAINT({yellow}), GO(right), PAINT({red})",
+              "COPY({PAINT({yellow}, :, down)}, {D1, F3, D5}) COPY({PAINT({red}, :, down)}, {D2, F4, D6})",
               3),
           isTrue);
     });
     test("4", () {
+      interpreter.reset();
+      expect(interpreter.getStates.length, equals(0));
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getCross,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      expect(
+          interpreter.validateOnScheme(
+              "PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(D1), PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({yellow}), GO(right), PAINT({red}), GO(F3), PAINT({yellow}), GO(right), PAINT({red}), GO(diagonal down left), PAINT({yellow}), GO(right), PAINT({red}), GO(B3), PAINT({yellow}), GO(right), PAINT({red}), GO(diagonal down left), PAINT({yellow}), GO(right), PAINT({red})",
+              3),
+          isTrue);
+    });
+    test("5", () {
       interpreter.reset();
       expect(interpreter.getStates.length, equals(0));
       expect(interpreter.board.move.column, equals(0));
@@ -259,6 +280,48 @@ void schema_4() {
       expect(
           interpreter.validateOnScheme(
               "PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(F3), PAINT({blue}, :, down),  GO(right), PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(right), PAINT({blue}, :, down)",
+              4),
+          isTrue);
+    });
+    test("3", () {
+      interpreter.reset();
+      expect(interpreter.getStates.length, equals(0));
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getCross,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      expect(
+          interpreter.validateOnScheme(
+              "COPY({PAINT({yellow}, :, up), GO(right), PAINT({red}, :, up), GO(right), PAINT({blue}, :, up)}, {C1, A4})",
+              4),
+          isTrue);
+    });
+    test("3", () {
+      interpreter.reset();
+      expect(interpreter.getStates.length, equals(0));
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getCross,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      expect(
+          interpreter.validateOnScheme(
+              "COPY({PAINT({yellow}, :, up), GO(right), PAINT({red}, :, up), GO(right), PAINT({blue}, :, up)}, {C1, A4})",
               4),
           isTrue);
     });

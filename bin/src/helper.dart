@@ -1,31 +1,47 @@
 import "package:dartx/dartx.dart";
 
 List<String> splitCommand(String command) {
-  final int position = command.indexOf("(");
-  final List<String> splitted = <String>[command.slice(0, position - 1)];
-  final String secondPart =
-      command.slice(position).removeSurrounding(prefix: "(", suffix: ")");
-  final RegExpMatch? match = RegExp(r"\{[^}]*\}").firstMatch(secondPart);
-  if (match != null && match.end + 1 < secondPart.length) {
-    splitted
-      ..add(secondPart.slice(match.start, match.end - 1))
-      ..addAll(
-        secondPart.slice(match.end + 1).split(","),
-      );
-  } else if (match != null) {
-    splitted.add(secondPart.slice(match.start, match.end - 1));
-  } else {
-    splitted.add(secondPart);
+  final List<String> splitted = <String>[];
+  int start = 0;
+  bool square = false;
+  for (int i = 0; i < command.length; i++) {
+    if ((command[i] == "(" || command[i] == ")" || command[i] == ",") &&
+        !square) {
+      splitted.add(command.substring(start, i).trim());
+      start = i + 1;
+    }
+    if (command[i] == "{" || command[i] == "}") {
+      square = !square;
+    }
   }
 
-  return splitted;
+  return splitted.where((String element) => element.isNotEmpty).toList();
 }
 
-List<String> splitCommands(String command) =>
-    ((String modified) => RegExp(r"[a-zA-Z0-9_]+\([^)]*\)")
-        .allMatches(modified)
-        .map((Match e) => modified.substring(e.start, e.end))
-        .toList())(command.replaceAll("\n", " ").toLowerCase().trim());
+List<String> splitCommands(String command) {
+  final String modified = command.replaceAll("\n", " ").toLowerCase().trim();
+  final List<String> collection = <String>[];
+  int open = 0;
+  int start = 0;
+  bool found = false;
+  for (int i = 0; i < modified.length; i++) {
+    if (modified[i] == "(" && !found) {
+      found = !found;
+      open++;
+    } else if (modified[i] == "(") {
+      open++;
+    } else if (modified[i] == ")") {
+      open--;
+    }
+    if (found && open == 0) {
+      found = !found;
+      collection.add(modified.substring(start, i + 1));
+      start = i + 1;
+    }
+  }
+
+  return collection.where((String element) => element.isNotEmpty).toList();
+}
 
 List<String> splitByCurly(String command) => command
     .removeSurrounding(prefix: "{", suffix: "}")

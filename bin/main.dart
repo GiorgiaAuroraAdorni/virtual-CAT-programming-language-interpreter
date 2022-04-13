@@ -1,6 +1,6 @@
 import "dart:io";
 
-import 'package:dartx/dartx.dart';
+import "package:dartx/dartx.dart";
 import "package:path/path.dart";
 
 import "cat_interpreter.dart";
@@ -27,8 +27,9 @@ void main(List<String> arguments) {
   // }
   final int schema = arguments[0].toInt();
   const String command =
-      "PAINT({blue}, 2, right), GO(D1), PAINT({blue}, 2, right), GO(F3), PAINT({blue})";
-  interpreter.validateOnScheme(command, 2);
+      "COPY({PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down)}, {D1, F4})";
+  print(interpreter.validateOnScheme(command, 4));
+  print(interpreter.getStates);
   // while (true) {
   //   final String? line = stdin.readLineSync(encoding: utf8);
   //   print(line);
