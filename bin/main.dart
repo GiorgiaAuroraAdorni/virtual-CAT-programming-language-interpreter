@@ -4,9 +4,9 @@ import "package:dartx/dartx.dart";
 import "package:path/path.dart";
 
 import "cat_interpreter.dart";
-import 'errors.dart';
-import 'results.dart';
-import 'src/cross.dart';
+import "errors.dart";
+import "results.dart";
+import "src/cross.dart";
 
 void main(List<String> arguments) {
   // var mormalized = help.splitCommands(
@@ -34,9 +34,11 @@ void main(List<String> arguments) {
   Pair<Results, CatError> result = interpreter.validateOnScheme(command, 4);
   List<Cross> states = result.first.getStates;
   List<String> commads = result.first.getCommands;
+  List<Pair<int, int>> positions = result.first.getPositions;
   for (final int i in 0.rangeTo(states.length - 1)) {
     print(commads[i]);
     print(states[i]);
+    print(positions[i]);
   }
   print(result.first.completed);
   interpreter.reset();
@@ -46,9 +48,11 @@ void main(List<String> arguments) {
   print(result.second);
   states = result.first.getStates;
   commads = result.first.getCommands;
+  positions = result.first.getPositions;
   for (final int i in 0.rangeTo(states.length - 1)) {
     print(commads[i]);
     print(states[i]);
+    print(positions[i]);
   }
   print(result.first.completed);
   // while (true) {

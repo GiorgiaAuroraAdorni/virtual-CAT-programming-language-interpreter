@@ -1,5 +1,7 @@
 import "package:dartx/dartx.dart";
 
+final RegExp validCharacters = RegExp(r"^[a-zA-Z0-9_]+$");
+
 List<String> splitCommand(String command) {
   final List<String> splitted = <String>[];
   int start = 0;
@@ -32,6 +34,9 @@ List<String> splitCommands(String command) {
       open++;
     } else if (modified[i] == ")") {
       open--;
+    } else if (!validCharacters.hasMatch(modified[i]) && open == 0) {
+      start++;
+      continue;
     }
     if (found && open == 0) {
       found = !found;

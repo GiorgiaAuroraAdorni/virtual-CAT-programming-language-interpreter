@@ -1,7 +1,7 @@
 import "package:dartx/dartx.dart";
 
-import 'errors.dart';
-import 'results.dart';
+import "errors.dart";
+import "results.dart";
 import "src/cross.dart";
 import "src/cross_coloring.dart";
 import "src/helper.dart";
@@ -272,10 +272,14 @@ class CATInterpreter {
     for (final int i in 0.rangeTo(commands.length - 1)) {
       parsed.add(splitCommand(commands[i]));
     }
-    execute(commands, parsed, states);
+    execute(commands, parsed, states: states);
   }
 
-  void execute(List<String> commands, List<List<String>> parsed, bool states) {
+  void execute(
+    List<String> commands,
+    List<List<String>> parsed, {
+    bool states = true,
+  }) {
     parsed.forEachIndexed((List<String> el, int index) {
       if (_error != CatError.none) {
         return;
@@ -320,7 +324,11 @@ class CATInterpreter {
           }
       }
       if (states) {
-        _results.addResult(commands[index], board.getCross.copy());
+        _results.addResult(
+          commands[index],
+          board.getCross.copy(),
+          Pair<int, int>(board.move.row, board.move.column),
+        );
       }
     });
   }
