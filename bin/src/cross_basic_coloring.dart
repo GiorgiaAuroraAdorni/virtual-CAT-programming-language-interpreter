@@ -14,14 +14,9 @@ class CrossBasicColoring {
 
   Cross get getCross => _cross;
 
-  void reset() {
-    _cross = Cross();
-    move.toPosition(3, 0);
-  }
-
   /// Color the current position.
   bool color(int color) {
-    if (move.validatePosition(move.column, move.row)) {
+    if (CrossBasicMoves.validatePosition(move.column, move.row)) {
       _cross.cross[move.row][move.column] = color;
 
       return true;
@@ -182,7 +177,7 @@ class CrossBasicColoring {
     }
     int j = 0;
     if (param < 1 ||
-        !move.validatePosition(move.column, move.row + param) ||
+        !CrossBasicMoves.validatePosition(move.column, move.row + param) ||
         !color(colors[j])) {
       return false;
     }
@@ -196,12 +191,14 @@ class CrossBasicColoring {
   }
 
   /// Colors with a [color] all the cells that has the default color.
-  void fillEmpty(int color) {
+  bool fillEmpty(int color) {
     for (final List<int> line in _cross.cross) {
       for (int i = 0; i < 6; i++) {
         line[i] = line[i] == _defaultColor ? color : line[i];
       }
     }
+
+    return true;
   }
 
   /// Color left from a current position defined by the movement.
@@ -224,7 +221,7 @@ class CrossBasicColoring {
     }
     int j = 0;
     if (param < 1 ||
-        !move.validatePosition(move.column - param, move.row) ||
+        !CrossBasicMoves.validatePosition(move.column - param, move.row) ||
         !color(colors[j])) {
       return false;
     }
@@ -257,7 +254,7 @@ class CrossBasicColoring {
     }
     int j = 0;
     if (param < 1 ||
-        !move.validatePosition(move.column + param, move.row) ||
+        !CrossBasicMoves.validatePosition(move.column + param, move.row) ||
         !color(colors[j])) {
       return false;
     }
@@ -293,7 +290,7 @@ class CrossBasicColoring {
     }
     int j = 0;
     if (param < 1 ||
-        !move.validatePosition(move.column, move.row - param) ||
+        !CrossBasicMoves.validatePosition(move.column, move.row - param) ||
         !color(colors[j])) {
       return false;
     }
@@ -307,38 +304,46 @@ class CrossBasicColoring {
   }
 
   /// Mirror all the cells coloring horizontally from up to down
-  void mirrorHorizontalUpDown() {
+  bool mirrorHorizontalUpDown() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
         _cross.cross[5 - i][j] = _cross.cross[i][j];
       }
     }
+
+    return true;
   }
 
   /// Mirror all the cells coloring horizontally from down to up
-  void mirrorHorizontalDownUp() {
+  bool mirrorHorizontalDownUp() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
         _cross.cross[5 - i][j] = _cross.cross[i][j];
       }
     }
+
+    return true;
   }
 
   /// Mirror all the cells coloring vertically from left to right
-  void mirrorVerticalLeftRight() {
+  bool mirrorVerticalLeftRight() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
         _cross.cross[j][5 - i] = _cross.cross[j][i];
       }
     }
+
+    return true;
   }
 
   /// Mirror all the cells coloring vertically from right to left
-  void mirrorVerticalRightLeft() {
+  bool mirrorVerticalRightLeft() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
         _cross.cross[j][5 - i] = _cross.cross[j][i];
       }
     }
+
+    return true;
   }
 }

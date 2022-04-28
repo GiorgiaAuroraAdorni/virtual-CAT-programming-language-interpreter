@@ -2,6 +2,7 @@ import "package:dartx/dartx.dart";
 
 import "errors.dart";
 import "results.dart";
+import "src/call_directions.dart";
 import "src/cross.dart";
 import "src/cross_coloring.dart";
 import "src/helper.dart";
@@ -12,7 +13,7 @@ class CATInterpreter {
     schemes = schemesFromJson(json);
   }
 
-  CrossColoring board = CrossColoring();
+  CommandCaller commandCaller = CommandCaller();
 
   final Map<String, int> _boardColors = <String, int>{
     "white": 0,
@@ -40,93 +41,6 @@ class CATInterpreter {
     "6": 5,
   };
 
-  late final Map<String, Object> _directions = <String, Object>{
-    "up": board.move.up,
-    "down": board.move.down,
-    "left": board.move.left,
-    "right": board.move.right,
-    "diagonal": <String, Object>{
-      "up": <String, Function>{
-        "left": board.move.diagonalUpLeft,
-        "right": board.move.diagonalUpRight,
-      },
-      "down": <String, Function>{
-        "left": board.move.diagonalDownLeft,
-        "right": board.move.diagonalDownRight,
-      },
-    },
-  };
-
-  late final Map<String, Object> _coloring = <String, Object>{
-    "up": board.up,
-    "down": board.down,
-    "left": board.left,
-    "right": board.right,
-    "square": board.square,
-    "diagonal": <String, Object>{
-      "up": <String, Function>{
-        "left": board.diagonalUpLeft,
-        "right": board.diagonalUpRight,
-      },
-      "down": <String, Function>{
-        "left": board.diagonalDownLeft,
-        "right": board.diagonalDownRight,
-      },
-    },
-    "l": <String, Object>{
-      "up": <String, Function>{
-        "left": board.lUpLeft,
-        "right": board.lUpRight,
-      },
-      "down": <String, Function>{
-        "left": board.lDownLeft,
-        "right": board.lDownRight,
-      },
-      "left": <String, Function>{
-        "up": board.lLeftUp,
-        "down": board.lLeftDown,
-      },
-      "right": <String, Function>{
-        "up": board.lRightUp,
-        "down": board.lRightDown,
-      },
-    },
-    "zig-zag": <String, Object>{
-      "left": <String, Object>{
-        "up": <String, Function>{
-          "down": board.zigzagLeftUpDown,
-        },
-        "down": <String, Function>{
-          "up": board.zigzagLeftDownUp,
-        },
-      },
-      "right": <String, Object>{
-        "up": <String, Function>{
-          "down": board.zigzagRightUpDown,
-        },
-        "down": <String, Function>{
-          "up": board.zigzagRightDownUp,
-        },
-      },
-      "up": <String, Object>{
-        "left": <String, Function>{
-          "right": board.zigzagUpLeftRight,
-        },
-        "right": <String, Function>{
-          "left": board.zigzagUpRightLeft,
-        },
-      },
-      "down": <String, Object>{
-        "left": <String, Function>{
-          "right": board.zigzagDownLeftRight,
-        },
-        "right": <String, Function>{
-          "left": board.zigzagDownRightLeft,
-        },
-      },
-    },
-  };
-
   late final Schemes schemes;
 
   Results _results = Results();
@@ -134,22 +48,24 @@ class CATInterpreter {
 
   Results get getResults => _results;
 
+  CrossColoring get board => commandCaller.board;
+
   void reset() {
     _results = Results();
-    board.reset();
+    commandCaller = CommandCaller();
   }
 
   Pair<Results, CatError> validateOnScheme(String code, int schemeIndex) {
     final Cross? toValidate = schemes.schemas[schemeIndex];
     _error = CatError.none;
     _parse(code);
-    _results.completed = board.getCross == toValidate;
+    _results.completed = commandCaller.board.getCross == toValidate;
 
     return Pair<Results, CatError>(_results, _error);
   }
 
   void _go(List<String> command) {
-    final List<String> splited = command[0].split(" ");
+    List<String> splited = command[0].split(" ");
     int repetitions;
     try {
       repetitions = splited[0].toInt();
@@ -157,33 +73,25 @@ class CATInterpreter {
     } on FormatException {
       repetitions = 1;
     }
-    Function0<bool> toExecute = () => false;
-    if (_directions.containsKey(splited[0])) {
-      dynamic found = _directions[splited[0]];
-      for (final int i in 1.rangeTo(splited.length - 1)) {
-        if (found is Map) {
-          found = found.getOrElse(splited[i], () => toExecute);
-        } else {
-          break;
-        }
-      }
-      if (found is Function) {
-        toExecute = (found as Function1<int, bool>).partial(repetitions);
-      }
-    } else {
+    splited = splited
+        .mapIndexed(
+          (int index, String p1) => index == 0 ? p1 : p1.capitalize(),
+        )
+        .toList();
+    final String move = splited.join();
+    bool call = commandCaller.move(move, <int>[repetitions]);
+    if (!call) {
       final List<String> coordinates = splited[0].split("");
       if (coordinates.length == 2 &&
           _rows.containsKey(coordinates[0]) &&
           _columns.containsKey(coordinates[1])) {
-        toExecute = () => board.move
-            .toPosition(_rows[coordinates[0]]!, _columns[coordinates[1]]!);
-      } else {
-        _error = CatError.invalidPosition;
-
-        return;
+        call = commandCaller.move(
+          "toPosition",
+          <int>[_rows[coordinates[0]]!, _columns[coordinates[1]]!],
+        );
       }
     }
-    if (!toExecute.call()) {
+    if (!call) {
       _error = CatError.invalidMove;
     }
   }
@@ -200,33 +108,30 @@ class CATInterpreter {
       }
     }
     if (command.length == 1) {
-      board.color(colors[0]);
+      commandCaller.color(
+        "color",
+        <int>[colors[0]],
+      );
 
       return;
     }
-    final List<String> splited = command[2]
+    final String color = command[2]
         .split(" ")
         .where((String element) => element.isNotNullOrEmpty)
-        .toList();
-    Function0<bool> toExecute = () => false;
-    dynamic found = _coloring[splited[0]];
-    for (final int i in 1.rangeTo(splited.length - 1)) {
-      if (found is Map) {
-        found = found.getOrElse(splited[i], () => toExecute);
-      } else {
-        break;
-      }
+        .mapIndexed((int index, String p1) => index == 0 ? p1 : p1.capitalize())
+        .map((String e) => e.replaceAll("-", ""))
+        .join();
+    bool call = false;
+    try {
+      final int repetitions = command[1].toInt();
+      call = commandCaller.color(color, <dynamic>[colors, repetitions]);
+    } on FormatException {
+      call = commandCaller.color(color, <dynamic>[
+        colors,
+      ]);
     }
-    if (found is Function) {
-      try {
-        final int repetitions = command[1].toInt();
-        toExecute = (found as Function2<List<int>, int, bool>)
-            .partial2(colors, repetitions);
-      } on FormatException {
-        toExecute = (found as Function1<List<int>, bool>).partial(colors);
-      }
-    }
-    if (!toExecute.call()) {
+
+    if (!call) {
       _error = CatError.invalidColoringCommand;
     }
   }
@@ -249,12 +154,12 @@ class CATInterpreter {
       switch (command.first) {
         case "horizontal":
           {
-            board.mirrorHorizontal();
+            commandCaller.color("mirrorHorizontal", <dynamic>[]);
           }
           break;
         case "vertical":
           {
-            board.mirrorVertical();
+            commandCaller.color("mirrorVertical", <dynamic>[]);
           }
           break;
         default:
@@ -275,6 +180,16 @@ class CATInterpreter {
     execute(commands, parsed, states: states);
   }
 
+  void _fillEmpty(List<String> el) {
+    if (_boardColors.containsKey(el.first)) {
+      commandCaller.color("fillEmpty", <dynamic>[_boardColors[el.first]!]);
+    } else {
+      _error = CatError.invalidColor;
+
+      return;
+    }
+  }
+
   void execute(
     List<String> commands,
     List<List<String>> parsed, {
@@ -286,35 +201,19 @@ class CATInterpreter {
       }
       switch (el.removeAt(0)) {
         case "paint":
-          {
-            _paint(el);
-          }
+          _paint(el);
           break;
         case "go":
-          {
-            _go(el);
-          }
+          _go(el);
           break;
         case "fill_empty":
-          {
-            if (_boardColors.containsKey(el.first)) {
-              board.fillEmpty(_boardColors[el.first]!);
-            } else {
-              _error = CatError.invalidColor;
-
-              return;
-            }
-          }
+          _fillEmpty(el);
           break;
         case "copy":
-          {
-            _copy(el);
-          }
+          _copy(el);
           break;
         case "mirror":
-          {
-            _mirror(el);
-          }
+          _mirror(el);
           break;
         default:
           {
@@ -326,8 +225,11 @@ class CATInterpreter {
       if (states) {
         _results.addResult(
           commands[index],
-          board.getCross.copy(),
-          Pair<int, int>(board.move.row, board.move.column),
+          commandCaller.board.getCross.copy(),
+          Pair<int, int>(
+            commandCaller.board.move.row,
+            commandCaller.board.move.column,
+          ),
         );
       }
     });

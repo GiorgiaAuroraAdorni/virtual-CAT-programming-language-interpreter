@@ -279,7 +279,7 @@ class CrossBasicMoves {
   /// validatePosition(6,7);
   /// ...
   /// ```
-  bool validatePosition(int row, int column) {
+  static bool validatePosition(int row, int column) {
     if (row > 5 || row < 0 || column > 5 || column < 0) {
       return false;
     }
