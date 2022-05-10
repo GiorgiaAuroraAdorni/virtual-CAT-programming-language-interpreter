@@ -1,7 +1,7 @@
 import "package:test/expect.dart";
 import "package:test/scaffolding.dart";
 
-import '../bin/src/cross.dart';
+import '../lib/src/cross.dart';
 
 void main() {
   group("Cross", () {

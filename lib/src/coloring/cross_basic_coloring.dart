@@ -1,11 +1,11 @@
 import "package:dartx/dartx.dart";
 
-import "cross.dart";
-import "cross_basic_moves.dart";
+import '../cross.dart';
+import '../cross_basic_moves.dart';
 
 /// It's a class that allows you to color a cross
 class CrossBasicColoring {
-  Cross _cross = Cross();
+  final Cross _cross = Cross();
 
   final CrossBasicMoves move = CrossBasicMoves();
 

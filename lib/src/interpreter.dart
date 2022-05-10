@@ -1,20 +1,26 @@
 import "package:dartx/dartx.dart";
 
-import "colors.dart";
-import "errors.dart";
+import "coloring/cross_coloring.dart";
+import "command_caller.dart";
+import "cross.dart";
 import "results.dart";
-import "src/command_caller.dart";
-import "src/cross.dart";
-import "src/cross_coloring.dart";
-import "src/helper.dart";
-import "src/schemes.dart";
+import "utils/colors.dart";
+import "utils/errors.dart";
+import "utils/helper.dart";
+import "utils/schemes.dart";
 
+/// This class is a Dart
+/// interpreter for the CAT language.
 class CATInterpreter {
+  /// It takes a JSON string and converts it into a Dart object.
+  ///
+  /// Args:
+  ///   json (String): The JSON string that you want to parse.
   CATInterpreter(String json) {
     schemes = schemesFromJson(json);
   }
 
-  CommandCaller commandCaller = CommandCaller();
+  CommandCaller _commandCaller = CommandCaller();
 
   /// A map that maps the letters of the rows to their index.
   final Map<String, int> _rows = <String, int>{
@@ -36,21 +42,24 @@ class CATInterpreter {
     "6": 5,
   };
 
+  /// A getter for the loaded schemes.
   late final Schemes schemes;
 
   Results _results = Results();
   CatError _error = CatError.none;
 
+  /// A getter for the results of the command execution.
   Results get getResults => _results;
 
-  CrossColoring get board => commandCaller.board;
+  /// A getter for the board.
+  CrossColoring get board => _commandCaller.board;
 
   /// `reset()` is a function that resets the `_results` variable to a new instance
   /// of the `Results` class and resets the `commandCaller` variable to a new
   /// instance of the `CommandCaller` class
   void reset() {
     _results = Results();
-    commandCaller = CommandCaller();
+    _commandCaller = CommandCaller();
   }
 
   /// It takes a string of code, parses it, and then checks if the code is valid
@@ -65,7 +74,7 @@ class CATInterpreter {
     final Cross? toValidate = schemes.schemas[schemeIndex];
     _error = CatError.none;
     _parse(code);
-    _results.completed = commandCaller.board.getCross == toValidate;
+    _results.completed = _commandCaller.board.getCross == toValidate;
 
     return Pair<Results, CatError>(_results, _error);
   }
@@ -96,15 +105,15 @@ class CATInterpreter {
     splited = splited
         .mapIndexed(
           (int index, String p1) => index == 0 ? p1 : p1.capitalize(),
-    )
+        )
         .toList();
     final String move = splited.join();
-    bool call = commandCaller.move(move, <int>[repetitions]);
+    bool call = _commandCaller.move(move, <int>[repetitions]);
     if (!call) {
       if (splited[0].length == 2 &&
           _rows.containsKey(splited[0][0]) &&
           _columns.containsKey(splited[0][1])) {
-        call = commandCaller.move(
+        call = _commandCaller.move(
           "toPosition",
           <int>[_rows[splited[0][0]]!, _columns[splited[0][1]]!],
         );
@@ -140,7 +149,7 @@ class CATInterpreter {
       }
     }
     if (command.length == 1) {
-      commandCaller.color(
+      _commandCaller.color(
         "color",
         <int>[colors[0]],
       );
@@ -156,9 +165,9 @@ class CATInterpreter {
     bool call = false;
     try {
       final int repetitions = command[1].toInt();
-      call = commandCaller.color(color, <dynamic>[colors, repetitions]);
+      call = _commandCaller.color(color, <dynamic>[colors, repetitions]);
     } on FormatException {
-      call = commandCaller.color(color, <dynamic>[
+      call = _commandCaller.color(color, <dynamic>[
         colors,
       ]);
     }
@@ -195,12 +204,12 @@ class CATInterpreter {
     switch (direction) {
       case "horizontal":
         {
-          commandCaller.color("mirrorHorizontal", <dynamic>[]);
+          _commandCaller.color("mirrorHorizontal", <dynamic>[]);
         }
         break;
       case "vertical":
         {
-          commandCaller.color("mirrorVertical", <dynamic>[]);
+          _commandCaller.color("mirrorVertical", <dynamic>[]);
         }
         break;
       default:
@@ -222,7 +231,7 @@ class CATInterpreter {
       case "horizontal":
         {
           for (final String s in cells) {
-            commandCaller
+            _commandCaller
               ..move(
                 "toPosition",
                 <int>[_rows[s[0]]!, _columns[s[1]]!],
@@ -234,7 +243,7 @@ class CATInterpreter {
       case "vertical":
         {
           for (final String s in cells) {
-            commandCaller
+            _commandCaller
               ..move(
                 "toPosition",
                 <int>[_rows[s[0]]!, _columns[s[1]]!],
@@ -260,16 +269,16 @@ class CATInterpreter {
   ///   direction (String): The direction to mirror the board.
   void _mirrorCommands(List<String> commands, String direction) {
     final CommandCaller newCaller = CommandCaller();
-    final CommandCaller oldCaller = commandCaller;
-    commandCaller = newCaller;
-    commandCaller.board.move.toPosition(
+    final CommandCaller oldCaller = _commandCaller;
+    _commandCaller = newCaller;
+    _commandCaller.board.move.toPosition(
       oldCaller.board.move.row,
       oldCaller.board.move.column,
     );
     _parse(commands.join(","), false);
     _mirrorBoard(direction);
-    oldCaller.board.joinCrosses(commandCaller.board.getCross);
-    commandCaller = oldCaller;
+    oldCaller.board.joinCrosses(_commandCaller.board.getCross);
+    _commandCaller = oldCaller;
   }
 
   /// If the command is a direction, mirror the board. If the command is a list of
@@ -318,7 +327,7 @@ class CATInterpreter {
     for (final int i in 0.rangeTo(commands.length - 1)) {
       parsed.add(splitCommand(commands[i]));
     }
-    execute(commands, parsed, states: states);
+    _execute(commands, parsed, states: states);
   }
 
   /// If the first element of the list is a valid color, then call the `color`
@@ -333,7 +342,7 @@ class CATInterpreter {
   void _fillEmpty(List<String> el) {
     final CatColors color = containsColor(el.first);
     if (color != CatColors.NaC) {
-      commandCaller.color("fillEmpty", <dynamic>[color.index]);
+      _commandCaller.color("fillEmpty", <dynamic>[color.index]);
     } else {
       _error = CatError.invalidColor;
 
@@ -349,7 +358,7 @@ class CATInterpreter {
   ///   parsed (List<List<String>>): The parsed commands.
   ///   states (bool): If true, the results of each command will be saved in a list.
   /// Defaults to true
-  void execute(
+  void _execute(
     List<String> commands,
     List<List<String>> parsed, {
     bool states = true,
@@ -384,10 +393,10 @@ class CATInterpreter {
       if (states) {
         _results.addResult(
           commands[index],
-          commandCaller.board.getCross.copy(),
+          _commandCaller.board.getCross.copy(),
           Pair<int, int>(
-            commandCaller.board.move.row,
-            commandCaller.board.move.column,
+            _commandCaller.board.move.row,
+            _commandCaller.board.move.column,
           ),
         );
       }

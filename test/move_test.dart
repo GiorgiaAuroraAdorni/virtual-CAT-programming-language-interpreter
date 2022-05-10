@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import '../bin/src/cross_basic_moves.dart';
+import '../lib/src/cross_basic_moves.dart';
 
 void main() {
   creation();

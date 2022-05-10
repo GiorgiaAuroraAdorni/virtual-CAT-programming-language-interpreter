@@ -1,8 +1,8 @@
 import "package:test/expect.dart";
 import "package:test/scaffolding.dart";
 
-import '../bin/cat_interpreter.dart';
-import '../bin/errors.dart';
+import '../lib/src/interpreter.dart';
+import '../lib/src/utils/errors.dart';
 
 void main() {
   schema_1();

@@ -3,10 +3,10 @@ import "dart:io";
 import "package:dartx/dartx.dart";
 import "package:path/path.dart";
 
-import "cat_interpreter.dart";
-import "errors.dart";
-import "results.dart";
-import "src/cross.dart";
+import "lib//src/interpreter.dart";
+import "lib//src/utils/errors.dart";
+import "lib/src/cross.dart";
+import "lib/src/results.dart";
 
 void main(List<String> arguments) {
   // CallDirections caller = CallDirections();

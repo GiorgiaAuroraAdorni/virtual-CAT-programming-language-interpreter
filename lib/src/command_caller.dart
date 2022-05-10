@@ -2,7 +2,7 @@ import "dart:collection";
 import "dart:core";
 import "dart:mirrors";
 
-import "cross_coloring.dart";
+import "coloring/cross_coloring.dart";
 
 /// It creates two lists of methods, one for the board and one for the move, and if
 /// the method name is in the list of methods, call the method

@@ -1,7 +1,7 @@
 import "package:dartx/dartx.dart";
 
-import "cross_basic_coloring.dart";
-import "cross_basic_moves.dart";
+import '../cross_basic_moves.dart';
+import 'cross_basic_coloring.dart';
 
 class CrossColoring extends CrossBasicColoring {
   /// Color with an L shape with direction down left from a starting position
