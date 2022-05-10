@@ -281,6 +281,8 @@ class CATInterpreter {
   void _mirror(List<String> command) {
     if (command.length == 1) {
       _mirrorBoard(command.last);
+
+      return;
     }
     final List<String> toEvaluate = splitByCurly(command.first);
     bool isCell = true;
@@ -294,8 +296,12 @@ class CATInterpreter {
     }
     if (isCell) {
       _mirrorCells(toEvaluate, command.last);
+
+      return;
     } else {
       _mirrorCommands(toEvaluate, command.last);
+
+      return;
     }
   }
 
