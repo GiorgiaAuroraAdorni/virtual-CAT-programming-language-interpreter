@@ -1,7 +1,17 @@
 import "package:dartx/dartx.dart";
 
+/// A regular expression that matches any string that contains only letters,
+/// numbers, and underscores.
 final RegExp validCharacters = RegExp(r"^[a-zA-Z0-9_]+$");
 
+/// It splits a string into a list of strings, but it ignores commas and parentheses
+/// that are inside curly braces
+///
+/// Args:
+///   command (String): The command to be split.
+///
+/// Returns:
+///   A list of strings.
 List<String> splitCommand(String command) {
   final List<String> splitted = <String>[];
   int start = 0;
@@ -20,6 +30,13 @@ List<String> splitCommand(String command) {
   return splitted.where((String element) => element.isNotEmpty).toList();
 }
 
+/// It splits a string into a list of strings, where each string is a command
+///
+/// Args:
+///   command (String): The command to be split.
+///
+/// Returns:
+///   A list of strings that are the commands.
 List<String> splitCommands(String command) {
   final String modified = command.replaceAll("\n", " ").toLowerCase().trim();
   final List<String> collection = <String>[];
@@ -48,6 +65,11 @@ List<String> splitCommands(String command) {
   return collection.where((String element) => element.isNotEmpty).toList();
 }
 
+/// It removes the curly braces from the command, splits the command by commas,
+/// removes empty strings, and removes all spaces
+///
+/// Args:
+///   command (String): The command to be split.
 List<String> splitByCurly(String command) => command
     .removeSurrounding(prefix: "{", suffix: "}")
     .split(",")

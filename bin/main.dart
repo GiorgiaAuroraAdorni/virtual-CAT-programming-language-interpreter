@@ -22,7 +22,8 @@ void main(List<String> arguments) {
 
   final String json = File(pathToFile).readAsStringSync();
   final CATInterpreter interpreter = CATInterpreter(json);
-  String command = "FILL_EMPTY(blue)";
+  String command =
+      "MIRROR({GO(up) PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({blue}, 3, up)}, vertical)";
   Pair<Results, CatError> result = interpreter.validateOnScheme(command, 1);
   print(result.second);
   List<Cross> states = result.first.getStates;

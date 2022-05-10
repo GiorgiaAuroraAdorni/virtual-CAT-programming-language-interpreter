@@ -427,7 +427,11 @@ class CrossColoring extends CrossBasicColoring {
     );
   }
 
-  /// Mirror all the cells coloring horizontally
+  /// If the row is less than or equal to 2, then mirror the piece horizontally up
+  /// to down. Otherwise, mirror the piece horizontally down to up
+  ///
+  /// Returns:
+  ///   A boolean value.
   bool mirrorHorizontal() {
     if (move.row <= 2) {
       return mirrorHorizontalUpDown();
@@ -436,7 +440,11 @@ class CrossColoring extends CrossBasicColoring {
     return mirrorHorizontalDownUp();
   }
 
-  /// Mirror all the cells coloring vertically
+  /// If the column is less than or equal to 2, then mirror the piece left to right,
+  /// otherwise mirror the piece right to left
+  ///
+  /// Returns:
+  ///   A boolean value.
   bool mirrorVertical() {
     if (move.column <= 2) {
       return mirrorVerticalLeftRight();

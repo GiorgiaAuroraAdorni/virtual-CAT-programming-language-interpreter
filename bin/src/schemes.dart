@@ -11,6 +11,10 @@ class Schemes {
     required this.schemas,
   });
 
+  /// It converts a JSON object into a Dart object.
+  ///
+  /// Args:
+  ///   json (Map<String, dynamic>): The json file that you want to parse.
   factory Schemes.fromJson(Map<String, dynamic> json) => Schemes(
         schemas: <int, Cross>{
           for (Map<String, dynamic> k in json["data"])

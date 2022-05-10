@@ -2,6 +2,7 @@ import "package:test/expect.dart";
 import "package:test/scaffolding.dart";
 
 import '../bin/cat_interpreter.dart';
+import '../bin/errors.dart';
 
 void main() {
   schema_1();
@@ -9,6 +10,7 @@ void main() {
   schema_3();
   schema_4();
   other_schemas();
+  not_valid();
 }
 
 void schema_1() {
@@ -456,6 +458,56 @@ void other_schemas() {
               .first
               .completed,
           isTrue);
+    });
+  });
+}
+
+void not_valid() {
+  group("Not valid cases", () {
+    const json =
+        '{"data":[{"index":1,"array":[[0,0,3,3,0,0],[0,0,3,3,0,0],[3,3,3,3,3,3],[3,3,3,3,3,3],[0,0,3,3,0,0],[0,0,3,3,0,0]]}]}';
+    final CATInterpreter interpreter = CATInterpreter(json);
+    test("Not valid cell position", () {
+      interpreter.reset();
+      expect(interpreter.getResults.getStates.length, equals(0));
+      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.completed, isFalse);
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getCross,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      var response = interpreter.validateOnScheme("GO(q3)", 1);
+      expect(response.first.completed, isFalse);
+      expect(response.second, equals(CatError.invalidCell));
+    });
+    test("Not valid color", () {
+      interpreter.reset();
+      expect(interpreter.getResults.getStates.length, equals(0));
+      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.completed, isFalse);
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getCross,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      var response = interpreter.validateOnScheme("FILL_EMPTY(orange)", 1);
+      expect(response.first.completed, isFalse);
+      expect(response.second, equals(CatError.invalidColor));
     });
   });
 }

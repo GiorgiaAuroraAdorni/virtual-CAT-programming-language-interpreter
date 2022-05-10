@@ -3,6 +3,7 @@ import "package:dartx/dartx.dart";
 import "cross.dart";
 import "cross_basic_moves.dart";
 
+/// It's a class that allows you to color a cross
 class CrossBasicColoring {
   Cross _cross = Cross();
 
@@ -190,7 +191,14 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Colors with a [color] all the cells that has the default color.
+  /// If the color of the cell is the default color, then change it to the color
+  /// passed in.
+  ///
+  /// Args:
+  ///   color (int): The color to fill the empty spaces with.
+  ///
+  /// Returns:
+  ///   A boolean value.
   bool fillEmpty(int color) {
     for (final List<int> line in _cross.cross) {
       for (int i = 0; i < 6; i++) {
@@ -303,7 +311,10 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Mirror all the cells coloring horizontally from up to down
+  /// It takes the top half of the cross and mirrors it to the bottom half
+  ///
+  /// Returns:
+  ///   A boolean value.
   bool mirrorHorizontalUpDown() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
@@ -314,7 +325,10 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Mirror all the cells coloring horizontally from down to up
+  /// It takes the bottom half of the cross and mirrors it to the top half
+  ///
+  /// Returns:
+  ///   A boolean value.
   bool mirrorHorizontalDownUp() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
@@ -325,7 +339,11 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Mirror all the cells coloring vertically from left to right
+  /// It takes the first three columns of the cross and mirrors them to the last
+  /// three columns
+  ///
+  /// Returns:
+  ///   A boolean value.
   bool mirrorVerticalLeftRight() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
@@ -336,11 +354,54 @@ class CrossBasicColoring {
     return true;
   }
 
-  /// Mirror all the cells coloring vertically from right to left
+  /// It takes the last three columns of the cross and mirrors them to the first
+  /// three columns
+  ///
+  /// Returns:
+  ///   A boolean value.
   bool mirrorVerticalRightLeft() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
         _cross.cross[j][5 - i] = _cross.cross[j][i];
+      }
+    }
+
+    return true;
+  }
+
+  /// It mirrors a current cell vertically
+  ///
+  /// Returns:
+  ///   If mirroring succeeded
+  bool mirrorCellVertical() {
+    final int toMirror = _cross.cross[move.row][move.column];
+    move.toPosition(move.row, 5 - move.column);
+
+    return color(toMirror);
+  }
+
+  /// It mirrors a current cell horizontally
+  ///
+  /// Returns:
+  ///   If mirroring succeeded
+  bool mirrorCellHorizontal() {
+    final int toMirror = _cross.cross[move.row][move.column];
+    move.toPosition(5 - move.row, move.column);
+
+    return color(toMirror);
+  }
+
+  /// It copies the cross from the parameter to the global variable.
+  ///
+  /// Args:
+  ///   cross (Cross): The cross that will be joined to the current cross.
+  ///
+  /// Returns:
+  ///   A boolean value.
+  bool joinCrosses(Cross cross) {
+    for (int i = 0; i < 6; i++) {
+      for (int j = 0; j < 6; j++) {
+        _cross.cross[i][j] = cross.cross[i][j];
       }
     }
 
