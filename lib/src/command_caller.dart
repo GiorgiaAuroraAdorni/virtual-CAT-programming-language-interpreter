@@ -5,7 +5,8 @@ import "coloring/cross_coloring.dart";
 /// It creates two lists of methods, one for the board and one for the move, and if
 /// the method name is in the list of methods, call the method
 class CommandCaller {
-  late final Map<String, Object> _directions = <String, Object>{
+  /// It's creating a map of functions that can be called by name.
+  late final Map<String, Function> _directions = <String, Function>{
     "up": board.move.up,
     "down": board.move.down,
     "left": board.move.left,
@@ -17,7 +18,8 @@ class CommandCaller {
     "toPosition": board.move.toPosition,
   };
 
-  late final Map<String, Object> _coloring = <String, Object>{
+  /// It's creating a map of functions that can be called by name.
+  late final Map<String, Function> _coloring = <String, Function>{
     "up": board.up,
     "down": board.down,
     "left": board.left,
@@ -96,7 +98,7 @@ class CommandCaller {
     String memberName,
     List<dynamic> positionalArguments,
   ) =>
-      Function.apply(_coloring[memberName]! as Function, positionalArguments);
+      Function.apply(_coloring[memberName]!, positionalArguments);
 
   /// If the member name is a key in the _directions map, call the function
   /// associated with that key with the positional arguments.
@@ -108,5 +110,5 @@ class CommandCaller {
     String memberName,
     List<dynamic> positionalArguments,
   ) =>
-      Function.apply(_directions[memberName]! as Function, positionalArguments);
+      Function.apply(_directions[memberName]!, positionalArguments);
 }

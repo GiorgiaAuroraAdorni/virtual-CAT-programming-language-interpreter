@@ -14,8 +14,8 @@ void main(List<String> arguments) {
   final String json = File(pathToFile).readAsStringSync();
   final CATInterpreter interpreter = CATInterpreter(json);
   String command =
-      "MIRROR({GO(up) PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({blue}, 3, up)}, vertical)";
-  Pair<Results, CatError> result = interpreter.validateOnScheme(command, 1);
+      "GO(d1), PAINT({blue}, 5, L right up), GO(f4), PAINT(green, 5, L down right), GO(c1), PAINT(yellow, 5, L right down), GO(a4), PAINT(red, 5, L up right)";
+  Pair<Results, CatError> result = interpreter.validateOnScheme(command, 6);
   print(result.second);
   List<Cross> states = result.first.getStates;
   List<Pair<int, int>> positions = result.first.getPositions;
@@ -23,5 +23,4 @@ void main(List<String> arguments) {
     print(positions[i]);
     print(states[i]);
   }
-
 }

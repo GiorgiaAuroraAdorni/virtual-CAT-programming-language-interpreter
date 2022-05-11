@@ -8,7 +8,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lDownLeft(List<int> colors) {
+  bool lDownLeft(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column, move.row + 3) ||
         !CrossBasicMoves.validatePosition(move.column - 2, move.row + 3)) {
       return false;
@@ -31,7 +31,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lDownRight(List<int> colors) {
+  bool lDownRight(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column, move.row + 3) ||
         !CrossBasicMoves.validatePosition(move.column + 2, move.row + 3)) {
       return false;
@@ -54,7 +54,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lLeftDown(List<int> colors) {
+  bool lLeftDown(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column - 3, move.row) ||
         !CrossBasicMoves.validatePosition(move.column - 3, move.row + 2)) {
       return false;
@@ -77,7 +77,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lLeftUp(List<int> colors) {
+  bool lLeftUp(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column - 3, move.row) ||
         !CrossBasicMoves.validatePosition(move.column - 3, move.row - 2)) {
       return false;
@@ -100,7 +100,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lRightDown(List<int> colors) {
+  bool lRightDown(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column + 3, move.row) ||
         !CrossBasicMoves.validatePosition(move.column + 3, move.row + 2)) {
       return false;
@@ -123,7 +123,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lRightUp(List<int> colors) {
+  bool lRightUp(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column + 3, move.row) ||
         !CrossBasicMoves.validatePosition(move.column + 3, move.row - 2)) {
       return false;
@@ -146,7 +146,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lUpLeft(List<int> colors) {
+  bool lUpLeft(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column, move.row - 3) ||
         !CrossBasicMoves.validatePosition(move.column - 2, move.row - 3)) {
       return false;
@@ -169,7 +169,7 @@ class CrossColoring extends CrossBasicColoring {
   ///
   /// Requires a list of [colors].
   /// Return true on success.
-  bool lUpRight(List<int> colors) {
+  bool lUpRight(List<int> colors, [int? n]) {
     if (!CrossBasicMoves.validatePosition(move.column, move.row - 3) ||
         !CrossBasicMoves.validatePosition(move.column + 2, move.row - 3)) {
       return false;
