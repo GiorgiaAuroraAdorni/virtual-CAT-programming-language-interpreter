@@ -1,119 +1,112 @@
-import "dart:collection";
 import "dart:core";
-import "dart:mirrors";
 
 import "coloring/cross_coloring.dart";
 
 /// It creates two lists of methods, one for the board and one for the move, and if
 /// the method name is in the list of methods, call the method
 class CommandCaller {
-  HashSet<String> methodsMove = HashSet<String>();
-  HashSet<String> methodsColor = HashSet<String>();
+  late final Map<String, Object> _directions = <String, Object>{
+    "up": board.move.up,
+    "down": board.move.down,
+    "left": board.move.left,
+    "right": board.move.right,
+    "diagonalUpLeft": board.move.diagonalUpLeft,
+    "diagonalUpRight": board.move.diagonalUpRight,
+    "diagonalDownLeft": board.move.diagonalDownLeft,
+    "diagonalDownRight": board.move.diagonalDownRight,
+    "toPosition": board.move.toPosition,
+  };
 
-  /// It's creating a mirror of the `board.move` object.
-  late final InstanceMirror _im = reflect(board.move);
+  late final Map<String, Object> _coloring = <String, Object>{
+    "up": board.up,
+    "down": board.down,
+    "left": board.left,
+    "right": board.right,
+    "square": board.square,
+    "diagonalUpLeft": board.diagonalUpLeft,
+    "diagonalUpRight": board.diagonalUpRight,
+    "diagonalDownLeft": board.diagonalDownLeft,
+    "diagonalDownRight": board.diagonalDownRight,
+    "lUpLeft": board.lUpLeft,
+    "lUpRight": board.lUpRight,
+    "lDownLeft": board.lDownLeft,
+    "lDownRight": board.lDownRight,
+    "lLeftUp": board.lLeftUp,
+    "lLeftDown": board.lLeftDown,
+    "lRightUp": board.lRightUp,
+    "lRightDown": board.lRightDown,
+    "zigzagLeftUpDown": board.zigzagLeftUpDown,
+    "zigzagLeftDownUp": board.zigzagLeftDownUp,
+    "zigzagRightUpDown": board.zigzagRightUpDown,
+    "zigzagRightDownUp": board.zigzagRightDownUp,
+    "zigzagUpLeftRight": board.zigzagUpLeftRight,
+    "zigzagUpRightLeft": board.zigzagUpRightLeft,
+    "zigzagDownLeftRight": board.zigzagDownLeftRight,
+    "zigzagDownRightLeft": board.zigzagDownRightLeft,
+    "mirrorVertical": board.mirrorVertical,
+    "mirrorHorizontal": board.mirrorHorizontal,
+    "fillEmpty": board.fillEmpty,
+    "color": board.color,
+  };
 
-  /// It's creating a mirror of the `board` object.
-  late final InstanceMirror _imc = reflect(board);
-
+  /// It's creating a new instance of the `CrossColoring` class.
   CrossColoring board = CrossColoring();
 
-  /// It creates two lists of methods, one for the board and one for the move
-  CommandCaller() {
-    methodsMove = _listMethods(board.move);
-    methodsColor = _listMethods(board);
-  }
-
-  /// If the method name is in the list of methods, call the method
+  /// If the name of the function is in the _coloring map, call the function and
+  /// return the result
   ///
   /// Args:
-  ///   name (String): The name of the method to be called.
-  ///   arg (List<dynamic>): The arguments passed to the function.
+  ///   name (String): The name of the color function.
+  ///   arg (List<dynamic>): The arguments passed to the color function.
   ///
   /// Returns:
   ///   A boolean value.
   bool color(String name, List<dynamic> arg) {
-    if (methodsColor.contains(name)) {
-      return _callColorFunction(Symbol(name), arg);
+    if (_coloring.containsKey(name)) {
+      return _callColorFunction(name, arg);
     }
 
     return false;
   }
 
-  /// If the method name is in the list of methods, call the method
+  /// If the name of the move is in the _directions map, call the function
+  /// associated with that name
   ///
   /// Args:
-  ///   name (String): The name of the method to call.
-  ///   arg (List<int>): The argument list for the function.
+  ///   name (String): The name of the direction to move in.
+  ///   arg (List<int>): The argument list for the move function.
   ///
   /// Returns:
   ///   A boolean value.
   bool move(String name, List<int> arg) {
-    if (methodsMove.contains(name)) {
-      return _callMoveFunction(Symbol(name), arg);
+    if (_directions.containsKey(name)) {
+      return _callMoveFunction(name, arg);
     }
 
     return false;
   }
 
-  /// It calls a function
-  /// that's a member of the `_imc` object, and returns the result
+  /// It takes a function name and a list of arguments, and calls the function with
+  /// the given arguments
   ///
   /// Args:
-  ///   memberName (Symbol): The name of the member to invoke.
-  ///   positionalArguments (List<dynamic>): A list of arguments to pass to the
-  /// function.
+  ///   memberName (String): The name of the function to call.
+  ///   positionalArguments (List<dynamic>): The arguments passed to the function.
   bool _callColorFunction(
-    Symbol memberName,
+    String memberName,
     List<dynamic> positionalArguments,
   ) =>
-      _imc.invoke(memberName, positionalArguments).reflectee;
+      Function.apply(_coloring[memberName]! as Function, positionalArguments);
 
-  /// It calls a function
-  /// on the Dart side, and returns the result
+  /// If the member name is a key in the _directions map, call the function
+  /// associated with that key with the positional arguments.
   ///
   /// Args:
-  ///   memberName (Symbol): The name of the function to call.
-  ///   positionalArguments (List<dynamic>): The arguments to pass to the function.
+  ///   memberName (String): The name of the function that was called.
+  ///   positionalArguments (List<dynamic>): The arguments passed to the function.
   bool _callMoveFunction(
-    Symbol memberName,
+    String memberName,
     List<dynamic> positionalArguments,
   ) =>
-      _im.invoke(memberName, positionalArguments).reflectee;
-
-  /// It returns a list of all the public methods of an object
-  ///
-  /// Args:
-  ///   obj (T): The object to list the methods of.
-  ///
-  /// Returns:
-  ///   A set of strings.
-  HashSet<String> _listMethods<T>(T obj) {
-    final HashSet<String> methods = HashSet<String>();
-    final InstanceMirror im = reflect(obj);
-    final List<ClassMirror> classMirrors = <ClassMirror>[im.type];
-    if (classMirrors.first.isAbstract || classMirrors.first.isEnum) {
-      return methods;
-    }
-    if (classMirrors.first.superclass != null) {
-      classMirrors.add(classMirrors.first.superclass!);
-    }
-    classMirrors.addAll(classMirrors.first.superinterfaces);
-    for (final ClassMirror classMirror in classMirrors) {
-      for (DeclarationMirror v in classMirror.declarations.values) {
-        if (v is MethodMirror &&
-            !v.isPrivate &&
-            v.isRegularMethod &&
-            !v.isStatic &&
-            !v.isOperator) {
-          methods.add(MirrorSystem.getName(v.simpleName));
-        }
-      }
-    }
-    methods
-      ..remove("noSuchMethod")
-      ..remove("toString");
-
-    return methods;
-  }
+      Function.apply(_directions[memberName]! as Function, positionalArguments);
 }

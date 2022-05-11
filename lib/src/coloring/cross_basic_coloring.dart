@@ -11,8 +11,10 @@ class CrossBasicColoring {
 
   final int _defaultColor = 0;
 
+  /// It's a getter that returns the cross.
   List<List<int>> get getBoard => _cross.getCross;
 
+  /// It's a getter that returns the cross object.
   Cross get getCross => _cross;
 
   /// Color the current position.
