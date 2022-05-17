@@ -20,6 +20,10 @@ class CATInterpreter {
     schemes = schemesFromJson(json);
   }
 
+  /// A constructor that takes a `Schemes` object and assigns it to the `schemes`
+  /// variable.
+  CATInterpreter.fromSchemes(this.schemes);
+
   CommandCaller _commandCaller = CommandCaller();
 
   /// A map that maps the letters of the rows to their index.
