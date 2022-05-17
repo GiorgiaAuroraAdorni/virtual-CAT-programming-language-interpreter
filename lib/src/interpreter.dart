@@ -3,11 +3,11 @@ import "package:dartx/dartx.dart";
 import "coloring/cross_coloring.dart";
 import "command_caller.dart";
 import "cross.dart";
+import 'models/schemes.dart';
 import "results.dart";
 import "utils/colors.dart";
 import "utils/errors.dart";
 import "utils/helper.dart";
-import "utils/schemes.dart";
 
 /// This class is a Dart
 /// interpreter for the CAT language.
