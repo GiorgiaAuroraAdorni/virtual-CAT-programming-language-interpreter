@@ -3,7 +3,7 @@ import "package:dartx/dartx.dart";
 import "coloring/cross_coloring.dart";
 import "command_caller.dart";
 import "cross.dart";
-import 'models/schemes.dart';
+import "models/schemes.dart";
 import "results.dart";
 import "utils/colors.dart";
 import "utils/errors.dart";
@@ -328,7 +328,7 @@ class CATInterpreter {
   void _parse(String command, [bool states = true]) {
     final List<String> commands = splitCommands(command);
     final List<List<String>> parsed = <List<String>>[];
-    for (final int i in 0.rangeTo(commands.length - 1)) {
+    for (int i = 0; i < commands.length; i++) {
       parsed.add(splitCommand(commands[i]));
     }
     _execute(commands, parsed, states: states);
