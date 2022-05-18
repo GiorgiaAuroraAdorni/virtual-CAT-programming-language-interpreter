@@ -19,7 +19,7 @@ class Results {
   /// It's creating a list of type `Pair<int, int>` and assigning it to the variable
   /// `_positions`.
   final List<Pair<int, int>> _positions = <Pair<int, int>>[
-    const Pair<int, int>(0, 3),
+    const Pair<int, int>(3, 0),
   ];
 
   /// It's a variable that is used to check if the task is completed or not.
