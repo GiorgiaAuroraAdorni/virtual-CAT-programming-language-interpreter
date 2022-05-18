@@ -6,15 +6,21 @@ import "cross.dart";
 class Results {
   /// It's creating a list of type `Cross` and assigning it to the variable
   /// `_states`.
-  final List<Cross> _states = <Cross>[];
+  final List<Cross> _states = <Cross>[
+    Cross(),
+  ];
 
   /// It's creating a list of type `String` and assigning it to the variable
   /// `_commands`.
-  final List<String> _commands = <String>[];
+  final List<String> _commands = <String>[
+    "None",
+  ];
 
   /// It's creating a list of type `Pair<int, int>` and assigning it to the variable
   /// `_positions`.
-  final List<Pair<int, int>> _positions = <Pair<int, int>>[];
+  final List<Pair<int, int>> _positions = <Pair<int, int>>[
+    const Pair<int, int>(0, 3),
+  ];
 
   /// It's a variable that is used to check if the task is completed or not.
   bool completed = false;

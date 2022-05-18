@@ -20,8 +20,8 @@ void schema_1() {
     final CATInterpreter interpreter = CATInterpreter(json);
     test("1", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -41,8 +41,8 @@ void schema_1() {
     });
     test("wrong", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -70,8 +70,8 @@ void schema_2() {
     final CATInterpreter interpreter = CATInterpreter(json);
     test("1", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -96,8 +96,8 @@ void schema_2() {
     });
     test("2", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -122,8 +122,8 @@ void schema_2() {
     });
     test("3", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -156,8 +156,8 @@ void schema_3() {
     final CATInterpreter interpreter = CATInterpreter(json);
     test("1", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -182,8 +182,8 @@ void schema_3() {
     });
     test("2", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -208,8 +208,8 @@ void schema_3() {
     });
     test("3", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -234,8 +234,8 @@ void schema_3() {
     });
     test("4", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -260,8 +260,8 @@ void schema_3() {
     });
     test("5", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -294,8 +294,8 @@ void schema_4() {
     final CATInterpreter interpreter = CATInterpreter(json);
     test("1", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -320,8 +320,8 @@ void schema_4() {
     });
     test("2", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -346,8 +346,8 @@ void schema_4() {
     });
     test("3", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -372,8 +372,8 @@ void schema_4() {
     });
     test("3", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -406,8 +406,8 @@ void other_schemas() {
           '{"data":[{"index":1,"array":[[0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0], [4, 2, 3, 3, 2, 4], [4, 2, 3, 3, 2, 4], [0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0]]}]}';
       final CATInterpreter interpreter = CATInterpreter(json);
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -435,8 +435,8 @@ void other_schemas() {
           '{"data":[{"index":1,"array":[[0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0], [4, 2, 3, 3, 2, 4], [4, 2, 3, 3, 2, 4], [0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0]]}]}';
       final CATInterpreter interpreter = CATInterpreter(json);
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -469,8 +469,8 @@ void not_valid() {
     final CATInterpreter interpreter = CATInterpreter(json);
     test("Not valid cell position", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
@@ -490,8 +490,8 @@ void not_valid() {
     });
     test("Not valid color", () {
       interpreter.reset();
-      expect(interpreter.getResults.getStates.length, equals(0));
-      expect(interpreter.getResults.getCommands.length, equals(0));
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
       expect(interpreter.getResults.completed, isFalse);
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
