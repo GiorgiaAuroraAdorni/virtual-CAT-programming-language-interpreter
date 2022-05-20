@@ -403,7 +403,9 @@ class CrossBasicColoring {
   bool joinCrosses(Cross cross) {
     for (int i = 0; i < 6; i++) {
       for (int j = 0; j < 6; j++) {
-        _cross.cross[i][j] = cross.cross[i][j];
+        if (cross.cross[i][j] != 0) {
+          _cross.cross[i][j] = cross.cross[i][j];
+        }
       }
     }
 
