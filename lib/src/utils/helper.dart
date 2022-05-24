@@ -15,15 +15,22 @@ final RegExp validCharacters = RegExp(r"^[a-zA-Z0-9_]+$");
 List<String> splitCommand(String command) {
   final List<String> splitted = <String>[];
   int start = 0;
+  int open = 0;
   bool square = false;
   for (int i = 0; i < command.length; i++) {
+    if (open == 0) {
+      square = false;
+    }
     if ((command[i] == "(" || command[i] == ")" || command[i] == ",") &&
         !square) {
       splitted.add(command.substring(start, i).trim());
       start = i + 1;
     }
-    if (command[i] == "{" || command[i] == "}") {
-      square = !square;
+    if (command[i] == "{") {
+      open++;
+      square = true;
+    } else if (command[i] == "}") {
+      open--;
     }
   }
 
