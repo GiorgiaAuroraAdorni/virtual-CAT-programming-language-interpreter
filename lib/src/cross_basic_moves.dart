@@ -1,3 +1,4 @@
+/// > A class that contains the basic moves of the CAT
 class CrossBasicMoves {
   int _column = 0;
   int _row = 3;

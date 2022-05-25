@@ -1,6 +1,6 @@
 import "dart:convert";
 
-import '../cross.dart';
+import "package:interpreter/src/cross.dart";
 
 /// Construct Schemes object starting from a JSON String.
 Schemes schemesFromJson(String str) => Schemes.fromJson(json.decode(str));

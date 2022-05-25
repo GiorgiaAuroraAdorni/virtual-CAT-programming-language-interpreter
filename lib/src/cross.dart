@@ -59,7 +59,7 @@ class Cross {
         return false;
       }
       if (cross[5][2] != other.cross[5][2] ||
-          cross[0][3] != other.cross[5][3]) {
+          cross[5][3] != other.cross[5][3]) {
         return false;
       }
     } else {

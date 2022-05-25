@@ -1,13 +1,12 @@
 import "package:dartx/dartx.dart";
-
-import "coloring/cross_coloring.dart";
-import "command_caller.dart";
-import "cross.dart";
-import "models/schemes.dart";
-import "results.dart";
-import "utils/colors.dart";
-import "utils/errors.dart";
-import "utils/helper.dart";
+import "package:interpreter/src/coloring/cross_coloring.dart";
+import "package:interpreter/src/command_caller.dart";
+import "package:interpreter/src/cross.dart";
+import "package:interpreter/src/models/schemes.dart";
+import "package:interpreter/src/results.dart";
+import "package:interpreter/src/utils/colors.dart";
+import "package:interpreter/src/utils/errors.dart";
+import "package:interpreter/src/utils/helper.dart";
 
 /// This class is a Dart
 /// interpreter for the CAT language.
@@ -20,8 +19,8 @@ class CATInterpreter {
     schemes = schemesFromJson(json);
   }
 
-  /// A constructor that takes a `Schemes` object and assigns it to the `schemes`
-  /// variable.
+  /// A constructor that takes a `Schemes` object and assigns it
+  /// to the `schemes` variable.
   CATInterpreter.fromSchemes(this.schemes);
 
   CommandCaller _commandCaller = CommandCaller();
@@ -58,9 +57,9 @@ class CATInterpreter {
   /// A getter for the board.
   CrossColoring get board => _commandCaller.board;
 
-  /// `reset()` is a function that resets the `_results` variable to a new instance
-  /// of the `Results` class and resets the `commandCaller` variable to a new
-  /// instance of the `CommandCaller` class
+  /// `reset()` is a function that resets the `_results` variable to a new
+  /// instance of the `Results` class and resets the `commandCaller` variable
+  /// to a new instance of the `CommandCaller` class
   void reset() {
     _results = Results();
     _commandCaller = CommandCaller();

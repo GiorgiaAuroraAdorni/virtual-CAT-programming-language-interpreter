@@ -1,6 +1,5 @@
 import "package:dartx/dartx.dart";
-
-import "cross.dart";
+import "package:interpreter/src/cross.dart";
 
 /// It's a class that stores the results of the execution
 class Results {
