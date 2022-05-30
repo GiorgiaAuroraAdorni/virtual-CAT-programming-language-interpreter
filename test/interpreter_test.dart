@@ -337,11 +337,11 @@ void schema_4() {
       expect(
           interpreter
               .validateOnScheme(
-              "PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(F3), PAINT({blue}, :, down),  GO(right), PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(right), PAINT({blue}, :, down)",
-              4)
+                  "PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(F3), PAINT({blue}, :, down),  GO(right), PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(right), PAINT({blue}, :, down)",
+                  4)
               .first
               .completed,
-          isTrue);
+          isFalse);
     });
     test("3", () {
       interpreter.reset();
@@ -363,11 +363,11 @@ void schema_4() {
       expect(
           interpreter
               .validateOnScheme(
-              "COPY({PAINT({yellow}, :, up), GO(right), PAINT({red}, :, up), GO(right), PAINT({blue}, :, up)}, {C1, A4})",
-              4)
+                  "COPY({PAINT({yellow}, :, up), GO(right), PAINT({red}, :, up), GO(right), PAINT({blue}, :, up)}, {C1, A4})",
+                  4)
               .first
               .completed,
-          isTrue);
+          isFalse);
     });
     test("3", () {
       interpreter.reset();
@@ -389,11 +389,11 @@ void schema_4() {
       expect(
           interpreter
               .validateOnScheme(
-              "COPY({PAINT({yellow}, :, up), GO(right), PAINT({red}, :, up), GO(right), PAINT({blue}, :, up)}, {C1, A4})",
-              4)
+                  "COPY({PAINT({yellow}, :, up), GO(right), PAINT({red}, :, up), GO(right), PAINT({blue}, :, up)}, {C1, A4})",
+                  4)
               .first
               .completed,
-          isTrue);
+          isFalse);
     });
   });
 }

@@ -115,10 +115,6 @@ class CrossBasicMoves {
       return true;
     }
 
-    // if (n == 1) {
-    //   return _alternativePosition(_column - 2, true);
-    // }
-
     return false;
   }
 
@@ -179,7 +175,8 @@ class CrossBasicMoves {
       return true;
     }
 
-    return _alternativePosition(newRow, true);
+    // return _alternativePosition(newRow, true);
+    return false;
   }
 
   /// Change position left position by [n] cells.
@@ -202,7 +199,8 @@ class CrossBasicMoves {
       return true;
     }
 
-    return _alternativePosition(newColumn, false);
+    // return _alternativePosition(newColumn, false);
+    return false;
   }
 
   /// Change position right position by [n] cells.
@@ -225,7 +223,8 @@ class CrossBasicMoves {
       return true;
     }
 
-    return _alternativePosition(newColumn, false);
+    // return _alternativePosition(newColumn, false);
+    return false;
   }
 
   /// Move to an arbitrary position [row,column].
@@ -270,7 +269,8 @@ class CrossBasicMoves {
       return true;
     }
 
-    return _alternativePosition(newRow, true);
+    // return _alternativePosition(newRow, true);
+    return false;
   }
 
   /// Validate [row, column] position.

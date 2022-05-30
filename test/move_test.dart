@@ -245,9 +245,9 @@ void up() {
     });
     test('Move up 2 from starting position', () {
       CrossBasicMoves move = CrossBasicMoves();
-      expect(move.up(2), isTrue);
-      expect(move.column, equals(2));
-      expect(move.row, equals(1));
+      expect(move.up(2), isFalse);
+      expect(move.column, equals(0));
+      expect(move.row, equals(3));
     });
     test('Move up out of the board', () {
       CrossBasicMoves move = CrossBasicMoves();
@@ -261,9 +261,9 @@ void up() {
 void down() {
   test('Move down from starting position', () {
     CrossBasicMoves move = CrossBasicMoves();
-    expect(move.down(), isTrue);
-    expect(move.column, equals(2));
-    expect(move.row, equals(4));
+    expect(move.down(), isFalse);
+    expect(move.column, equals(0));
+    expect(move.row, equals(3));
   });
   test('Move down 2 from 0 2', () {
     CrossBasicMoves move = CrossBasicMoves();
@@ -282,9 +282,9 @@ void down() {
   test('Move down from 3 5', () {
     CrossBasicMoves move = CrossBasicMoves();
     expect(move.toPosition(3, 5), isTrue);
-    expect(move.down(), isTrue);
-    expect(move.column, equals(3));
-    expect(move.row, equals(4));
+    expect(move.down(), isFalse);
+    expect(move.column, equals(5));
+    expect(move.row, equals(3));
   });
 }
 
@@ -311,30 +311,30 @@ void right() {
     test('Move left from position 5 3', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(5, 3), isTrue);
-      expect(move.right(), isTrue);
-      expect(move.row, equals(3));
-      expect(move.column, equals(4));
+      expect(move.right(), isFalse);
+      expect(move.row, equals(5));
+      expect(move.column, equals(3));
     });
     test('Move left 2 from position 5 3', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(5, 3), isTrue);
-      expect(move.right(2), isTrue);
-      expect(move.row, equals(3));
-      expect(move.column, equals(5));
+      expect(move.right(2), isFalse);
+      expect(move.row, equals(5));
+      expect(move.column, equals(3));
     });
     test('Move left from position 4 3', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(4, 3), isTrue);
-      expect(move.right(), isTrue);
-      expect(move.row, equals(3));
-      expect(move.column, equals(4));
+      expect(move.right(), isFalse);
+      expect(move.row, equals(4));
+      expect(move.column, equals(3));
     });
     test('Move left from position 0 3', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(0, 3), isTrue);
-      expect(move.right(), isTrue);
-      expect(move.row, equals(2));
-      expect(move.column, equals(4));
+      expect(move.right(), isFalse);
+      expect(move.row, equals(0));
+      expect(move.column, equals(3));
     });
     test('Move left 2 from position 1 2', () {
       CrossBasicMoves move = CrossBasicMoves();
@@ -364,37 +364,37 @@ void left() {
     test('Move left from position 5 2', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(5, 2), isTrue);
-      expect(move.left(), isTrue);
-      expect(move.row, equals(3));
-      expect(move.column, equals(1));
+      expect(move.left(), isFalse);
+      expect(move.row, equals(5));
+      expect(move.column, equals(2));
     });
     test('Move left 2 from position 5 2', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(5, 2), isTrue);
-      expect(move.left(2), isTrue);
-      expect(move.row, equals(3));
-      expect(move.column, equals(0));
+      expect(move.left(2), isFalse);
+      expect(move.row, equals(5));
+      expect(move.column, equals(2));
     });
     test('Move left from position 4 2', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(4, 2), isTrue);
-      expect(move.left(), isTrue);
-      expect(move.row, equals(3));
-      expect(move.column, equals(1));
+      expect(move.left(), isFalse);
+      expect(move.row, equals(4));
+      expect(move.column, equals(2));
     });
     test('Move left from position 0 2', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(0, 2), isTrue);
-      expect(move.left(), isTrue);
-      expect(move.row, equals(2));
-      expect(move.column, equals(1));
+      expect(move.left(), isFalse);
+      expect(move.row, equals(0));
+      expect(move.column, equals(2));
     });
     test('Move left 2 from position 0 2', () {
       CrossBasicMoves move = CrossBasicMoves();
       expect(move.toPosition(0, 2), isTrue);
-      expect(move.left(2), isTrue);
-      expect(move.row, equals(2));
-      expect(move.column, equals(0));
+      expect(move.left(2), isFalse);
+      expect(move.row, equals(0));
+      expect(move.column, equals(2));
     });
   });
 }
