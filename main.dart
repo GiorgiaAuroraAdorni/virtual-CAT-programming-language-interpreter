@@ -15,7 +15,7 @@ void main(List<String> arguments) {
       '{"data":[{"index":1,"array":[[0,0,3,3,0,0],[0,0,3,3,0,0],[3,3,3,3,3,3],[3,3,3,3,3,3],[0,0,3,3,0,0],[0,0,3,3,0,0]]}]}';
   final CATInterpreter interpreter = CATInterpreter(file.readAsStringSync());
   String command =
-      '"GO(D1), PAINT({yellow}), GO(right), PAINT({green}), GO(right), PAINT({blue}), GO(right), PAINT({green}), GO(right), PAINT({blue}), GO(right), PAINT({red}), GO(C1), PAINT({blue}), GO(right), PAINT({red}), GO(right), PAINT({green}), GO(right), PAINT({blue}), GO(right), PAINT({yellow}), GO(right), PAINT({green}), GO(F3), PAINT({blue}), GO(right), PAINT({green}), GO(E3), PAINT({red}), GO(right), PAINT({yellow}), GO(B3), PAINT({yellow}), GO(right), PAINT({red}), GO(A3), PAINT({red}), GO(right), PAINT({yellow})\\n"';
+      'PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(F3), PAINT({blue}, :, down),  GO(right), PAINT({yellow}, :, down), GO(right), PAINT({red}, :, down),  GO(right), PAINT({blue}, :, down)';
   Pair<Results, CatError> result = interpreter.validateOnScheme(command, 12);
   print(result.second);
   List<Cross> states = result.first.getStates;
