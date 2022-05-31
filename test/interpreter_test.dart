@@ -367,7 +367,7 @@ void schema_4() {
                   4)
               .first
               .completed,
-          isFalse);
+          isTrue);
     });
     test("3", () {
       interpreter.reset();
@@ -393,7 +393,7 @@ void schema_4() {
                   4)
               .first
               .completed,
-          isFalse);
+          isTrue);
     });
   });
 }

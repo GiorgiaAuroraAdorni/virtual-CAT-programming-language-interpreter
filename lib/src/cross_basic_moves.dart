@@ -3,6 +3,9 @@ class CrossBasicMoves {
   int _column = 0;
   int _row = 3;
 
+  /// A flag that indicates if the CAT is in copy mode.
+  bool copyMode = false;
+
   int get column => _column;
 
   int get row => _row;
@@ -175,8 +178,9 @@ class CrossBasicMoves {
       return true;
     }
 
+    return copyMode ? _alternativePosition(newRow, true) : false;
     // return _alternativePosition(newRow, true);
-    return false;
+    // return false;
   }
 
   /// Change position left position by [n] cells.
@@ -199,8 +203,9 @@ class CrossBasicMoves {
       return true;
     }
 
+    return copyMode ? _alternativePosition(newColumn, false) : false;
     // return _alternativePosition(newColumn, false);
-    return false;
+    // return false;
   }
 
   /// Change position right position by [n] cells.
@@ -223,8 +228,9 @@ class CrossBasicMoves {
       return true;
     }
 
+    return copyMode ? _alternativePosition(newColumn, false) : false;
     // return _alternativePosition(newColumn, false);
-    return false;
+    // return false;
   }
 
   /// Move to an arbitrary position [row,column].
@@ -269,8 +275,9 @@ class CrossBasicMoves {
       return true;
     }
 
+    return copyMode ? _alternativePosition(newRow, true) : false;
     // return _alternativePosition(newRow, true);
-    return false;
+    // return false;
   }
 
   /// Validate [row, column] position.

@@ -189,6 +189,7 @@ class CATInterpreter {
   /// Args:
   ///   command (List<String>): The command that was passed in.
   void _copy(List<String> command) {
+    _commandCaller.board.move.copyMode = true;
     final List<String> toExecute =
         splitCommands(command[0].removeSurrounding(prefix: "{", suffix: "}"));
     final List<String> movements = splitByCurly(command[1]);
@@ -199,6 +200,7 @@ class CATInterpreter {
         ..writeAll(toExecute, " ");
     }
     _parse(buffer.toString(), false);
+    _commandCaller.board.move.copyMode = false;
   }
 
   /// It calls the mirrorHorizontal or mirrorVertical function in the Dart code,
