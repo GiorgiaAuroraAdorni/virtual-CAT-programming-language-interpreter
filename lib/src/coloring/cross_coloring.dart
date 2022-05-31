@@ -222,10 +222,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= 6 - row;
-    if (param < 3) {
+    if (column != 3) {
       return false;
     }
-    if (column != 3 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(0, 2);
+
+      return zigzagDownRightLeft(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(0, 3);
+
+      return zigzagDownLeftRight(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -249,10 +264,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= 6 - row;
-    if (param < 3) {
+    if (column != 2) {
       return false;
     }
-    if (column != 2 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(0, 3);
+
+      return zigzagDownLeftRight(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(0, 2);
+
+      return zigzagDownRightLeft(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -276,10 +306,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= column + 1;
-    if (param < 3) {
+    if (row != 2) {
       return false;
     }
-    if (row != 2 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(3, 5);
+
+      return zigzagLeftUpDown(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(2, 5);
+
+      return zigzagLeftDownUp(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -303,10 +348,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= column + 1;
-    if (param < 3) {
+    if (row != 3) {
       return false;
     }
-    if (row != 3 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(2, 5);
+
+      return zigzagLeftDownUp(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(3, 5);
+
+      return zigzagLeftUpDown(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -330,10 +390,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= 6 - column;
-    if (param < 3) {
+    if (row != 2) {
       return false;
     }
-    if (row != 2 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(3, 0);
+
+      return zigzagRightUpDown(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(2, 0);
+
+      return zigzagRightDownUp(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -357,10 +432,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= 6 - column;
-    if (param < 3) {
+    if (row != 3) {
       return false;
     }
-    if (row != 3 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(2, 0);
+
+      return zigzagRightDownUp(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(3, 0);
+
+      return zigzagRightUpDown(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -384,10 +474,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= row + 1;
-    if (param < 3) {
+    if (column != 3) {
       return false;
     }
-    if (column != 3 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(5, 2);
+
+      return zigzagUpRightLeft(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(5, 3);
+
+      return zigzagUpLeftRight(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -411,10 +516,25 @@ class CrossColoring extends CrossBasicColoring {
     final int column = move.column;
     final int row = move.row;
     param ??= row + 1;
-    if (param < 3) {
+    if (column != 2) {
       return false;
     }
-    if (column != 2 || !color(colors[0])) {
+    if (colors.isEmpty) {
+      return false;
+    }
+    final int i = param % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    if (param.isOdd && n == null) {
+      move.toPosition(5, 3);
+
+      return zigzagUpLeftRight(newColors, 6);
+    }
+    if (n == null) {
+      move.toPosition(5, 2);
+
+      return zigzagUpRightLeft(newColors, 6);
+    }
+    if (param < 3) {
       return false;
     }
 
@@ -459,13 +579,16 @@ class CrossColoring extends CrossBasicColoring {
     Function1<int, bool> function2,
   ) {
     int j = 0;
+    if (!color(colors[j])) {
+      return false;
+    }
     for (int i = 1; i < param; i++) {
       j = (j + 1) % colors.length;
       if (!function1.call(1) || !color(colors[j])) {
         return false;
       }
-      j = (j + 1) % colors.length;
       i++;
+      j = (j + 1) % colors.length;
       if (i < param) {
         if (!function2.call(1) || !color(colors[j])) {
           return false;

@@ -719,7 +719,7 @@ void zigzagRightUpDown() {
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 1, 0, 1, 0],
+          [1, 0, 1, 0, 1, 0],
           [0, 1, 0, 1, 0, 1],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
@@ -735,7 +735,7 @@ void zigzagRightUpDown() {
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 2, 0, 2, 0],
+          [2, 0, 2, 0, 2, 0],
           [0, 1, 0, 1, 0, 1],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
@@ -767,8 +767,8 @@ void zigzagRightUpDown() {
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 1, 0],
-          [0, 0, 0, 1, 0, 1],
+          [1, 0, 1, 0, 1, 0],
+          [0, 1, 0, 1, 0, 1],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -793,14 +793,14 @@ void zigzagRightUpDown() {
     test("position 3 4", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(3, 4), isTrue);
-      expect(board.zigzagRightUpDown([1]), isFalse);
+      expect(board.zigzagRightUpDown([1]), isTrue);
       expect(
         board.getBoard,
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 1, 0, 1],
+          [1, 0, 1, 0, 1, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -897,7 +897,7 @@ void zigzagDownRightLeft() {
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
           [0, 0, 1, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
           [0, 0, 1, 0, 0, 0],
@@ -929,7 +929,7 @@ void zigzagDownRightLeft() {
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
           [0, 0, 1, 0, 0, 0],
           [0, 0, 0, 2, 0, 0],
           [0, 0, 1, 0, 0, 0],
@@ -941,16 +941,16 @@ void zigzagDownRightLeft() {
     test("position 4 2 to short", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(4, 2), isTrue);
-      expect(board.zigzagDownRightLeft([1, 2]), isFalse);
+      expect(board.zigzagDownRightLeft([1, 2]), isTrue);
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
         ]),
       );
     });
@@ -1029,7 +1029,7 @@ void zigzagDownLeftRight() {
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
           [0, 0, 1, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
@@ -1061,7 +1061,7 @@ void zigzagDownLeftRight() {
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 2, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
           [0, 0, 2, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
@@ -1073,16 +1073,16 @@ void zigzagDownLeftRight() {
     test("position 4 3 to short", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(4, 3), isTrue);
-      expect(board.zigzagDownLeftRight([1, 2]), isFalse);
+      expect(board.zigzagDownLeftRight([1, 2]), isTrue);
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 2, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 2, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 2, 0, 0, 0]
         ]),
       );
     });
@@ -1164,7 +1164,7 @@ void zigzagRightDownUp() {
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 1, 0, 1, 0, 1],
-          [0, 0, 1, 0, 1, 0],
+          [1, 0, 1, 0, 1, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -1196,7 +1196,7 @@ void zigzagRightDownUp() {
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 1, 0, 1, 0, 1],
-          [0, 0, 2, 0, 2, 0],
+          [2, 0, 2, 0, 2, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -1205,16 +1205,16 @@ void zigzagRightDownUp() {
     test("position 2 4 to short", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(2, 4), isTrue);
-      expect(board.zigzagRightDownUp([1, 2]), isFalse);
+      expect(board.zigzagRightDownUp([1, 2]), isTrue);
       expect(
         board.getBoard,
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
+          [1, 0, 1, 0, 1, 0],
+          [0, 2, 0, 2, 0, 2],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0]
         ]),
       );
     });
@@ -1225,16 +1225,16 @@ void zigzagLeftUpDown() {
   group("zig-zag left up down", () {
     test("starting position", () {
       CrossColoring board = CrossColoring();
-      expect(board.zigzagLeftUpDown([1]), isFalse);
+      expect(board.zigzagLeftUpDown([1]), isTrue);
       expect(
         board.getBoard,
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 1, 0, 1],
+          [1, 0, 1, 0, 1, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0]
         ]),
       );
     });
@@ -1295,7 +1295,7 @@ void zigzagLeftUpDown() {
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 1, 0, 1, 0, 0],
+          [0, 1, 0, 1, 0, 1],
           [1, 0, 1, 0, 1, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
@@ -1327,7 +1327,7 @@ void zigzagLeftUpDown() {
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 2, 0, 2, 0, 0],
+          [0, 2, 0, 2, 0, 2],
           [1, 0, 1, 0, 1, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
@@ -1337,16 +1337,16 @@ void zigzagLeftUpDown() {
     test("position 3 2 to short", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(3, 1), isTrue);
-      expect(board.zigzagLeftUpDown([1, 2]), isFalse);
+      expect(board.zigzagLeftUpDown([1, 2]), isTrue);
       expect(
         board.getBoard,
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
+          [2, 0, 2, 0, 2, 0],
+          [0, 1, 0, 1, 0, 1],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0]
         ]),
       );
     });
@@ -1428,7 +1428,7 @@ void zigzagLeftDownUp() {
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
           [1, 0, 1, 0, 1, 0],
-          [0, 1, 0, 1, 0, 0],
+          [0, 1, 0, 1, 0, 1],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -1460,7 +1460,7 @@ void zigzagLeftDownUp() {
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
           [1, 0, 1, 0, 1, 0],
-          [0, 2, 0, 2, 0, 0],
+          [0, 2, 0, 2, 0, 2],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -1469,16 +1469,16 @@ void zigzagLeftDownUp() {
     test("position 2 1 to short", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(2, 1), isTrue);
-      expect(board.zigzagLeftDownUp([1, 2]), isFalse);
+      expect(board.zigzagLeftDownUp([1, 2]), isTrue);
       expect(
         board.getBoard,
         equals([
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 1, 0, 1],
+          [2, 0, 2, 0, 2, 0],
           [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0]
         ]),
       );
     });
@@ -1562,7 +1562,7 @@ void zigzagUpLeftRight() {
           [0, 0, 0, 1, 0, 0],
           [0, 0, 1, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
         ]),
       );
     });
@@ -1594,23 +1594,23 @@ void zigzagUpLeftRight() {
           [0, 0, 0, 1, 0, 0],
           [0, 0, 2, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 2, 0, 0, 0],
         ]),
       );
     });
     test("position 1 3 to short", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(1, 3), isTrue);
-      expect(board.zigzagUpLeftRight([1, 2]), isFalse);
+      expect(board.zigzagUpLeftRight([1, 2]), isTrue);
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 2, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 2, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 2, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0]
         ]),
       );
     });
@@ -1694,7 +1694,7 @@ void zigzagUpRightLeft() {
           [0, 0, 1, 0, 0, 0],
           [0, 0, 0, 1, 0, 0],
           [0, 0, 1, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
         ]),
       );
     });
@@ -1726,23 +1726,39 @@ void zigzagUpRightLeft() {
           [0, 0, 1, 0, 0, 0],
           [0, 0, 0, 2, 0, 0],
           [0, 0, 1, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
         ]),
       );
     });
     test("position 1 2 to short", () {
       CrossColoring board = CrossColoring();
       expect(board.move.toPosition(1, 2), isTrue);
-      expect(board.zigzagUpRightLeft([1, 2]), isFalse);
+      expect(board.zigzagUpRightLeft([1, 2]), isTrue);
       expect(
         board.getBoard,
         equals([
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 2, 0, 0],
+          [0, 0, 1, 0, 0, 0]
+        ]),
+      );
+    });
+    test("position 1 2 to short", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(1, 2), isTrue);
+      expect(board.zigzagUpRightLeft([1, 2, 3]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 2, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 3, 0, 0],
+          [0, 0, 2, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 3, 0, 0, 0]
         ]),
       );
     });
