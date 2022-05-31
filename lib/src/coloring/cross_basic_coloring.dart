@@ -27,6 +27,22 @@ class CrossBasicColoring {
     return false;
   }
 
+  /// It takes a list of colors and an offset, and returns a new list of colors with
+  /// the offset applied
+  ///
+  /// Args:
+  ///   colors (List<int>): A list of colors to be used in the gradient.
+  ///   offset (int): The offset of the color list.
+  ///
+  /// Returns:
+  ///   A new list of colors that is offset by the offset parameter.
+  List<int> buildOffset(List<int> colors, int offset) {
+    final int i = offset % colors.length;
+    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+
+    return newColors;
+  }
+
   /// Color in diagonal with a direction down left from
   /// a current position defined by the movement.
   ///
@@ -36,12 +52,14 @@ class CrossBasicColoring {
   bool diagonalDownLeft(List<int> colors, [int? n]) {
     int? param = n;
     int j = 0;
+    int offset = 0;
     bool once = false;
     if (param == null) {
       while (move.diagonalUpRight()) {
-        continue;
+        offset++;
       }
-      while (color(colors[j]) && move.diagonalDownLeft()) {
+      final List<int> newColors = buildOffset(colors, offset);
+      while (color(newColors[j]) && move.diagonalDownLeft()) {
         j = (j + 1) % colors.length;
         once = true;
       }
@@ -75,12 +93,14 @@ class CrossBasicColoring {
   bool diagonalDownRight(List<int> colors, [int? n]) {
     int? param = n;
     int j = 0;
+    int offset = 0;
     bool once = false;
     if (param == null) {
       while (move.diagonalUpLeft()) {
-        continue;
+        offset++;
       }
-      while (color(colors[j]) && move.diagonalDownRight()) {
+      final List<int> newColors = buildOffset(colors, offset);
+      while (color(newColors[j]) && move.diagonalDownRight()) {
         j = (j + 1) % colors.length;
         once = true;
       }
@@ -114,12 +134,14 @@ class CrossBasicColoring {
   bool diagonalUpLeft(List<int> colors, [int? n]) {
     int? param = n;
     int j = 0;
+    int offset = 0;
     bool once = false;
     if (param == null) {
       while (move.diagonalDownRight()) {
-        continue;
+        offset++;
       }
-      while (color(colors[j]) && move.diagonalUpLeft()) {
+      final List<int> newColors = buildOffset(colors, offset);
+      while (color(newColors[j]) && move.diagonalUpLeft()) {
         j = (j + 1) % colors.length;
         once = true;
       }
@@ -154,12 +176,14 @@ class CrossBasicColoring {
   bool diagonalUpRight(List<int> colors, [int? n]) {
     int? param = n;
     int j = 0;
+    int offset = 0;
     bool once = false;
     if (param == null) {
       while (move.diagonalDownLeft()) {
-        continue;
+        offset++;
       }
-      while (color(colors[j]) && move.diagonalUpRight()) {
+      final List<int> newColors = buildOffset(colors, offset);
+      while (color(newColors[j]) && move.diagonalUpRight()) {
         j = (j + 1) % colors.length;
         once = true;
       }
@@ -191,27 +215,34 @@ class CrossBasicColoring {
   /// Return true on success.
   bool down(List<int> colors, [int? n]) {
     int? param = n;
+    List<int> newColors = colors;
+    int offset = 0;
+    int j = 0;
     if (param == null) {
-      if (move.column == 2 || move.column == 3) {
-        move.toPosition(0, move.column);
-        param = 5;
-      } else {
-        move.toPosition(2, move.column);
-        param = 1;
+      final bool prev = move.copyMode;
+      move.copyMode = false;
+      while (move.up()) {
+        offset++;
       }
+      newColors = buildOffset(colors, -offset);
+      while (color(newColors[j]) && move.down()) {
+        j = (j + 1) % newColors.length;
+      }
+      move.copyMode = prev;
+
+      return true;
     } else {
       param--;
     }
-    int j = 0;
     if (param < 1 ||
         !CrossBasicMoves.validatePosition(move.column, move.row + param) ||
-        !color(colors[j])) {
+        !color(newColors[j])) {
       return false;
     }
     for (int i = 0; i < param; i++) {
-      j = (j + 1) % colors.length;
+      j = (j + 1) % newColors.length;
       move.down();
-      color(colors[j]);
+      color(newColors[j]);
     }
 
     return true;
@@ -242,18 +273,25 @@ class CrossBasicColoring {
   /// Return true on success.
   bool left(List<int> colors, [int? n]) {
     int? param = n;
+    List<int> newColors = colors;
+    int offset = 0;
+    int j = 0;
     if (param == null) {
-      if (move.row == 2 || move.row == 3) {
-        move.toPosition(move.row, 5);
-        param = 5;
-      } else {
-        move.toPosition(move.row, 3);
-        param = 1;
+      final bool prev = move.copyMode;
+      move.copyMode = false;
+      while (move.right()) {
+        offset++;
       }
+      newColors = buildOffset(colors, offset);
+      while (color(newColors[j]) && move.left()) {
+        j = (j + 1) % colors.length;
+      }
+      move.copyMode = prev;
+
+      return true;
     } else {
       param--;
     }
-    int j = 0;
     if (param < 1 ||
         !CrossBasicMoves.validatePosition(move.column - param, move.row) ||
         !color(colors[j])) {
@@ -275,27 +313,34 @@ class CrossBasicColoring {
   /// Return true on success.
   bool right(List<int> colors, [int? n]) {
     int? param = n;
+    List<int> newColors = colors;
+    int offset = 0;
+    int j = 0;
     if (param == null) {
-      if (move.row == 2 || move.row == 3) {
-        move.toPosition(move.row, 0);
-        param = 5;
-      } else {
-        move.toPosition(move.row, 2);
-        param = 1;
+      final bool prev = move.copyMode;
+      move.copyMode = false;
+      while (move.left()) {
+        offset++;
       }
+      newColors = buildOffset(colors, -offset);
+      while (color(newColors[j]) && move.right()) {
+        j = (j + 1) % colors.length;
+      }
+      move.copyMode = prev;
+
+      return true;
     } else {
       param--;
     }
-    int j = 0;
     if (param < 1 ||
         !CrossBasicMoves.validatePosition(move.column + param, move.row) ||
-        !color(colors[j])) {
+        !color(newColors[j])) {
       return false;
     }
     for (int i = 0; i < param; i++) {
-      j = (j + 1) % colors.length;
+      j = (j + 1) % newColors.length;
       move.right();
-      color(colors[j]);
+      color(newColors[j]);
     }
 
     return true;
@@ -311,18 +356,25 @@ class CrossBasicColoring {
   /// Return true on success.
   bool up(List<int> colors, [int? n]) {
     int? param = n;
+    List<int> newColors = colors;
+    int j = 0;
+    int offset = 0;
     if (param == null) {
-      if (move.column == 2 || move.column == 3) {
-        move.toPosition(5, move.column);
-        param = 5;
-      } else {
-        move.toPosition(3, move.column);
-        param = 1;
+      final bool prev = move.copyMode;
+      move.copyMode = false;
+      while (move.down()) {
+        offset++;
       }
+      newColors = buildOffset(colors, offset);
+      while (color(newColors[j]) && move.up()) {
+        j = (j + 1) % colors.length;
+      }
+      move.copyMode = prev;
+
+      return true;
     } else {
       param--;
     }
-    int j = 0;
     if (param < 1 ||
         !CrossBasicMoves.validatePosition(move.column, move.row - param) ||
         !color(colors[j])) {

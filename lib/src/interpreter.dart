@@ -142,7 +142,7 @@ class CATInterpreter {
   void _paint(List<String> command) {
     final List<int> colors = <int>[];
     for (final String e in splitByCurly(command[0])) {
-      final CatColors color = containsColor(e);
+      final CatColors color = containsColor(e.trim());
       if (color != CatColors.NaC) {
         colors.add(color.index);
       } else {

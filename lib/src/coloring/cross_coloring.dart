@@ -270,8 +270,7 @@ class CrossColoring extends CrossBasicColoring {
     if (colors.isEmpty) {
       return false;
     }
-    final int i = param % colors.length;
-    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    final List<int> newColors = buildOffset(colors, param);
     if (param.isOdd && n == null) {
       move.toPosition(0, 3);
 
@@ -312,8 +311,7 @@ class CrossColoring extends CrossBasicColoring {
     if (colors.isEmpty) {
       return false;
     }
-    final int i = param % colors.length;
-    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    final List<int> newColors = buildOffset(colors, param);
     if (param.isOdd && n == null) {
       move.toPosition(3, 5);
 
@@ -354,8 +352,7 @@ class CrossColoring extends CrossBasicColoring {
     if (colors.isEmpty) {
       return false;
     }
-    final int i = param % colors.length;
-    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    final List<int> newColors = buildOffset(colors, param);
     if (param.isOdd && n == null) {
       move.toPosition(2, 5);
 
@@ -396,8 +393,7 @@ class CrossColoring extends CrossBasicColoring {
     if (colors.isEmpty) {
       return false;
     }
-    final int i = param % colors.length;
-    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    final List<int> newColors = buildOffset(colors, param);
     if (param.isOdd && n == null) {
       move.toPosition(3, 0);
 
@@ -438,8 +434,7 @@ class CrossColoring extends CrossBasicColoring {
     if (colors.isEmpty) {
       return false;
     }
-    final int i = param % colors.length;
-    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    final List<int> newColors = buildOffset(colors, param);
     if (param.isOdd && n == null) {
       move.toPosition(2, 0);
 
@@ -480,8 +475,7 @@ class CrossColoring extends CrossBasicColoring {
     if (colors.isEmpty) {
       return false;
     }
-    final int i = param % colors.length;
-    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    final List<int> newColors = buildOffset(colors, param);
     if (param.isOdd && n == null) {
       move.toPosition(5, 2);
 
@@ -522,8 +516,7 @@ class CrossColoring extends CrossBasicColoring {
     if (colors.isEmpty) {
       return false;
     }
-    final int i = param % colors.length;
-    final List<int> newColors = colors.sublist(i)..addAll(colors.sublist(0, i));
+    final List<int> newColors = buildOffset(colors, param);
     if (param.isOdd && n == null) {
       move.toPosition(5, 3);
 

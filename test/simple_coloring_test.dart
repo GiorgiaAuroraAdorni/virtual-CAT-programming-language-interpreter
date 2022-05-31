@@ -88,6 +88,25 @@ void down() {
     expect(board.move.column, equals(2));
     expect(board.move.row, equals(5));
   });
+  test("Color down from position 0 2", () {
+    CrossColoring board = CrossColoring();
+    expect(board.move.toPosition(0, 2), isTrue);
+    expect(board.move.down(), isTrue);
+    expect(board.down([1, 2]), isTrue);
+    expect(
+      board.getBoard,
+      equals([
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+      ]),
+    );
+    expect(board.move.column, equals(2));
+    expect(board.move.row, equals(5));
+  });
   test("Color down from position 0 2 out of the map", () {
     CrossColoring board = CrossColoring();
     expect(board.move.toPosition(0, 2), isTrue);
@@ -119,6 +138,63 @@ void down() {
         [0, 0, 2, 0, 0, 0],
         [0, 0, 1, 0, 0, 0],
         [0, 0, 2, 0, 0, 0],
+      ]),
+    );
+    expect(board.move.column, equals(2));
+    expect(board.move.row, equals(5));
+  });
+  test("Color down from position 0 2 alternate colors", () {
+    CrossColoring board = CrossColoring();
+    expect(board.move.toPosition(0, 2), isTrue);
+    expect(board.move.down(), isTrue);
+    expect(board.down([1, 2]), isTrue);
+    expect(
+      board.getBoard,
+      equals([
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+      ]),
+    );
+    expect(board.move.column, equals(2));
+    expect(board.move.row, equals(5));
+  });
+  test("Color down from position 0 2 alternate colors", () {
+    CrossColoring board = CrossColoring();
+    expect(board.move.toPosition(0, 2), isTrue);
+    expect(board.move.down(), isTrue);
+    expect(board.down([1, 2, 3]), isTrue);
+    expect(
+      board.getBoard,
+      equals([
+        [0, 0, 3, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 3, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+      ]),
+    );
+    expect(board.move.column, equals(2));
+    expect(board.move.row, equals(5));
+  });
+  test("Color down from position 0 2 alternate colors", () {
+    CrossColoring board = CrossColoring();
+    expect(board.move.toPosition(0, 2), isTrue);
+    expect(board.move.down(2), isTrue);
+    expect(board.down([1, 2, 3, 4]), isTrue);
+    expect(
+      board.getBoard,
+      equals([
+        [0, 0, 3, 0, 0, 0],
+        [0, 0, 4, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0],
+        [0, 0, 3, 0, 0, 0],
+        [0, 0, 4, 0, 0, 0],
       ]),
     );
     expect(board.move.column, equals(2));
@@ -490,8 +566,6 @@ void left() {
       expect(board.move.column, equals(0));
       expect(board.move.row, equals(3));
     });
-  });
-  group("Color direction left", () {
     test("Color left from starting position", () {
       CrossColoring board = CrossColoring();
       expect(board.move.down(), isFalse);
@@ -503,6 +577,59 @@ void left() {
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
           [1, 1, 1, 1, 1, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(0));
+      expect(board.move.row, equals(3));
+    });
+    test("Color left from starting position", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.down(), isFalse);
+      expect(board.left([1], 2), isFalse);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(0));
+      expect(board.move.row, equals(3));
+    });
+    test("Color left from starting position", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.toPosition(3, 5), isTrue);
+      expect(board.left([1, 2]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [2, 1, 2, 1, 2, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(0));
+      expect(board.move.row, equals(3));
+    });
+    test("Color left from starting position", () {
+      CrossColoring board = CrossColoring();
+      expect(board.left([1, 2, 3]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [2, 1, 3, 2, 1, 3],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -561,6 +688,61 @@ void right() {
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
           [1, 1, 1, 1, 1, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(5));
+      expect(board.move.row, equals(3));
+    });
+    test("Color right from starting position", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.down(), isFalse);
+      expect(board.right([1], 3), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [1, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(2));
+      expect(board.move.row, equals(3));
+    });
+    test("Color right from starting position", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.down(), isFalse);
+      expect(board.move.right(), isTrue);
+      expect(board.right([1, 2]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [2, 1, 2, 1, 2, 1],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.column, equals(5));
+      expect(board.move.row, equals(3));
+    });
+    test("Color right from starting position", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.right(), isTrue);
+      expect(board.right([1, 2, 3]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [3, 1, 2, 3, 1, 2],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
@@ -902,6 +1084,23 @@ void diagonalDownLeft() {
       expect(board.move.row, equals(3));
       expect(board.move.column, equals(0));
     });
+    test("Start position color all diagonal", () {
+      CrossColoring board = CrossColoring();
+      expect(board.diagonalDownLeft([1, 2]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 2, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 2, 0, 0, 0, 0],
+          [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
     test("Position 2 1 color all diagonal", () {
       CrossColoring board = CrossColoring();
       expect(board.move.diagonalUpRight(), isTrue);
@@ -913,6 +1112,24 @@ void diagonalDownLeft() {
           [0, 0, 1, 0, 0, 0],
           [0, 1, 0, 0, 0, 0],
           [1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]),
+      );
+      expect(board.move.row, equals(3));
+      expect(board.move.column, equals(0));
+    });
+    test("Position 2 1 color all diagonal", () {
+      CrossColoring board = CrossColoring();
+      expect(board.move.diagonalUpRight(), isTrue);
+      expect(board.diagonalDownLeft([1, 2]), isTrue);
+      expect(
+        board.getBoard,
+        equals([
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 2, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0],
+          [2, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0],
         ]),
