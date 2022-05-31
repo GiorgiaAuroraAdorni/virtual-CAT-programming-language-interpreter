@@ -35,18 +35,24 @@ class CrossBasicColoring {
   /// Return true on success.
   bool diagonalDownLeft(List<int> colors, [int? n]) {
     int? param = n;
+    int j = 0;
+    bool once = false;
     if (param == null) {
       while (move.diagonalUpRight()) {
         continue;
       }
-      param = ((move.row == 3 && move.column == 5) ||
-              (move.row == 0 && move.column == 2))
-          ? 1
-          : move.column - move.row;
+      while (color(colors[j]) && move.diagonalDownLeft()) {
+        j = (j + 1) % colors.length;
+        once = true;
+      }
+      if (once) {
+        return true;
+      }
+
+      return false;
     } else {
       param--;
     }
-    int j = 0;
     if (param < 1 || !color(colors[j])) {
       return false;
     }
@@ -68,18 +74,24 @@ class CrossBasicColoring {
   /// Return true on success.
   bool diagonalDownRight(List<int> colors, [int? n]) {
     int? param = n;
+    int j = 0;
+    bool once = false;
     if (param == null) {
       while (move.diagonalUpLeft()) {
         continue;
       }
-      param = ((move.row == 0 && move.column == 3) ||
-              (move.row == 3 && move.column == 0))
-          ? 1
-          : move.row + 3;
+      while (color(colors[j]) && move.diagonalDownRight()) {
+        j = (j + 1) % colors.length;
+        once = true;
+      }
+      if (once) {
+        return true;
+      }
+
+      return false;
     } else {
       param--;
     }
-    int j = 0;
     if (param < 1 || !color(colors[j])) {
       return false;
     }
@@ -101,18 +113,25 @@ class CrossBasicColoring {
   /// Return true on success.
   bool diagonalUpLeft(List<int> colors, [int? n]) {
     int? param = n;
+    int j = 0;
+    bool once = false;
     if (param == null) {
       while (move.diagonalDownRight()) {
         continue;
       }
-      param = ((move.row == 2 && move.column == 5) ||
-              (move.row == 5 && move.column == 2))
-          ? 1
-          : move.row - 2;
+      while (color(colors[j]) && move.diagonalUpLeft()) {
+        j = (j + 1) % colors.length;
+        once = true;
+      }
+      if (once) {
+        return true;
+      }
+
+      return false;
     } else {
       param--;
     }
-    int j = 0;
+
     if (param < 1 || !color(colors[j])) {
       return false;
     }
@@ -134,18 +153,24 @@ class CrossBasicColoring {
   /// Return true on success.
   bool diagonalUpRight(List<int> colors, [int? n]) {
     int? param = n;
+    int j = 0;
+    bool once = false;
     if (param == null) {
       while (move.diagonalDownLeft()) {
         continue;
       }
-      param = ((move.row == 2 && move.column == 0) ||
-              (move.row == 5 && move.column == 3))
-          ? 1
-          : move.row - move.column;
+      while (color(colors[j]) && move.diagonalUpRight()) {
+        j = (j + 1) % colors.length;
+        once = true;
+      }
+      if (once) {
+        return true;
+      }
+
+      return false;
     } else {
       param--;
     }
-    int j = 0;
     if (param < 1 || !color(colors[j])) {
       return false;
     }
