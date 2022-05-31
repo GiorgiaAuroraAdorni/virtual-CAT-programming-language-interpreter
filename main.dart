@@ -14,7 +14,7 @@ void main(List<String> arguments) {
   final String json =
       '{"data":[{"index":1,"array":[[0,0,3,3,0,0],[0,0,3,3,0,0],[3,3,3,3,3,3],[3,3,3,3,3,3],[0,0,3,3,0,0],[0,0,3,3,0,0]]}]}';
   final CATInterpreter interpreter = CATInterpreter(file.readAsStringSync());
-  String command = 'go(b3) paint({red},:,zig-zag down left right)';
+  String command = 'go(d5) paint({yellow}, :, diagonal down right)';
   Pair<Results, CatError> result = interpreter.validateOnScheme(command, 12);
   print(result.second);
   List<Cross> states = result.first.getStates;

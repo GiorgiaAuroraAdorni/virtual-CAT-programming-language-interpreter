@@ -75,7 +75,7 @@ class CrossBasicColoring {
       param = ((move.row == 0 && move.column == 3) ||
               (move.row == 3 && move.column == 0))
           ? 1
-          : move.column + 3;
+          : move.row + 3;
     } else {
       param--;
     }

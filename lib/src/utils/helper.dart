@@ -81,5 +81,5 @@ List<String> splitByCurly(String command) => command
     .removeSurrounding(prefix: "{", suffix: "}")
     .split(",")
     .where((String element) => element.isNotNullOrEmpty)
-    .map((String e) => e.replaceAll(" ", ""))
+    // .map((String e) => e.replaceAll(" ", ""))
     .toList();
