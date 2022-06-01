@@ -47,6 +47,8 @@ class CommandCaller {
     "zigzagDownRightLeft": board.zigzagDownRightLeft,
     "mirrorVertical": board.mirrorVertical,
     "mirrorHorizontal": board.mirrorHorizontal,
+    "mirrorCellHorizontal": board.mirrorCellHorizontal,
+    "mirrorCellVertical": board.mirrorCellVertical,
     "fillEmpty": board.fillEmpty,
     "color": board.color,
   };
