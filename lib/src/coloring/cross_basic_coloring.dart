@@ -375,6 +375,7 @@ class CrossBasicColoring {
     } else {
       param--;
     }
+
     if (param < 1 ||
         !CrossBasicMoves.validatePosition(move.column, move.row - param) ||
         !color(colors[j])) {

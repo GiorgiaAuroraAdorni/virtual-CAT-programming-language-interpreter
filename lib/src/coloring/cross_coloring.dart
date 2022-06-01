@@ -8,8 +8,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lDownLeft(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column, move.row + 3) ||
-        !CrossBasicMoves.validatePosition(move.column - 2, move.row + 3)) {
+    if (!CrossBasicMoves.validatePosition(move.column, move.row + 2) ||
+        !CrossBasicMoves.validatePosition(move.column - 2, move.row + 2)) {
       return false;
     }
     down(
@@ -31,8 +31,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lDownRight(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column, move.row + 3) ||
-        !CrossBasicMoves.validatePosition(move.column + 2, move.row + 3)) {
+    if (!CrossBasicMoves.validatePosition(move.column, move.row + 2) ||
+        !CrossBasicMoves.validatePosition(move.column + 2, move.row + 2)) {
       return false;
     }
     down(
@@ -54,8 +54,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lLeftDown(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column - 3, move.row) ||
-        !CrossBasicMoves.validatePosition(move.column - 3, move.row + 2)) {
+    if (!CrossBasicMoves.validatePosition(move.column - 2, move.row) ||
+        !CrossBasicMoves.validatePosition(move.column - 2, move.row + 2)) {
       return false;
     }
     left(
@@ -77,8 +77,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lLeftUp(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column - 3, move.row) ||
-        !CrossBasicMoves.validatePosition(move.column - 3, move.row - 2)) {
+    if (!CrossBasicMoves.validatePosition(move.column - 2, move.row) ||
+        !CrossBasicMoves.validatePosition(move.column - 2, move.row - 2)) {
       return false;
     }
     left(
@@ -100,8 +100,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lRightDown(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column + 3, move.row) ||
-        !CrossBasicMoves.validatePosition(move.column + 3, move.row + 2)) {
+    if (!CrossBasicMoves.validatePosition(move.column + 2, move.row) ||
+        !CrossBasicMoves.validatePosition(move.column + 2, move.row + 2)) {
       return false;
     }
     right(
@@ -123,8 +123,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lRightUp(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column + 3, move.row) ||
-        !CrossBasicMoves.validatePosition(move.column + 3, move.row - 2)) {
+    if (!CrossBasicMoves.validatePosition(move.column + 2, move.row) ||
+        !CrossBasicMoves.validatePosition(move.column + 2, move.row - 2)) {
       return false;
     }
     right(
@@ -146,8 +146,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lUpLeft(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column, move.row - 3) ||
-        !CrossBasicMoves.validatePosition(move.column - 2, move.row - 3)) {
+    if (!CrossBasicMoves.validatePosition(move.column, move.row - 2) ||
+        !CrossBasicMoves.validatePosition(move.column - 2, move.row - 2)) {
       return false;
     }
     up(
@@ -169,8 +169,8 @@ class CrossColoring extends CrossBasicColoring {
   /// Requires a list of [colors].
   /// Return true on success.
   bool lUpRight(List<int> colors, [int? n]) {
-    if (!CrossBasicMoves.validatePosition(move.column, move.row - 3) ||
-        !CrossBasicMoves.validatePosition(move.column + 2, move.row - 3)) {
+    if (!CrossBasicMoves.validatePosition(move.column, move.row - 2) ||
+        !CrossBasicMoves.validatePosition(move.column + 2, move.row - 2)) {
       return false;
     }
     up(

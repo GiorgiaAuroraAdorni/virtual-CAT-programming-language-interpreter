@@ -594,6 +594,46 @@ void valid_patters() {
       expect(response.first.completed, isFalse);
       expect(response.second, equals(CatError.none));
     });
+    test("", () {
+      interpreter.reset();
+      var response = interpreter.validateOnScheme(
+          "go(up),paint({red},1,L right up),go(a4),paint({blue},1,L up right),go(c1),paint({red,blue},1,L right down),go(f4),paint({blue,red},1,L down right)",
+          1);
+      expect(response.first.completed, isFalse);
+      expect(response.second, equals(CatError.none));
+    });
+    test("", () {
+      interpreter.reset();
+      var response = interpreter.validateOnScheme(
+          "go(a4),mirror({mirror({paint({red,blue,yellow},3,up)},horizontal)},vertical),go(c1),mirror({paint({blue},1,square)},vertical)",
+          1);
+      expect(response.first.completed, isFalse);
+      expect(response.second, equals(CatError.none));
+    });
+    test("", () {
+      interpreter.reset();
+      var response = interpreter.validateOnScheme(
+          "go(b3),paint({red},1,L up right),go(e4),paint({yellow},1,L down left),fill_empty(green)",
+          1);
+      expect(response.first.completed, isFalse);
+      expect(response.second, equals(CatError.none));
+    });
+    test("", () {
+      interpreter.reset();
+      var response = interpreter.validateOnScheme(
+          "mirror({go(e3),paint({red},3,diagonal down left)},vertical),mirror({go(b3),paint({yellow},3,diagonal up left)},vertical),fill_empty(blue)",
+          1);
+      expect(response.first.completed, isFalse);
+      expect(response.second, equals(CatError.none));
+    });
+    test("", () {
+      interpreter.reset();
+      var response = interpreter.validateOnScheme(
+          "paint({yellow,red,yellow},:,right),go(up),paint({red,yellow,yellow},:,right),go(a3),paint({yellow,yellow,red},1,square),go(e3),paint({yellow,red,yellow,red},1,square)",
+          1);
+      expect(response.first.completed, isFalse);
+      expect(response.second, equals(CatError.none));
+    });
   });
 }
 
