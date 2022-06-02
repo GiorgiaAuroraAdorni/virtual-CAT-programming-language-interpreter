@@ -159,6 +159,8 @@ class CATInterpreter {
 
       return;
     }
+    final int column = _commandCaller.board.move.column;
+    final int row = _commandCaller.board.move.row;
     final String color = command[2]
         .split(" ")
         .where((String element) => element.isNotNullOrEmpty)
@@ -170,17 +172,15 @@ class CATInterpreter {
       final int repetitions = command[1].toInt();
       call = _commandCaller.color(color, <dynamic>[colors, repetitions]);
     } on FormatException {
-      final int column = _commandCaller.board.move.column;
-      final int row = _commandCaller.board.move.row;
       call = _commandCaller.color(color, <dynamic>[
         colors,
       ]);
-      _commandCaller.board.move.toPosition(row, column);
     }
 
     if (!call) {
       _error = CatError.invalidColoringCommand;
     }
+    _commandCaller.board.move.toPosition(row, column);
   }
 
   /// It takes a list of commands, splits them by curly braces, and then executes
