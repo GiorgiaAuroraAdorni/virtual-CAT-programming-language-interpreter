@@ -23,7 +23,7 @@ void base_interpreter() {
     var schemes = schemesFromJson(json);
     final CATInterpreter interpreter1 = CATInterpreter(json);
     final CATInterpreter interpreter2 = CATInterpreter.fromSchemes(schemes);
-    expect(interpreter1.schemes.schemas[1] == interpreter2.schemes.schemas[1],
+    expect(interpreter1.schemes.getData[1] == interpreter2.schemes.getData[1],
         isTrue);
   });
   test("cross as string interpreter", () {
@@ -35,7 +35,7 @@ void base_interpreter() {
     expect(results.first.getPositions.length, equals(2));
     expect(results.first.getPositions.last, Pair(3, 0));
     expect(
-        results.first.getStates.last.toString(), schemes.schemas[1].toString());
+        results.first.getStates.last.toString(), schemes.getData[1].toString());
   });
 }
 

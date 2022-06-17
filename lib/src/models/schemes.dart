@@ -8,9 +8,9 @@ Schemes schemesFromJson(String str) => Schemes.fromJson(json.decode(str));
 /// Contains a Map of Cross schemes build from a JSON String.
 class Schemes {
   /// A constructor.
-  Schemes({
-    required this.schemas,
-  });
+  Schemes({required Map<int, Cross> schemas}) {
+    _schemas = schemas;
+  }
 
   /// It converts a JSON object into a Dart object.
   ///
@@ -27,5 +27,9 @@ class Schemes {
         },
       );
 
-  final Map<int, Cross> schemas;
+  /// A map of Cross objects.
+  late final Map<int, Cross> _schemas;
+
+  /// A getter.
+  Map<int, Cross> get getData => _schemas;
 }

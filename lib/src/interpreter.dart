@@ -74,7 +74,7 @@ class CATInterpreter {
   /// Returns:
   ///   A pair of Results and CatError.
   Pair<Results, CatError> validateOnScheme(String code, int schemeIndex) {
-    final Cross? toValidate = schemes.schemas[schemeIndex];
+    final Cross? toValidate = schemes.getData[schemeIndex];
     _error = CatError.none;
     _parse(code);
     _results.completed = _commandCaller.board.getCross == toValidate;
