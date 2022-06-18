@@ -2,7 +2,7 @@ import "package:dartx/dartx.dart";
 
 /// A regular expression that matches any string that contains only letters,
 /// numbers, and underscores.
-final RegExp validCharacters = RegExp(r"^[a-zA-Z0-9_]+$");
+final RegExp _validCharacters = RegExp(r"^[a-zA-Z0-9_]+$");
 
 /// It splits a string into a list of strings, but it ignores commas and parentheses
 /// that are inside curly braces
@@ -58,7 +58,7 @@ List<String> splitCommands(String command) {
       open++;
     } else if (modified[i] == ")") {
       open--;
-    } else if (!validCharacters.hasMatch(modified[i]) && open == 0) {
+    } else if (!_validCharacters.hasMatch(modified[i]) && open == 0) {
       start++;
       continue;
     }
