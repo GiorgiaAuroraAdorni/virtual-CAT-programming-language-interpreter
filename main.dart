@@ -24,5 +24,5 @@ void main(List<String> arguments) {
     print(states[i]);
   }
   print(result.first.completed);
-  print(interpreter.schemes.schemas[12]);
+  print(interpreter.schemes.getData[12]);
 }

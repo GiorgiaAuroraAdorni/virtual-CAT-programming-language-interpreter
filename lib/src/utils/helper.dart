@@ -73,13 +73,12 @@ List<String> splitCommands(String command) {
 }
 
 /// It removes the curly braces from the command, splits the command by commas,
-/// removes empty strings, and removes all spaces
+/// removes empty strings, and returns the result as a list
 ///
 /// Args:
-///   command (String): The command to be split.
+///   command (String): The command to split.
 List<String> splitByCurly(String command) => command
     .removeSurrounding(prefix: "{", suffix: "}")
     .split(",")
     .where((String element) => element.isNotNullOrEmpty)
-    // .map((String e) => e.replaceAll(" ", ""))
     .toList();
