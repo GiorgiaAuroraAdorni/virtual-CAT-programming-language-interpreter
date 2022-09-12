@@ -11,11 +11,27 @@ void main(List<String> arguments) {
   );
   File file = File(pathToFile);
 
-  final String json =
-      '{"data":[{"index":1,"array":[[0,0,3,3,0,0],[0,0,3,3,0,0],[3,3,3,3,3,3],[3,3,3,3,3,3],[0,0,3,3,0,0],[0,0,3,3,0,0]]}]}';
-  final CATInterpreter interpreter = CATInterpreter(file.readAsStringSync());
-  String command = 'go(b3),paint({red},:,L up right)';
-  Pair<Results, CatError> result = interpreter.validateOnScheme(command, 12);
+  String json = '''
+        {
+          "data":[
+            {
+              "index":10,
+              "array":[
+              [0,0,3,3,0,0],
+              [0,0,4,4,0,0],
+              [4,3,4,4,3,4],
+              [3,4,3,3,4,3],
+              [0,0,3,3,0,0],
+              [0,0,4,4,0,0]
+              ]
+            }
+          ]
+        }''';
+  String command =
+      """mirror({paint({blue,yellow},:,square),go(C3),paint({blue,blue,yellow,yellow},:,down)},vertical)""";
+  CATInterpreter interpreter = CATInterpreter(json);
+  Pair<Results, CatError> result = interpreter.validateOnScheme(command, 10);
+
   print(result.second);
   List<Cross> states = result.first.getStates;
   List<Pair<int, int>> positions = result.first.getPositions;

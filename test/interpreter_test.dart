@@ -52,7 +52,7 @@ void schema_1() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -73,7 +73,7 @@ void schema_1() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -102,7 +102,7 @@ void schema_2() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -128,7 +128,7 @@ void schema_2() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -154,7 +154,7 @@ void schema_2() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -188,7 +188,7 @@ void schema_3() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -214,7 +214,7 @@ void schema_3() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -240,7 +240,7 @@ void schema_3() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -266,7 +266,7 @@ void schema_3() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -292,7 +292,7 @@ void schema_3() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -326,7 +326,7 @@ void schema_4() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -352,7 +352,7 @@ void schema_4() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -378,7 +378,7 @@ void schema_4() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -404,7 +404,7 @@ void schema_4() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -438,7 +438,7 @@ void other_schemas() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -467,7 +467,7 @@ void other_schemas() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -650,7 +650,7 @@ void not_valid() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
@@ -671,7 +671,7 @@ void not_valid() {
       expect(interpreter.board.move.column, equals(0));
       expect(interpreter.board.move.row, equals(3));
       expect(
-          interpreter.board.getCross.getCross,
+          interpreter.board.getCross.getGrid,
           equals([
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],

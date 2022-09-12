@@ -1,7 +1,7 @@
 import "package:test/expect.dart";
 import "package:test/scaffolding.dart";
 
-import '../lib/src/cross.dart';
+import '../lib/src/models/cross.dart';
 
 void main() {
   group("Cross", () {
@@ -15,7 +15,7 @@ void main() {
       expect(cross.toString(), isNotNull);
       expect(cross.copy().hashCode == cross.hashCode, isFalse);
       Cross copyCross = cross.copy();
-      copyCross.cross[0][3] = 3;
+      copyCross.getGrid[0][3] = 3;
       expect(cross == copyCross, isFalse);
       expect(cross.hashCode == copyCross.hashCode, isFalse);
     });

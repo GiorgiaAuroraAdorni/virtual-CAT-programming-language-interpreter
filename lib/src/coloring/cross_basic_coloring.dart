@@ -1,25 +1,29 @@
 import "package:dartx/dartx.dart";
-import "package:interpreter/src/cross.dart";
 import "package:interpreter/src/cross_basic_moves.dart";
+import "package:interpreter/src/models/basic_shape.dart";
 
 /// It's a class that allows you to color a cross
-class CrossBasicColoring {
-  final Cross _cross = Cross();
+class BasicColoring {
+  /// Creating a new instance of the Cross class and assigning it to the _shape
+  /// variable.
+  BasicColoring(BasicShape shape) : _shape = shape;
 
-  final CrossBasicMoves move = CrossBasicMoves();
+  final BasicShape _shape;
+
+  late final CrossBasicMoves move = CrossBasicMoves(_shape.validatePosition);
 
   final int _defaultColor = 0;
 
   /// It's a getter that returns the cross.
-  List<List<int>> get getBoard => _cross.getCross;
+  List<List<int>> get getBoard => _shape.getGrid;
 
   /// It's a getter that returns the cross object.
-  Cross get getCross => _cross;
+  BasicShape get getCross => _shape;
 
   /// Color the current position.
   bool color(int color) {
-    if (CrossBasicMoves.validatePosition(move.column, move.row)) {
-      _cross.cross[move.row][move.column] = color;
+    if (_shape.validatePosition(move.column, move.row)) {
+      _shape.grid[move.row][move.column] = color;
 
       return true;
     }
@@ -235,7 +239,7 @@ class CrossBasicColoring {
       param--;
     }
     if (param < 1 ||
-        !CrossBasicMoves.validatePosition(move.column, move.row + param) ||
+        !_shape.validatePosition(move.column, move.row + param) ||
         !color(newColors[j])) {
       return false;
     }
@@ -257,7 +261,7 @@ class CrossBasicColoring {
   /// Returns:
   ///   A boolean value.
   bool fillEmpty(int color) {
-    for (final List<int> line in _cross.cross) {
+    for (final List<int> line in _shape.grid) {
       for (int i = 0; i < 6; i++) {
         line[i] = line[i] == _defaultColor ? color : line[i];
       }
@@ -293,7 +297,7 @@ class CrossBasicColoring {
       param--;
     }
     if (param < 1 ||
-        !CrossBasicMoves.validatePosition(move.column - param, move.row) ||
+        !_shape.validatePosition(move.column - param, move.row) ||
         !color(colors[j])) {
       return false;
     }
@@ -333,7 +337,7 @@ class CrossBasicColoring {
       param--;
     }
     if (param < 1 ||
-        !CrossBasicMoves.validatePosition(move.column + param, move.row) ||
+        !_shape.validatePosition(move.column + param, move.row) ||
         !color(newColors[j])) {
       return false;
     }
@@ -347,7 +351,7 @@ class CrossBasicColoring {
   }
 
   @override
-  String toString() => _cross.toString();
+  String toString() => _shape.toString();
 
   /// Color up from a current position defined by the movement.
   ///
@@ -377,7 +381,7 @@ class CrossBasicColoring {
     }
 
     if (param < 1 ||
-        !CrossBasicMoves.validatePosition(move.column, move.row - param) ||
+        !_shape.validatePosition(move.column, move.row - param) ||
         !color(colors[j])) {
       return false;
     }
@@ -397,7 +401,7 @@ class CrossBasicColoring {
   bool mirrorHorizontalUpDown() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
-        _cross.cross[5 - i][j] = _cross.cross[i][j];
+        _shape.grid[5 - i][j] = _shape.grid[i][j];
       }
     }
 
@@ -411,7 +415,7 @@ class CrossBasicColoring {
   bool mirrorHorizontalDownUp() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
-        _cross.cross[5 - i][j] = _cross.cross[i][j];
+        _shape.grid[5 - i][j] = _shape.grid[i][j];
       }
     }
 
@@ -426,7 +430,7 @@ class CrossBasicColoring {
   bool mirrorVerticalLeftRight() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
-        _cross.cross[j][5 - i] = _cross.cross[j][i];
+        _shape.grid[j][5 - i] = _shape.grid[j][i];
       }
     }
 
@@ -441,7 +445,7 @@ class CrossBasicColoring {
   bool mirrorVerticalRightLeft() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
-        _cross.cross[j][5 - i] = _cross.cross[j][i];
+        _shape.grid[j][5 - i] = _shape.grid[j][i];
       }
     }
 
@@ -453,7 +457,7 @@ class CrossBasicColoring {
   /// Returns:
   ///   If mirroring succeeded
   bool mirrorCellVertical() {
-    final int toMirror = _cross.cross[move.row][move.column];
+    final int toMirror = _shape.grid[move.row][move.column];
     move.toPosition(move.row, 5 - move.column);
 
     return color(toMirror);
@@ -464,7 +468,7 @@ class CrossBasicColoring {
   /// Returns:
   ///   If mirroring succeeded
   bool mirrorCellHorizontal() {
-    final int toMirror = _cross.cross[move.row][move.column];
+    final int toMirror = _shape.grid[move.row][move.column];
     move.toPosition(5 - move.row, move.column);
 
     return color(toMirror);
@@ -477,11 +481,11 @@ class CrossBasicColoring {
   ///
   /// Returns:
   ///   A boolean value.
-  bool joinCrosses(Cross cross) {
+  bool joinBoards(BasicShape shape) {
     for (int i = 0; i < 6; i++) {
       for (int j = 0; j < 6; j++) {
-        if (cross.cross[i][j] != 0) {
-          _cross.cross[i][j] = cross.cross[i][j];
+        if (shape.grid[i][j] != 0) {
+          _shape.grid[i][j] = shape.grid[i][j];
         }
       }
     }

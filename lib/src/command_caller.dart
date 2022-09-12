@@ -54,7 +54,7 @@ class CommandCaller {
   };
 
   /// It's creating a new instance of the `CrossColoring` class.
-  CrossColoring board = CrossColoring();
+  Coloring board = Coloring();
 
   /// If the name of the function is in the _coloring map, call the function and
   /// return the result

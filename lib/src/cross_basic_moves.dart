@@ -1,5 +1,8 @@
 /// > A class that contains the basic moves of the CAT
 class CrossBasicMoves {
+  /// A constructor that receives a function as a parameter.
+  CrossBasicMoves(this.validatePosition);
+
   int _column = 0;
   int _row = 3;
 
@@ -9,6 +12,9 @@ class CrossBasicMoves {
   int get column => _column;
 
   int get row => _row;
+
+  /// A function that receives two parameters and returns a boolean.
+  Function(int, int) validatePosition;
 
   /// Change position in diagonal down left position by [n] cells.
   ///
@@ -280,24 +286,24 @@ class CrossBasicMoves {
     // return false;
   }
 
-  /// Validate [row, column] position.
-  /// ```dart
-  /// validatePosition(0,0);
-  /// validatePosition(2,3);
-  /// validatePosition(6,7);
-  /// ...
-  /// ```
-  static bool validatePosition(int row, int column) {
-    if (row > 5 || row < 0 || column > 5 || column < 0) {
-      return false;
-    }
-
-    if ((row < 2 || row > 3) && (column < 2 || column > 3)) {
-      return false;
-    }
-
-    return true;
-  }
+  // /// Validate [row, column] position.
+  // /// ```dart
+  // /// validatePosition(0,0);
+  // /// validatePosition(2,3);
+  // /// validatePosition(6,7);
+  // /// ...
+  // /// ```
+  // static bool validatePosition(int row, int column) {
+  //   if (row > 5 || row < 0 || column > 5 || column < 0) {
+  //     return false;
+  //   }
+  //
+  //   if ((row < 2 || row > 3) && (column < 2 || column > 3)) {
+  //     return false;
+  //   }
+  //
+  //   return true;
+  // }
 
   bool _alternativePosition(int val, bool axis) {
     if (axis) {

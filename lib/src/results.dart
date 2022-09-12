@@ -1,11 +1,12 @@
 import "package:dartx/dartx.dart";
-import "package:interpreter/src/cross.dart";
+import 'package:interpreter/src/models/basic_shape.dart';
+import 'package:interpreter/src/models/cross.dart';
 
 /// It's a class that stores the results of the execution
 class Results {
   /// It's creating a list of type `Cross` and assigning it to the variable
   /// `_states`.
-  final List<Cross> _states = <Cross>[
+  final List<BasicShape> _states = <BasicShape>[
     Cross(),
   ];
 
@@ -25,7 +26,7 @@ class Results {
   bool completed = false;
 
   /// It's a getter that returns the past states of the board.
-  List<Cross> get getStates => _states;
+  List<BasicShape> get getStates => _states;
 
   /// It's a getter that returns the list of commands that were used to get to the
   /// current state.
@@ -41,7 +42,7 @@ class Results {
   ///   command (String): The command that was used to get to this state.
   ///   state (Cross): The state of the board after the command is executed.
   ///   position (Pair<int, int>): The position of the cell that was clicked.
-  void addResult(String command, Cross state, Pair<int, int> position) {
+  void addResult(String command, BasicShape state, Pair<int, int> position) {
     _states.add(state);
     _commands.add(command);
     _positions.add(position);

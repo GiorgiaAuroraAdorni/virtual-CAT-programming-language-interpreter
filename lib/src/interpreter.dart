@@ -1,7 +1,7 @@
 import "package:dartx/dartx.dart";
 import "package:interpreter/src/coloring/cross_coloring.dart";
 import "package:interpreter/src/command_caller.dart";
-import "package:interpreter/src/cross.dart";
+import "package:interpreter/src/models/cross.dart";
 import "package:interpreter/src/models/schemes.dart";
 import "package:interpreter/src/results.dart";
 import "package:interpreter/src/utils/colors.dart";
@@ -55,7 +55,7 @@ class CATInterpreter {
   Results get getResults => _results;
 
   /// A getter for the board.
-  CrossColoring get board => _commandCaller.board;
+  Coloring get board => _commandCaller.board;
 
   /// `reset()` is a function that resets the `_results` variable to a new
   /// instance of the `Results` class and resets the `commandCaller` variable
@@ -285,7 +285,7 @@ class CATInterpreter {
     );
     _parse(commands.join(","), false);
     _mirrorBoard(direction);
-    oldCaller.board.joinCrosses(_commandCaller.board.getCross);
+    oldCaller.board.joinBoards(_commandCaller.board.getCross);
     _commandCaller = oldCaller;
   }
 
