@@ -2,6 +2,7 @@ import 'dart:io';
 
 import "package:dartx/dartx.dart";
 import "package:interpreter/cat_interpreter.dart";
+import 'package:interpreter/src/models/basic_shape.dart';
 import 'package:path/path.dart';
 
 void main(List<String> arguments) {
@@ -33,7 +34,7 @@ void main(List<String> arguments) {
   Pair<Results, CatError> result = interpreter.validateOnScheme(command, 10);
 
   print(result.second);
-  List<Cross> states = result.first.getStates;
+  List<BasicShape> states = result.first.getStates;
   List<Pair<int, int>> positions = result.first.getPositions;
   for (final int i in 0.rangeTo(positions.length - 1)) {
     print(positions[i]);
