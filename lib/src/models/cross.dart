@@ -69,9 +69,10 @@ class Cross implements BasicShape {
   }
 
   /// Copy the cross by mapping each row to a new list containing the same elements.
+  @override
   Cross copy() => Cross.fromList(
     grid.map((List<int> e) => <int>[...e]).toList(),
-      );
+  );
 
   /// It prints the cross
   ///

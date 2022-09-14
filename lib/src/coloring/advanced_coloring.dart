@@ -1,5 +1,5 @@
 import "package:dartx/dartx.dart";
-import "package:interpreter/src/coloring/cross_basic_coloring.dart";
+import "package:interpreter/src/coloring/basic_coloring.dart";
 import "package:interpreter/src/models/cross.dart";
 
 /// It's a class that extends the BasicColoring class and adds a bunch of methods

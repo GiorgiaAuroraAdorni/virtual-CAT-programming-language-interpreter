@@ -1,5 +1,5 @@
 import "package:dartx/dartx.dart";
-import "package:interpreter/src/coloring/cross_coloring.dart";
+import "package:interpreter/src/coloring/advanced_coloring.dart";
 import "package:interpreter/src/command_caller.dart";
 import "package:interpreter/src/models/cross.dart";
 import "package:interpreter/src/models/schemes.dart";

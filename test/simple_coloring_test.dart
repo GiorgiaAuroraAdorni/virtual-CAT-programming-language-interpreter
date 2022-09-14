@@ -1,7 +1,7 @@
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
-import '../lib/src/coloring/cross_coloring.dart';
+import '../lib/src/coloring/advanced_coloring.dart';
 
 void main() {
   // test("Creation and toString", () {
