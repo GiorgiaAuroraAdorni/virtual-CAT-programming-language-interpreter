@@ -2,7 +2,8 @@
 /// yellow, and NaC.
 enum CatColors { white, green, red, blue, yellow, NaC }
 
-/// If the key is a valid color, return the color, otherwise return CatColors.NaC.
+/// If the key is a valid color, return the color,
+/// otherwise return CatColors.NaC.
 ///
 /// Args:
 ///   key (String): The key to search for.

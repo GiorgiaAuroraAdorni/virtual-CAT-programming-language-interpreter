@@ -1,4 +1,4 @@
-/// > A class that contains the basic moves of the CAT
+/// A class that contains the basic moves of the CAT
 class BasicMoves {
   /// A constructor that receives a function as a parameter.
   BasicMoves(this.validatePosition);
@@ -9,8 +9,10 @@ class BasicMoves {
   /// A flag that indicates if the CAT is in copy mode.
   bool copyMode = false;
 
+  /// A getter of the column position.
   int get column => _column;
 
+  /// A getter of the row position.
   int get row => _row;
 
   /// A function that receives two parameters and returns a boolean.
@@ -184,9 +186,7 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode ? _alternativePosition(newRow, true) : false;
-    // return _alternativePosition(newRow, true);
-    // return false;
+    return copyMode && _alternativePosition(newRow, true);
   }
 
   /// Change position left position by [n] cells.
@@ -209,9 +209,7 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode ? _alternativePosition(newColumn, false) : false;
-    // return _alternativePosition(newColumn, false);
-    // return false;
+    return copyMode && _alternativePosition(newColumn, false);
   }
 
   /// Change position right position by [n] cells.
@@ -234,9 +232,7 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode ? _alternativePosition(newColumn, false) : false;
-    // return _alternativePosition(newColumn, false);
-    // return false;
+    return copyMode && _alternativePosition(newColumn, false);
   }
 
   /// Move to an arbitrary position [row,column].
@@ -281,29 +277,8 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode ? _alternativePosition(newRow, true) : false;
-    // return _alternativePosition(newRow, true);
-    // return false;
+    return copyMode && _alternativePosition(newRow, true);
   }
-
-  // /// Validate [row, column] position.
-  // /// ```dart
-  // /// validatePosition(0,0);
-  // /// validatePosition(2,3);
-  // /// validatePosition(6,7);
-  // /// ...
-  // /// ```
-  // static bool validatePosition(int row, int column) {
-  //   if (row > 5 || row < 0 || column > 5 || column < 0) {
-  //     return false;
-  //   }
-  //
-  //   if ((row < 2 || row > 3) && (column < 2 || column > 3)) {
-  //     return false;
-  //   }
-  //
-  //   return true;
-  // }
 
   bool _alternativePosition(int val, bool axis) {
     if (axis) {

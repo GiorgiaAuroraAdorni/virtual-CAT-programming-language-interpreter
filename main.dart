@@ -1,10 +1,9 @@
-import 'dart:io';
+import "dart:io";
 
 import "package:dartx/dartx.dart";
 import "package:interpreter/cat_interpreter.dart";
-import 'package:interpreter/src/models/basic_shape.dart';
-import 'package:interpreter/src/utils/shape.dart';
-import 'package:path/path.dart';
+import "package:interpreter/src/models/basic_shape.dart";
+import "package:path/path.dart";
 
 void main(List<String> arguments) {
   final String pathToFile = join(

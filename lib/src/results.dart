@@ -1,6 +1,6 @@
 import "package:dartx/dartx.dart";
-import 'package:interpreter/src/models/basic_shape.dart';
-import 'package:interpreter/src/models/cross.dart';
+import "package:interpreter/src/models/basic_shape.dart";
+import "package:interpreter/src/models/cross.dart";
 
 /// It's a class that stores the results of the execution
 class Results {
@@ -16,8 +16,8 @@ class Results {
     "None",
   ];
 
-  /// It's creating a list of type `Pair<int, int>` and assigning it to the variable
-  /// `_positions`.
+  /// It's creating a list of type `Pair<int, int>`
+  /// and assigning it to the variable `_positions`.
   final List<Pair<int, int>> _positions = <Pair<int, int>>[
     const Pair<int, int>(3, 0),
   ];
@@ -28,12 +28,12 @@ class Results {
   /// It's a getter that returns the past states of the board.
   List<BasicShape> get getStates => _states;
 
-  /// It's a getter that returns the list of commands that were used to get to the
-  /// current state.
+  /// It's a getter that returns the list of commands
+  /// that were used to get to the current state.
   List<String> get getCommands => _commands;
 
-  /// It's a getter that returns the list of positions that were used to get to the
-  /// current state.
+  /// It's a getter that returns the list of positions
+  /// that were used to get to the current state.
   List<Pair<int, int>> get getPositions => _positions;
 
   /// It adds the current state, command, and position to the lists

@@ -2,10 +2,10 @@ import "package:dartx/dartx.dart";
 import "package:interpreter/src/coloring/basic_coloring.dart";
 import "package:interpreter/src/models/basic_shape.dart";
 
-/// It's a class that extends the BasicColoring class and adds a bunch of methods
-/// that color the cross in different ways
+/// It's a class that extends the BasicColoring class
+/// and adds a bunch of methods that color the cross in different ways
 class Coloring extends BasicColoring {
-  /// Creating a new instance of the CrossColoring class, which is a subclass of the
+  /// Creating a new instance of the Coloring class, which is a subclass of the
   /// Coloring class.
   Coloring(BasicShape shape) : super(shape);
 
@@ -545,8 +545,9 @@ class Coloring extends BasicColoring {
     );
   }
 
-  /// If the row is less than or equal to 2, then mirror the piece horizontally up
-  /// to down. Otherwise, mirror the piece horizontally down to up
+  /// If the row is less than or equal to 2,
+  /// then mirror the piece horizontally up to down.
+  /// Otherwise, mirror the piece horizontally down to up
   ///
   /// Returns:
   ///   A boolean value.
@@ -558,7 +559,8 @@ class Coloring extends BasicColoring {
     return mirrorHorizontalDownUp();
   }
 
-  /// If the column is less than or equal to 2, then mirror the piece left to right,
+  /// If the column is less than or equal to 2,
+  /// then mirror the piece left to right,
   /// otherwise mirror the piece right to left
   ///
   /// Returns:

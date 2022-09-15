@@ -2,14 +2,16 @@ import "package:dartx/dartx.dart";
 import "package:interpreter/src/basic_moves.dart";
 import "package:interpreter/src/models/basic_shape.dart";
 
-/// It's a class that allows you to color a cross
+/// It's a class that allows you to color a shape
 class BasicColoring {
-  /// Creating a new instance of the Cross class and assigning it to the _shape
-  /// variable.
+
+  /// Creating a constructor for the class BasicColoring.
   BasicColoring(BasicShape shape) : _shape = shape;
 
   final BasicShape _shape;
 
+  /// Creating a new instance of the BasicMoves class, and passing in the
+  /// validatePosition function as a parameter.
   late final BasicMoves move = BasicMoves(_shape.validatePosition);
 
   final int _defaultColor = 0;
@@ -31,8 +33,8 @@ class BasicColoring {
     return false;
   }
 
-  /// It takes a list of colors and an offset, and returns a new list of colors with
-  /// the offset applied
+  /// It takes a list of colors and an offset,
+  /// and returns a new list of colors with the offset applied
   ///
   /// Args:
   ///   colors (List<int>): A list of colors to be used in the gradient.

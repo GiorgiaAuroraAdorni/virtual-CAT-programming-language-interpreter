@@ -4,8 +4,8 @@ import "package:dartx/dartx.dart";
 /// numbers, and underscores.
 final RegExp _validCharacters = RegExp(r"^[a-zA-Z0-9_]+$");
 
-/// It splits a string into a list of strings, but it ignores commas and parentheses
-/// that are inside curly braces
+/// It splits a string into a list of strings,
+/// but it ignores commas and parentheses that are inside curly braces
 ///
 /// Args:
 ///   command (String): The command to be split.

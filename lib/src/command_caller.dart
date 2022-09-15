@@ -3,8 +3,9 @@ import "dart:core";
 import "package:interpreter/src/coloring/advanced_coloring.dart";
 import "package:interpreter/src/utils/shape.dart";
 
-/// It creates two lists of methods, one for the board and one for the move, and if
-/// the method name is in the list of methods, call the method
+/// It creates two lists of methods, one for the board and one for the move,
+/// and if the method name is in the list of methods,
+/// call the method.
 class CommandCaller {
   /// Basic constructor, specify the shape of the board.
   CommandCaller(this._shape);
@@ -96,12 +97,13 @@ class CommandCaller {
     return false;
   }
 
-  /// It takes a function name and a list of arguments, and calls the function with
-  /// the given arguments
+  /// It takes a function name and a list of arguments,
+  /// and calls the function with the given arguments.
   ///
   /// Args:
   ///   memberName (String): The name of the function to call.
-  ///   positionalArguments (List<dynamic>): The arguments passed to the function.
+  ///   positionalArguments (List<dynamic>):
+  ///     The arguments passed to the function.
   bool _callColorFunction(String memberName,
       List<dynamic> positionalArguments,) =>
       Function.apply(_coloring[memberName]!, positionalArguments);
@@ -111,7 +113,8 @@ class CommandCaller {
   ///
   /// Args:
   ///   memberName (String): The name of the function that was called.
-  ///   positionalArguments (List<dynamic>): The arguments passed to the function.
+  ///   positionalArguments (List<dynamic>):
+  ///     The arguments passed to the function.
   bool _callMoveFunction(String memberName,
       List<dynamic> positionalArguments,) =>
       Function.apply(_directions[memberName]!, positionalArguments);

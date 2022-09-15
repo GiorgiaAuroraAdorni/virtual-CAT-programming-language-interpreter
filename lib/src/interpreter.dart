@@ -7,7 +7,7 @@ import "package:interpreter/src/results.dart";
 import "package:interpreter/src/utils/colors.dart";
 import "package:interpreter/src/utils/errors.dart";
 import "package:interpreter/src/utils/helper.dart";
-import 'package:interpreter/src/utils/shape.dart';
+import "package:interpreter/src/utils/shape.dart";
 
 /// This class is a Dart
 /// interpreter for the CAT language.
@@ -24,6 +24,7 @@ class CATInterpreter {
   /// to the `schemes` variable.
   CATInterpreter.fromSchemes(this.schemes, this.shape);
 
+  /// Creating a class called Shape with a variable called shape.
   Shape shape;
 
   late CommandCaller _commandCaller = CommandCaller(shape);
@@ -87,12 +88,12 @@ class CATInterpreter {
 
   /// It takes a list of strings,
   /// splits the first string into a list of strings, tries to convert the first
-  /// string
-  /// into an integer, removes the first string from the list if it was an integer,
-  /// capitalizes the first letter of each string in the list, joins the list into a
-  /// string, and calls the move function of the command caller with the string and
-  /// a
-  /// list of integers
+  /// string into an integer,
+  /// removes the first string from the list if it was an integer,
+  /// capitalizes the first letter of each string in the list,
+  /// joins the list into a string,
+  /// and calls the move function of the command caller with the string and
+  /// a list of integers
   ///
   /// Args:
   ///   command (List<String>): The command that the user has entered.
@@ -134,8 +135,8 @@ class CATInterpreter {
     }
   }
 
-  /// It takes a list of strings, checks if the first string is a valid color, and
-  /// if it is, it calls the color function of the command caller
+  /// It takes a list of strings, checks if the first string is a valid color,
+  /// and if it is, it calls the color function of the command caller
   ///
   /// Args:
   ///   command (List<String>): The command that was passed in.
@@ -186,8 +187,9 @@ class CATInterpreter {
     _commandCaller.board.move.toPosition(row, column);
   }
 
-  /// It takes a list of commands, splits them by curly braces, and then executes
-  /// the first command for each of the second command's values
+  /// It takes a list of commands, splits them by curly braces,
+  /// and then executes the first command
+  /// for each of the second command's values.
   ///
   /// Args:
   ///   command (List<String>): The command that was passed in.
@@ -231,7 +233,8 @@ class CATInterpreter {
     }
   }
 
-  /// It takes a list of cells and a direction, and then it moves to each cell and
+  /// It takes a list of cells and a direction,
+  /// and then it moves to each cell and
   /// calls the appropriate mirror function
   ///
   /// Args:
@@ -271,9 +274,12 @@ class CATInterpreter {
     }
   }
 
-  /// It creates a new command caller, copies the board from the old command caller,
-  /// parses the commands, mirrors the board, and then joins the crosses from the
-  /// new board to the old board
+  /// It creates a new command caller,
+  /// copies the board from the old command caller,
+  /// parses the commands,
+  /// mirrors the board,
+  /// and then joins the crosses from the
+  /// new board to the old board.
   ///
   /// Args:
   ///   commands (List<String>): The list of commands to mirror.
@@ -292,9 +298,9 @@ class CATInterpreter {
     _commandCaller = oldCaller;
   }
 
-  /// If the command is a direction, mirror the board. If the command is a list of
-  /// cells, mirror those cells. If the command is a list of commands, mirror those
-  /// commands
+  /// If the command is a direction, mirror the board.
+  /// If the command is a list of cells, mirror those cells.
+  /// If the command is a list of commands, mirror those commands.
   ///
   /// Args:
   ///   command (List<String>): The command that was entered by the user.
@@ -330,7 +336,8 @@ class CATInterpreter {
   ///
   /// Args:
   ///   command (String): The command to be parsed.
-  ///   states (bool): If true, the command will be added to the command history.
+  ///   states (bool): If true,
+  ///     the command will be added to the command history.
   /// Defaults to true
   void _parse(String command, [bool states = true]) {
     final List<String> commands = splitCommands(command);
@@ -342,8 +349,8 @@ class CATInterpreter {
   }
 
   /// If the first element of the list is a valid color, then call the `color`
-  /// function of the `commandCaller` object with the `fillEmpty` command and the
-  /// index of the color
+  /// function of the `commandCaller` object with the `fillEmpty` command
+  /// and the index of the color.
   ///
   /// Args:
   ///   el (List<String>): The list of arguments passed to the command.
@@ -367,7 +374,8 @@ class CATInterpreter {
   /// Args:
   ///   commands (List<String>): The list of commands that were parsed.
   ///   parsed (List<List<String>>): The parsed commands.
-  ///   states (bool): If true, the results of each command will be saved in a list.
+  ///   states (bool): If true,
+  ///     the results of each command will be saved in a list.
   /// Defaults to true
   void _execute(
     List<String> commands,

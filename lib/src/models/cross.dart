@@ -68,7 +68,8 @@ class Cross implements BasicShape {
     return true;
   }
 
-  /// Copy the cross by mapping each row to a new list containing the same elements.
+  /// Copy the cross by mapping each row to a new list
+  /// containing the same elements.
   @override
   Cross copy() => Cross.fromList(
     grid.map((List<int> e) => <int>[...e]).toList(),

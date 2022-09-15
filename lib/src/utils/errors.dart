@@ -1,4 +1,5 @@
-/// Creating an enumeration of all the possible errors that can occur in the game.
+/// Creating an enumeration of all the possible errors
+/// that can occur in the game.
 enum CatError {
   invalidPosition,
   invalidMove,
