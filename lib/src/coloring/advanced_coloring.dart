@@ -1,13 +1,13 @@
 import "package:dartx/dartx.dart";
 import "package:interpreter/src/coloring/basic_coloring.dart";
-import "package:interpreter/src/models/cross.dart";
+import "package:interpreter/src/models/basic_shape.dart";
 
 /// It's a class that extends the BasicColoring class and adds a bunch of methods
 /// that color the cross in different ways
 class Coloring extends BasicColoring {
   /// Creating a new instance of the CrossColoring class, which is a subclass of the
   /// Coloring class.
-  Coloring() : super(Cross());
+  Coloring(BasicShape shape) : super(shape);
 
   /// Color with an L shape with direction down left from a starting position
   ///

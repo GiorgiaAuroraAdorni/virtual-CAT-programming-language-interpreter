@@ -2,6 +2,7 @@ import "package:test/expect.dart";
 import "package:test/scaffolding.dart";
 
 import "../lib/src/coloring/advanced_coloring.dart";
+import "../lib/src/utils/shape.dart";
 
 void main() {
   lRightDown();
@@ -24,7 +25,7 @@ void main() {
 
 void lDownLeft() {
   test("Color L down left from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lDownLeft([1]), isFalse);
     expect(
       board.getBoard,
@@ -41,7 +42,7 @@ void lDownLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L down left from position 0 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownLeft([1]), isTrue);
     expect(
@@ -59,7 +60,7 @@ void lDownLeft() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 2 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(2, 2), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -77,7 +78,7 @@ void lDownLeft() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 0 2 alternating colors", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownLeft([1, 2]), isTrue);
     expect(
@@ -95,7 +96,7 @@ void lDownLeft() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 5 3", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(5, 3), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -113,7 +114,7 @@ void lDownLeft() {
     expect(board.move.row, equals(5));
   });
   test("Color L down left from position 5 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -131,7 +132,7 @@ void lDownLeft() {
     expect(board.move.row, equals(5));
   });
   test("Color L down left from position 4 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(4, 2), isTrue);
     expect(board.lDownLeft([1]), isFalse);
     expect(
@@ -152,7 +153,7 @@ void lDownLeft() {
 
 void lDownRight() {
   test("Color L down right from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lDownRight([1]), isFalse);
     expect(
       board.getBoard,
@@ -169,7 +170,7 @@ void lDownRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L down left from position 0 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownRight([1]), isTrue);
     expect(
@@ -187,7 +188,7 @@ void lDownRight() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 2 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(2, 2), isTrue);
     expect(board.lDownRight([1]), isFalse);
     expect(
@@ -205,7 +206,7 @@ void lDownRight() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 0 2 alternating colors", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(0, 2), isTrue);
     expect(board.lDownRight([1, 2]), isTrue);
     expect(
@@ -223,7 +224,7 @@ void lDownRight() {
     expect(board.move.row, equals(2));
   });
   test("Color L down left from position 3 0", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(3, 0), isTrue);
     expect(board.lDownRight([1]), isFalse);
     expect(
@@ -244,7 +245,7 @@ void lDownRight() {
 
 void lLeftDown() {
   test("Color L left down from position 5 3", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(5), isTrue);
     expect(board.lLeftDown([1]), isTrue);
     expect(
@@ -262,7 +263,7 @@ void lLeftDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L left down from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lLeftDown([1]), isFalse);
     expect(
       board.getBoard,
@@ -279,7 +280,7 @@ void lLeftDown() {
     expect(board.move.row, equals(3));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(5), isTrue);
     expect(board.lLeftDown([1, 2]), isTrue);
     expect(
@@ -297,7 +298,7 @@ void lLeftDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(3), isTrue);
     expect(board.lLeftDown([1, 2]), isFalse);
     expect(
@@ -318,7 +319,7 @@ void lLeftDown() {
 
 void lLeftUp() {
   test("Color L left up from position 5 3", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(5), isTrue);
     expect(board.lLeftUp([1]), isTrue);
     expect(
@@ -336,7 +337,7 @@ void lLeftUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L left down from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lLeftUp([1]), isFalse);
     expect(
       board.getBoard,
@@ -353,7 +354,7 @@ void lLeftUp() {
     expect(board.move.row, equals(3));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(5), isTrue);
     expect(board.lLeftUp([1, 2]), isTrue);
     expect(
@@ -371,7 +372,7 @@ void lLeftUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L left down from position 5 3 alternating", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(3), isTrue);
     expect(board.lLeftUp([1, 2]), isFalse);
     expect(
@@ -392,7 +393,7 @@ void lLeftUp() {
 
 void lRightDown() {
   test("Color L right down from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lRightDown([1]), isTrue);
     expect(
       board.getBoard,
@@ -409,7 +410,7 @@ void lRightDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L right down from starting position alternating", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lRightDown([1, 2]), isTrue);
     expect(
       board.getBoard,
@@ -426,7 +427,7 @@ void lRightDown() {
     expect(board.move.row, equals(5));
   });
   test("Color L right down from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(2), isTrue);
     expect(board.lRightDown([1]), isFalse);
     expect(
@@ -447,7 +448,7 @@ void lRightDown() {
 
 void lRightUp() {
   test("Color L right up from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lRightUp([1]), isTrue);
     expect(
       board.getBoard,
@@ -464,7 +465,7 @@ void lRightUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L right up from starting position alternating", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lRightUp([1, 2]), isTrue);
     expect(
       board.getBoard,
@@ -481,7 +482,7 @@ void lRightUp() {
     expect(board.move.row, equals(1));
   });
   test("Color L right up from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(2), isTrue);
     expect(board.lRightUp([1]), isFalse);
     expect(
@@ -502,7 +503,7 @@ void lRightUp() {
 
 void lUpLeft() {
   test("Color L up left from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lUpLeft([1]), isFalse);
     expect(
       board.getBoard,
@@ -519,7 +520,7 @@ void lUpLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L up left from position 5 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpLeft([1]), isTrue);
     expect(
@@ -537,7 +538,7 @@ void lUpLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L up left from position 3 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(3, 2), isTrue);
     expect(board.lUpLeft([1]), isFalse);
     expect(
@@ -555,7 +556,7 @@ void lUpLeft() {
     expect(board.move.row, equals(3));
   });
   test("Color L up left from position 5 2 alternated colors", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpLeft([1, 2]), isTrue);
     expect(
@@ -576,7 +577,7 @@ void lUpLeft() {
 
 void lUpRight() {
   test("Color L up right from starting position", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.lUpRight([1]), isFalse);
     expect(
       board.getBoard,
@@ -593,7 +594,7 @@ void lUpRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L up right from position 5 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpRight([1]), isTrue);
     expect(
@@ -611,7 +612,7 @@ void lUpRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L up right from position 3 2", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(3, 2), isTrue);
     expect(board.lUpRight([1]), isFalse);
     expect(
@@ -629,7 +630,7 @@ void lUpRight() {
     expect(board.move.row, equals(3));
   });
   test("Color L up right from position 5 2 alternated colors", () {
-    Coloring board = Coloring();
+    Coloring board = Coloring(Shape.cross.build);
     expect(board.move.toPosition(5, 2), isTrue);
     expect(board.lUpRight([1, 2]), isTrue);
     expect(
@@ -651,7 +652,7 @@ void lUpRight() {
 void zigzagRightUpDown() {
   group("zig-zag left up down", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagRightUpDown([1]), isTrue);
       expect(
         board.getBoard,
@@ -666,7 +667,7 @@ void zigzagRightUpDown() {
       );
     });
     test("starting position 3 point", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagRightUpDown([1], 3), isTrue);
       expect(
         board.getBoard,
@@ -681,7 +682,7 @@ void zigzagRightUpDown() {
       );
     });
     test("starting position 2 point", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagRightUpDown([1], 2), isFalse);
       expect(
         board.getBoard,
@@ -696,7 +697,7 @@ void zigzagRightUpDown() {
       );
     });
     test("starting position alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagRightUpDown([1, 2]), isTrue);
       expect(
         board.getBoard,
@@ -711,7 +712,7 @@ void zigzagRightUpDown() {
       );
     });
     test("position 3 1", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 1), isTrue);
       expect(board.zigzagRightUpDown([1]), isTrue);
       expect(
@@ -727,7 +728,7 @@ void zigzagRightUpDown() {
       );
     });
     test("position 3 1 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 1), isTrue);
       expect(board.zigzagRightUpDown([1, 2]), isTrue);
       expect(
@@ -743,7 +744,7 @@ void zigzagRightUpDown() {
       );
     });
     test("position 1 2", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 2), isTrue);
       expect(board.zigzagRightUpDown([1]), isFalse);
       expect(
@@ -759,7 +760,7 @@ void zigzagRightUpDown() {
       );
     });
     test("position 3 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 3), isTrue);
       expect(board.zigzagRightUpDown([1]), isTrue);
       expect(
@@ -775,7 +776,7 @@ void zigzagRightUpDown() {
       );
     });
     test("position 3 2 points 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 2), isTrue);
       expect(board.zigzagRightUpDown([1], 4), isTrue);
       expect(
@@ -791,7 +792,7 @@ void zigzagRightUpDown() {
       );
     });
     test("position 3 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 4), isTrue);
       expect(board.zigzagRightUpDown([1]), isTrue);
       expect(
@@ -807,7 +808,7 @@ void zigzagRightUpDown() {
       );
     });
     test("position 5 2", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(5, 2), isTrue);
       expect(board.zigzagRightUpDown([1]), isFalse);
       expect(
@@ -828,7 +829,7 @@ void zigzagRightUpDown() {
 void zigzagDownRightLeft() {
   group("zig-zag down right left", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagDownRightLeft([1]), isFalse);
       expect(
         board.getBoard,
@@ -843,7 +844,7 @@ void zigzagDownRightLeft() {
       );
     });
     test("position 0 2", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(0, 2), isTrue);
       expect(board.zigzagDownRightLeft([1]), isTrue);
       expect(
@@ -859,7 +860,7 @@ void zigzagDownRightLeft() {
       );
     });
     test("position 0 2 cells 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(0, 2), isTrue);
       expect(board.zigzagDownRightLeft([1], 4), isTrue);
       expect(
@@ -875,7 +876,7 @@ void zigzagDownRightLeft() {
       );
     });
     test("position 0 2 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(0, 2), isTrue);
       expect(board.zigzagDownRightLeft([1, 2]), isTrue);
       expect(
@@ -891,7 +892,7 @@ void zigzagDownRightLeft() {
       );
     });
     test("position 1 2", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 2), isTrue);
       expect(board.zigzagDownRightLeft([1]), isTrue);
       expect(
@@ -907,7 +908,7 @@ void zigzagDownRightLeft() {
       );
     });
     test("position 1 2 cells 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 2), isTrue);
       expect(board.zigzagDownRightLeft([1], 3), isTrue);
       expect(
@@ -923,7 +924,7 @@ void zigzagDownRightLeft() {
       );
     });
     test("position 1 2 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 2), isTrue);
       expect(board.zigzagDownRightLeft([1, 2]), isTrue);
       expect(
@@ -939,7 +940,7 @@ void zigzagDownRightLeft() {
       );
     });
     test("position 4 2 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 2), isTrue);
       expect(board.zigzagDownRightLeft([1, 2]), isTrue);
       expect(
@@ -960,7 +961,7 @@ void zigzagDownRightLeft() {
 void zigzagDownLeftRight() {
   group("zig-zag down left right", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagDownLeftRight([1]), isFalse);
       expect(
         board.getBoard,
@@ -975,7 +976,7 @@ void zigzagDownLeftRight() {
       );
     });
     test("position 0 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(0, 3), isTrue);
       expect(board.zigzagDownLeftRight([1]), isTrue);
       expect(
@@ -991,7 +992,7 @@ void zigzagDownLeftRight() {
       );
     });
     test("position 0 3 cells 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(0, 3), isTrue);
       expect(board.zigzagDownLeftRight([1], 4), isTrue);
       expect(
@@ -1007,7 +1008,7 @@ void zigzagDownLeftRight() {
       );
     });
     test("position 0 3 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(0, 3), isTrue);
       expect(board.zigzagDownLeftRight([1, 2]), isTrue);
       expect(
@@ -1023,7 +1024,7 @@ void zigzagDownLeftRight() {
       );
     });
     test("position 1 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 3), isTrue);
       expect(board.zigzagDownLeftRight([1]), isTrue);
       expect(
@@ -1039,7 +1040,7 @@ void zigzagDownLeftRight() {
       );
     });
     test("position 1 3 cells 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 3), isTrue);
       expect(board.zigzagDownLeftRight([1], 3), isTrue);
       expect(
@@ -1055,7 +1056,7 @@ void zigzagDownLeftRight() {
       );
     });
     test("position 1 3 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 3), isTrue);
       expect(board.zigzagDownLeftRight([1, 2]), isTrue);
       expect(
@@ -1071,7 +1072,7 @@ void zigzagDownLeftRight() {
       );
     });
     test("position 4 3 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 3), isTrue);
       expect(board.zigzagDownLeftRight([1, 2]), isTrue);
       expect(
@@ -1092,7 +1093,7 @@ void zigzagDownLeftRight() {
 void zigzagRightDownUp() {
   group("zig-zag right down up", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagRightDownUp([1]), isFalse);
       expect(
         board.getBoard,
@@ -1107,7 +1108,7 @@ void zigzagRightDownUp() {
       );
     });
     test("position 2 0", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 0), isTrue);
       expect(board.zigzagRightDownUp([1]), isTrue);
       expect(
@@ -1123,7 +1124,7 @@ void zigzagRightDownUp() {
       );
     });
     test("position 2 0 cells 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 0), isTrue);
       expect(board.zigzagRightDownUp([1], 4), isTrue);
       expect(
@@ -1139,7 +1140,7 @@ void zigzagRightDownUp() {
       );
     });
     test("position 2 0 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 0), isTrue);
       expect(board.zigzagRightDownUp([1, 2]), isTrue);
       expect(
@@ -1155,7 +1156,7 @@ void zigzagRightDownUp() {
       );
     });
     test("position 2 1", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 1), isTrue);
       expect(board.zigzagRightDownUp([1]), isTrue);
       expect(
@@ -1171,7 +1172,7 @@ void zigzagRightDownUp() {
       );
     });
     test("position 2 1 cells 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 1), isTrue);
       expect(board.zigzagRightDownUp([1], 3), isTrue);
       expect(
@@ -1187,7 +1188,7 @@ void zigzagRightDownUp() {
       );
     });
     test("position 2 1 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 1), isTrue);
       expect(board.zigzagRightDownUp([1, 2]), isTrue);
       expect(
@@ -1203,7 +1204,7 @@ void zigzagRightDownUp() {
       );
     });
     test("position 2 4 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 4), isTrue);
       expect(board.zigzagRightDownUp([1, 2]), isTrue);
       expect(
@@ -1224,7 +1225,7 @@ void zigzagRightDownUp() {
 void zigzagLeftUpDown() {
   group("zig-zag left up down", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagLeftUpDown([1]), isTrue);
       expect(
         board.getBoard,
@@ -1239,7 +1240,7 @@ void zigzagLeftUpDown() {
       );
     });
     test("position 3 5", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 5), isTrue);
       expect(board.zigzagLeftUpDown([1]), isTrue);
       expect(
@@ -1255,7 +1256,7 @@ void zigzagLeftUpDown() {
       );
     });
     test("position 3 5 cells 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 5), isTrue);
       expect(board.zigzagLeftUpDown([1], 4), isTrue);
       expect(
@@ -1271,7 +1272,7 @@ void zigzagLeftUpDown() {
       );
     });
     test("position 3 5 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 5), isTrue);
       expect(board.zigzagLeftUpDown([1, 2]), isTrue);
       expect(
@@ -1287,7 +1288,7 @@ void zigzagLeftUpDown() {
       );
     });
     test("position 3 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 4), isTrue);
       expect(board.zigzagLeftUpDown([1]), isTrue);
       expect(
@@ -1303,7 +1304,7 @@ void zigzagLeftUpDown() {
       );
     });
     test("position 3 4 cells 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 4), isTrue);
       expect(board.zigzagLeftUpDown([1], 3), isTrue);
       expect(
@@ -1319,7 +1320,7 @@ void zigzagLeftUpDown() {
       );
     });
     test("position 3 4 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 4), isTrue);
       expect(board.zigzagLeftUpDown([1, 2]), isTrue);
       expect(
@@ -1335,7 +1336,7 @@ void zigzagLeftUpDown() {
       );
     });
     test("position 3 2 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(3, 1), isTrue);
       expect(board.zigzagLeftUpDown([1, 2]), isTrue);
       expect(
@@ -1356,7 +1357,7 @@ void zigzagLeftUpDown() {
 void zigzagLeftDownUp() {
   group("zig-zag left down up", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagLeftDownUp([1]), isFalse);
       expect(
         board.getBoard,
@@ -1371,7 +1372,7 @@ void zigzagLeftDownUp() {
       );
     });
     test("position 2 5", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 5), isTrue);
       expect(board.zigzagLeftDownUp([1]), isTrue);
       expect(
@@ -1387,7 +1388,7 @@ void zigzagLeftDownUp() {
       );
     });
     test("position 2 5 cells 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 5), isTrue);
       expect(board.zigzagLeftDownUp([1], 4), isTrue);
       expect(
@@ -1403,7 +1404,7 @@ void zigzagLeftDownUp() {
       );
     });
     test("position 2 5 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 5), isTrue);
       expect(board.zigzagLeftDownUp([1, 2]), isTrue);
       expect(
@@ -1419,7 +1420,7 @@ void zigzagLeftDownUp() {
       );
     });
     test("position 2 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 4), isTrue);
       expect(board.zigzagLeftDownUp([1]), isTrue);
       expect(
@@ -1435,7 +1436,7 @@ void zigzagLeftDownUp() {
       );
     });
     test("position 2 4 cells 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 4), isTrue);
       expect(board.zigzagLeftDownUp([1], 3), isTrue);
       expect(
@@ -1451,7 +1452,7 @@ void zigzagLeftDownUp() {
       );
     });
     test("position 2 4 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 4), isTrue);
       expect(board.zigzagLeftDownUp([1, 2]), isTrue);
       expect(
@@ -1467,7 +1468,7 @@ void zigzagLeftDownUp() {
       );
     });
     test("position 2 1 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(2, 1), isTrue);
       expect(board.zigzagLeftDownUp([1, 2]), isTrue);
       expect(
@@ -1488,7 +1489,7 @@ void zigzagLeftDownUp() {
 void zigzagUpLeftRight() {
   group("zig-zag up left right", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagUpLeftRight([1]), isFalse);
       expect(
         board.getBoard,
@@ -1503,7 +1504,7 @@ void zigzagUpLeftRight() {
       );
     });
     test("position 5 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(5, 3), isTrue);
       expect(board.zigzagUpLeftRight([1]), isTrue);
       expect(
@@ -1519,7 +1520,7 @@ void zigzagUpLeftRight() {
       );
     });
     test("position 5 3 cells 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(5, 3), isTrue);
       expect(board.zigzagUpLeftRight([1], 4), isTrue);
       expect(
@@ -1535,7 +1536,7 @@ void zigzagUpLeftRight() {
       );
     });
     test("position 5 3 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(5, 3), isTrue);
       expect(board.zigzagUpLeftRight([1, 2]), isTrue);
       expect(
@@ -1551,7 +1552,7 @@ void zigzagUpLeftRight() {
       );
     });
     test("position 4 2", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 3), isTrue);
       expect(board.zigzagUpLeftRight([1]), isTrue);
       expect(
@@ -1567,7 +1568,7 @@ void zigzagUpLeftRight() {
       );
     });
     test("position 4 3 cells 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 3), isTrue);
       expect(board.zigzagUpLeftRight([1], 3), isTrue);
       expect(
@@ -1583,7 +1584,7 @@ void zigzagUpLeftRight() {
       );
     });
     test("position 4 3 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 3), isTrue);
       expect(board.zigzagUpLeftRight([1, 2]), isTrue);
       expect(
@@ -1599,7 +1600,7 @@ void zigzagUpLeftRight() {
       );
     });
     test("position 1 3 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 3), isTrue);
       expect(board.zigzagUpLeftRight([1, 2]), isTrue);
       expect(
@@ -1620,7 +1621,7 @@ void zigzagUpLeftRight() {
 void zigzagUpRightLeft() {
   group("zig-zag up left right", () {
     test("starting position", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.zigzagUpRightLeft([1]), isFalse);
       expect(
         board.getBoard,
@@ -1635,7 +1636,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 5 2", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(5, 2), isTrue);
       expect(board.zigzagUpRightLeft([1]), isTrue);
       expect(
@@ -1651,7 +1652,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 5 2 cells 4", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(5, 2), isTrue);
       expect(board.zigzagUpRightLeft([1], 4), isTrue);
       expect(
@@ -1667,7 +1668,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 5 2 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(5, 2), isTrue);
       expect(board.zigzagUpRightLeft([1, 2]), isTrue);
       expect(
@@ -1683,7 +1684,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 4 2", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 2), isTrue);
       expect(board.zigzagUpRightLeft([1]), isTrue);
       expect(
@@ -1699,7 +1700,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 4 2 cells 3", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 2), isTrue);
       expect(board.zigzagUpRightLeft([1], 3), isTrue);
       expect(
@@ -1715,7 +1716,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 4 2 alternating", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(4, 2), isTrue);
       expect(board.zigzagUpRightLeft([1, 2]), isTrue);
       expect(
@@ -1731,7 +1732,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 1 2 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 2), isTrue);
       expect(board.zigzagUpRightLeft([1, 2]), isTrue);
       expect(
@@ -1747,7 +1748,7 @@ void zigzagUpRightLeft() {
       );
     });
     test("position 1 2 to short", () {
-      Coloring board = Coloring();
+      Coloring board = Coloring(Shape.cross.build);
       expect(board.move.toPosition(1, 2), isTrue);
       expect(board.zigzagUpRightLeft([1, 2, 3]), isTrue);
       expect(

@@ -1,6 +1,7 @@
 import 'package:dartx/dartx.dart';
 import "package:interpreter/cat_interpreter.dart";
 import "package:interpreter/src/utils/errors.dart";
+import "package:interpreter/src/utils/shape.dart";
 import "package:test/expect.dart";
 import "package:test/scaffolding.dart";
 
@@ -21,14 +22,15 @@ void base_interpreter() {
 
   test("base interpreter", () {
     var schemes = schemesFromJson(json);
-    final CATInterpreter interpreter1 = CATInterpreter(json);
-    final CATInterpreter interpreter2 = CATInterpreter.fromSchemes(schemes);
+    final CATInterpreter interpreter1 = CATInterpreter(json, Shape.cross);
+    final CATInterpreter interpreter2 =
+        CATInterpreter.fromSchemes(schemes, Shape.cross);
     expect(interpreter1.schemes.getData[1] == interpreter2.schemes.getData[1],
         isTrue);
   });
   test("cross as string interpreter", () {
     var schemes = schemesFromJson(json);
-    final CATInterpreter interpreter = CATInterpreter(json);
+    final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
     var results = interpreter.validateOnScheme("FILL_EMPTY(blue)", 1);
     expect(results.first.completed, isTrue);
     expect(results.first.getStates.length, equals(2));
@@ -43,7 +45,7 @@ void schema_1() {
   group("Schema 1 algorithms", () {
     const json =
         '{"data":[{"index":1,"array":[[0,0,3,3,0,0],[0,0,3,3,0,0],[3,3,3,3,3,3],[3,3,3,3,3,3],[0,0,3,3,0,0],[0,0,3,3,0,0]]}]}';
-    final CATInterpreter interpreter = CATInterpreter(json);
+    final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
     test("1", () {
       interpreter.reset();
       expect(interpreter.getResults.getStates.length, equals(1));
@@ -93,7 +95,7 @@ void schema_2() {
   group("Schema 2 algorithms", () {
     const json =
         '{"data":[{"index":2,"array":[[0,0,3,4,0,0],[0,0,3,4,0,0],[3,3,3,4,4,4],[3,3,3,4,4,4],[0,0,3,4,0,0],[0,0,3,4,0,0]]}]}';
-    final CATInterpreter interpreter = CATInterpreter(json);
+    final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
     test("1", () {
       interpreter.reset();
       expect(interpreter.getResults.getStates.length, equals(1));
@@ -179,7 +181,7 @@ void schema_3() {
   group("Schema 3 algorithms", () {
     const json =
         '{"data":[{"index":3,"array":[[0,0,4,2,0,0],[0,0,4,2,0,0],[4,2,4,2,4,2],[4,2,4,2,4,2],[0,0,4,2,0,0],[0,0,4,2,0,0]]}]}';
-    final CATInterpreter interpreter = CATInterpreter(json);
+    final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
     test("1", () {
       interpreter.reset();
       expect(interpreter.getResults.getStates.length, equals(1));
@@ -317,7 +319,7 @@ void schema_4() {
   group("Schema 4 algorithms", () {
     const json =
         '{"data":[{"index":4,"array":[[0,0,3,4,0,0],[0,0,3,4,0,0],[4,2,3,4,2,3],[4,2,3,4,2,3],[0,0,3,4,0,0],[0,0,3,4,0,0]]}]}';
-    final CATInterpreter interpreter = CATInterpreter(json);
+    final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
     test("1", () {
       interpreter.reset();
       expect(interpreter.getResults.getStates.length, equals(1));
@@ -430,7 +432,7 @@ void other_schemas() {
     test("1", () {
       const json =
           '{"data":[{"index":1,"array":[[0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0], [4, 2, 3, 3, 2, 4], [4, 2, 3, 3, 2, 4], [0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0]]}]}';
-      final CATInterpreter interpreter = CATInterpreter(json);
+      final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
       interpreter.reset();
       expect(interpreter.getResults.getStates.length, equals(1));
       expect(interpreter.getResults.getCommands.length, equals(1));
@@ -459,7 +461,7 @@ void other_schemas() {
     test("2", () {
       const json =
           '{"data":[{"index":1,"array":[[0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0], [4, 2, 3, 3, 2, 4], [4, 2, 3, 3, 2, 4], [0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0]]}]}';
-      final CATInterpreter interpreter = CATInterpreter(json);
+      final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
       interpreter.reset();
       expect(interpreter.getResults.getStates.length, equals(1));
       expect(interpreter.getResults.getCommands.length, equals(1));
@@ -492,7 +494,7 @@ void valid_patters() {
   group("Valid cases", () {
     const json =
         '{"data":[{"index":1,"array":[[0,0,3,3,0,0],[0,0,3,3,0,0],[3,3,3,3,3,3],[3,3,3,3,3,3],[0,0,3,3,0,0],[0,0,3,3,0,0]]}]}';
-    final CATInterpreter interpreter = CATInterpreter(json);
+    final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
     test("", () {
       interpreter.reset();
       var response = interpreter.validateOnScheme(
@@ -641,7 +643,7 @@ void not_valid() {
   group("Not valid cases", () {
     const json =
         '{"data":[{"index":1,"array":[[0,0,3,3,0,0],[0,0,3,3,0,0],[3,3,3,3,3,3],[3,3,3,3,3,3],[0,0,3,3,0,0],[0,0,3,3,0,0]]}]}';
-    final CATInterpreter interpreter = CATInterpreter(json);
+    final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
     test("Not valid cell position", () {
       interpreter.reset();
       expect(interpreter.getResults.getStates.length, equals(1));

@@ -15,6 +15,18 @@ class Square implements BasicShape {
     ];
   }
 
+  /// A constructor that creates a 6x6 matrix of zeros.
+  Square.base() {
+    grid = <List<int>>[
+      <int>[0, 0, 0, 0, 0, 0],
+      <int>[0, 0, 0, 0, 0, 0],
+      <int>[0, 0, 0, 0, 0, 0],
+      <int>[0, 0, 0, 0, 0, 0],
+      <int>[0, 0, 0, 0, 0, 0],
+      <int>[0, 0, 0, 0, 0, 0],
+    ];
+  }
+
   /// Construct cross from an existing 6x6 matrix.
   Square.fromList(this.grid);
 

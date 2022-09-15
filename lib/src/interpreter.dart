@@ -7,6 +7,7 @@ import "package:interpreter/src/results.dart";
 import "package:interpreter/src/utils/colors.dart";
 import "package:interpreter/src/utils/errors.dart";
 import "package:interpreter/src/utils/helper.dart";
+import 'package:interpreter/src/utils/shape.dart';
 
 /// This class is a Dart
 /// interpreter for the CAT language.
@@ -15,15 +16,17 @@ class CATInterpreter {
   ///
   /// Args:
   ///   json (String): The JSON string that you want to parse.
-  CATInterpreter(String json) {
+  CATInterpreter(String json, this.shape) {
     schemes = schemesFromJson(json);
   }
 
   /// A constructor that takes a `Schemes` object and assigns it
   /// to the `schemes` variable.
-  CATInterpreter.fromSchemes(this.schemes);
+  CATInterpreter.fromSchemes(this.schemes, this.shape);
 
-  CommandCaller _commandCaller = CommandCaller();
+  Shape shape;
+
+  late CommandCaller _commandCaller = CommandCaller(shape);
 
   /// A map that maps the letters of the rows to their index.
   final Map<String, int> _rows = <String, int>{
@@ -62,7 +65,7 @@ class CATInterpreter {
   /// to a new instance of the `CommandCaller` class
   void reset() {
     _results = Results();
-    _commandCaller = CommandCaller();
+    _commandCaller = CommandCaller(shape);
   }
 
   /// It takes a string of code, parses it, and then checks if the code is valid
@@ -276,7 +279,7 @@ class CATInterpreter {
   ///   commands (List<String>): The list of commands to mirror.
   ///   direction (String): The direction to mirror the board.
   void _mirrorCommands(List<String> commands, String direction) {
-    final CommandCaller newCaller = CommandCaller();
+    final CommandCaller newCaller = CommandCaller(shape);
     final CommandCaller oldCaller = _commandCaller;
     _commandCaller = newCaller;
     _commandCaller.board.move.toPosition(

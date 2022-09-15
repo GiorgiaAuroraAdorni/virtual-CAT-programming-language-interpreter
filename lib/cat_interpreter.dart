@@ -5,8 +5,9 @@
 library cat_interpreter;
 
 export "src/interpreter.dart" show CATInterpreter;
-export 'src/models/cross.dart' show Cross;
+export "src/models/cross.dart" show Cross;
 export "src/models/schemes.dart";
 export "src/results.dart" show Results;
 export "src/utils/errors.dart" show CatError;
 export "src/utils/helper.dart";
+export "src/utils/shape.dart" show Shape;

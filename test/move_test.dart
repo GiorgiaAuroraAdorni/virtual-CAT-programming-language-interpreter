@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import '../lib/src/cross_basic_moves.dart';
+import '../lib/src/basic_moves.dart';
 import '../lib/src/models/cross.dart';
 
 void main() {
@@ -21,7 +21,7 @@ void main() {
 void movementsInput() {
   group("Input to movements", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     test("up", () {
       expect(move.up(0), isFalse);
       expect(move.up(-1), isFalse);
@@ -60,7 +60,7 @@ void movementsInput() {
 void creation() {
   test('Move object', () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move, isNotNull);
     expect(move.column, equals(0));
     expect(move.row, equals(3));
@@ -70,7 +70,7 @@ void creation() {
 void coordinateMovement() {
   group("By coordinate movement", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     test('-1 -1 position', () {
       expect(move.toPosition(-1, -1), isFalse);
     });
@@ -243,21 +243,21 @@ void up() {
   group("Up movement", () {
     test('Move up from starting position', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.up(), isTrue);
       expect(move.column, equals(0));
       expect(move.row, equals(2));
     });
     test('Move up 2 from starting position', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.up(2), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
     });
     test('Move up out of the board', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.up(4), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
@@ -268,14 +268,14 @@ void up() {
 void down() {
   test('Move down from starting position', () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.down(), isFalse);
     expect(move.column, equals(0));
     expect(move.row, equals(3));
   });
   test('Move down 2 from 0 2', () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(0, 2), isTrue);
     expect(move.down(2), isTrue);
     expect(move.column, equals(2));
@@ -283,7 +283,7 @@ void down() {
   });
   test('Move down from 0 2', () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(0, 2), isTrue);
     expect(move.down(), isTrue);
     expect(move.column, equals(2));
@@ -291,7 +291,7 @@ void down() {
   });
   test('Move down from 3 5', () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(3, 5), isTrue);
     expect(move.down(), isFalse);
     expect(move.column, equals(5));
@@ -303,28 +303,28 @@ void right() {
   group("Move right", () {
     test('Move right from starting position', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.right(), isTrue);
       expect(move.column, equals(1));
       expect(move.row, equals(3));
     });
     test('Move right 2 from starting position', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.right(2), isTrue);
       expect(move.column, equals(2));
       expect(move.row, equals(3));
     });
     test('Move right out of the board', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.right(7), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
     });
     test('Move left from position 5 3', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(5, 3), isTrue);
       expect(move.right(), isFalse);
       expect(move.row, equals(5));
@@ -332,7 +332,7 @@ void right() {
     });
     test('Move left 2 from position 5 3', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(5, 3), isTrue);
       expect(move.right(2), isFalse);
       expect(move.row, equals(5));
@@ -340,7 +340,7 @@ void right() {
     });
     test('Move left from position 4 3', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(4, 3), isTrue);
       expect(move.right(), isFalse);
       expect(move.row, equals(4));
@@ -348,7 +348,7 @@ void right() {
     });
     test('Move left from position 0 3', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(0, 3), isTrue);
       expect(move.right(), isFalse);
       expect(move.row, equals(0));
@@ -356,7 +356,7 @@ void right() {
     });
     test('Move left 2 from position 1 2', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(1, 2), isTrue);
       expect(move.right(), isTrue);
       expect(move.row, equals(1));
@@ -369,14 +369,14 @@ void left() {
   group("Move left", () {
     test('Move left from starting position', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.left(), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
     });
     test('Move left from an other position starting position', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(2, 2), isTrue);
       expect(move.left(), isTrue);
       expect(move.column, equals(1));
@@ -384,7 +384,7 @@ void left() {
     });
     test('Move left from position 5 2', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(5, 2), isTrue);
       expect(move.left(), isFalse);
       expect(move.row, equals(5));
@@ -392,7 +392,7 @@ void left() {
     });
     test('Move left 2 from position 5 2', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(5, 2), isTrue);
       expect(move.left(2), isFalse);
       expect(move.row, equals(5));
@@ -400,7 +400,7 @@ void left() {
     });
     test('Move left from position 4 2', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(4, 2), isTrue);
       expect(move.left(), isFalse);
       expect(move.row, equals(4));
@@ -408,7 +408,7 @@ void left() {
     });
     test('Move left from position 0 2', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(0, 2), isTrue);
       expect(move.left(), isFalse);
       expect(move.row, equals(0));
@@ -416,7 +416,7 @@ void left() {
     });
     test('Move left 2 from position 0 2', () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.toPosition(0, 2), isTrue);
       expect(move.left(2), isFalse);
       expect(move.row, equals(0));
@@ -428,14 +428,14 @@ void left() {
 void diagonalUpRight() {
   test("Move in diagonal up right from starting position", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.diagonalUpRight(), isTrue);
     expect(move.column, equals(1));
     expect(move.row, equals(2));
   });
   test("Move in diagonal 0 2", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.up(), isTrue);
     expect(move.diagonalUpRight(), isTrue);
     expect(move.column, equals(2));
@@ -443,7 +443,7 @@ void diagonalUpRight() {
   });
   test("Move in diagonal up right from starting position by 2", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.diagonalUpRight(2), isTrue);
     expect(move.column, equals(2));
     expect(move.row, equals(1));
@@ -452,7 +452,7 @@ void diagonalUpRight() {
     "Move in diagonal up right from starting position outside of the board",
     () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.diagonalUpRight(5), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
@@ -465,7 +465,7 @@ void diagonalUpLeft() {
     "Move in diagonal up left from starting position outside of the board",
     () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.diagonalUpLeft(), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
@@ -473,7 +473,7 @@ void diagonalUpLeft() {
   );
   test("Move in diagonal up left from position 3 5", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(3, 5), isTrue);
     expect(move.column, equals(5));
     expect(move.row, equals(3));
@@ -483,7 +483,7 @@ void diagonalUpLeft() {
   });
   test("Move in diagonal up left from position 2 5", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(2, 5), isTrue);
     expect(move.diagonalUpLeft(), isTrue);
     expect(move.column, equals(3));
@@ -491,7 +491,7 @@ void diagonalUpLeft() {
   });
   test("Move in diagonal up left from position 3 5 by 2", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(3, 5), isTrue);
     expect(move.column, equals(5));
     expect(move.row, equals(3));
@@ -504,14 +504,14 @@ void diagonalUpLeft() {
 void diagonalDownRight() {
   test("Move in diagonal down right from starting position", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.diagonalDownRight(), isTrue);
     expect(move.column, equals(2));
     expect(move.row, equals(5));
   });
   test("Move in diagonal down right from position 0 2", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.up(), isTrue);
     expect(move.column, equals(0));
     expect(move.row, equals(2));
@@ -521,7 +521,7 @@ void diagonalDownRight() {
   });
   test("Move in diagonal down right from position 0 2 by 2", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.up(), isTrue);
     expect(move.column, equals(0));
     expect(move.row, equals(2));
@@ -534,7 +534,7 @@ void diagonalDownRight() {
     "Move in diagonal down right from starting position outside of the board",
     () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.diagonalDownRight(4), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
@@ -547,7 +547,7 @@ void diagonalDownLeft() {
     "Move in diagonal up left from starting position outside of the board",
     () {
       Cross cross = Cross();
-      CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+      BasicMoves move = BasicMoves(cross.validatePosition);
       expect(move.diagonalDownLeft(), isFalse);
       expect(move.column, equals(0));
       expect(move.row, equals(3));
@@ -555,7 +555,7 @@ void diagonalDownLeft() {
   );
   test("Move in diagonal up left from position 3 5", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(3, 5), isTrue);
     expect(move.column, equals(5));
     expect(move.row, equals(3));
@@ -565,7 +565,7 @@ void diagonalDownLeft() {
   });
   test("Move in diagonal up left from position 3 5 by 2", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(3, 5), isTrue);
     expect(move.column, equals(5));
     expect(move.row, equals(3));
@@ -578,18 +578,18 @@ void diagonalDownLeft() {
 void toString() {
   test("Default position", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toString(), equals('Row position: 3\nColumn position:0'));
   });
   test("Position 3 5", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(3, 5), isTrue);
     expect(move.toString(), equals('Row position: 3\nColumn position:5'));
   });
   test("Position 5 2", () {
     Cross cross = Cross();
-    CrossBasicMoves move = CrossBasicMoves(cross.validatePosition);
+    BasicMoves move = BasicMoves(cross.validatePosition);
     expect(move.toPosition(5, 2), isTrue);
     expect(move.toString(), equals('Row position: 5\nColumn position:2'));
   });

@@ -1,5 +1,5 @@
 import "package:dartx/dartx.dart";
-import "package:interpreter/src/cross_basic_moves.dart";
+import "package:interpreter/src/basic_moves.dart";
 import "package:interpreter/src/models/basic_shape.dart";
 
 /// It's a class that allows you to color a cross
@@ -10,7 +10,7 @@ class BasicColoring {
 
   final BasicShape _shape;
 
-  late final CrossBasicMoves move = CrossBasicMoves(_shape.validatePosition);
+  late final BasicMoves move = BasicMoves(_shape.validatePosition);
 
   final int _defaultColor = 0;
 

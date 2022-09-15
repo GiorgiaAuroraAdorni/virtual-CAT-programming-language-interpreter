@@ -1,10 +1,16 @@
 import "dart:core";
 
 import "package:interpreter/src/coloring/advanced_coloring.dart";
+import "package:interpreter/src/utils/shape.dart";
 
 /// It creates two lists of methods, one for the board and one for the move, and if
 /// the method name is in the list of methods, call the method
 class CommandCaller {
+  /// Basic constructor, specify the shape of the board.
+  CommandCaller(this._shape);
+
+  final Shape _shape;
+
   /// It's creating a map of functions that can be called by name.
   late final Map<String, Function> _directions = <String, Function>{
     "up": board.move.up,
@@ -53,8 +59,8 @@ class CommandCaller {
     "color": board.color,
   };
 
-  /// It's creating a new instance of the `CrossColoring` class.
-  Coloring board = Coloring();
+  /// It's creating a new instance of the `Coloring` class.
+  late Coloring board = Coloring(_shape.build);
 
   /// If the name of the function is in the _coloring map, call the function and
   /// return the result
@@ -96,10 +102,8 @@ class CommandCaller {
   /// Args:
   ///   memberName (String): The name of the function to call.
   ///   positionalArguments (List<dynamic>): The arguments passed to the function.
-  bool _callColorFunction(
-    String memberName,
-    List<dynamic> positionalArguments,
-  ) =>
+  bool _callColorFunction(String memberName,
+      List<dynamic> positionalArguments,) =>
       Function.apply(_coloring[memberName]!, positionalArguments);
 
   /// If the member name is a key in the _directions map, call the function
@@ -108,9 +112,7 @@ class CommandCaller {
   /// Args:
   ///   memberName (String): The name of the function that was called.
   ///   positionalArguments (List<dynamic>): The arguments passed to the function.
-  bool _callMoveFunction(
-    String memberName,
-    List<dynamic> positionalArguments,
-  ) =>
+  bool _callMoveFunction(String memberName,
+      List<dynamic> positionalArguments,) =>
       Function.apply(_directions[memberName]!, positionalArguments);
 }

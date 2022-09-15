@@ -1,7 +1,7 @@
 /// > A class that contains the basic moves of the CAT
-class CrossBasicMoves {
+class BasicMoves {
   /// A constructor that receives a function as a parameter.
-  CrossBasicMoves(this.validatePosition);
+  BasicMoves(this.validatePosition);
 
   int _column = 0;
   int _row = 3;
