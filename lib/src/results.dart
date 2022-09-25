@@ -60,9 +60,9 @@ class Results {
 
   int _partialCATScoreCalculator(){
     int score = 0;
-    for(String s in _commands){
+    for(int i = 1; i < _commands.length; i++){
       int lineScore = 0;
-      List<String> tokenized = splitCommand(s);
+      final List<String> tokenized = splitCommand(_commands[i]);
       switch (tokenized.first) {
         case "paint":
           lineScore = tokenized.length == 2 ? 0 : 1;
