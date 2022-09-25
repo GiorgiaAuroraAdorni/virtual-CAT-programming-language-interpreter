@@ -1,6 +1,5 @@
 import "package:dartx/dartx.dart";
-import "package:interpreter/src/models/basic_shape.dart";
-import "package:interpreter/src/models/cross.dart";
+import "package:interpreter/cat_interpreter.dart";
 
 /// It's a class that stores the results of the execution
 class Results {
@@ -36,6 +35,9 @@ class Results {
   /// that were used to get to the current state.
   List<Pair<int, int>> get getPositions => _positions;
 
+  /// CAT score value
+  int partialCatScore = 0;
+
   /// It adds the current state, command, and position to the lists
   ///
   /// Args:
@@ -46,6 +48,7 @@ class Results {
     _states.add(state);
     _commands.add(command);
     _positions.add(position);
+    partialCatScore = _partialCATScoreCalculator();
   }
 
   /// Remove the last recorded state of the board.
@@ -53,5 +56,32 @@ class Results {
     _states.removeLast();
     _commands.removeLast();
     _positions.removeLast();
+  }
+
+  int _partialCATScoreCalculator(){
+    int score = 0;
+    for(String s in _commands){
+      int lineScore = 0;
+      List<String> tokenized = splitCommand(s);
+      switch (tokenized.first) {
+        case "paint":
+          lineScore = tokenized.length == 2 ? 0 : 1;
+          break;
+        case "fill_empty":
+          lineScore = 1;
+          break;
+        case "copy":
+          lineScore = 2;
+          break;
+        case "mirror":
+          lineScore = 2;
+          break;
+        default:
+          continue;
+      }
+      score = lineScore > score ? lineScore : score;
+    }
+
+    return score;
   }
 }
