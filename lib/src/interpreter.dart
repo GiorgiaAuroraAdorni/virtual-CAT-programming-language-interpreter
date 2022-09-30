@@ -195,17 +195,16 @@ class CATInterpreter {
   ///   command (List<String>): The command that was passed in.
   void _copy(List<String> command) {
     _commandCaller.board.move.copyMode = true;
+    final StringBuffer buffer = StringBuffer();
     final List<String> toExecute =
         splitCommands(command[0].removeSurrounding(prefix: "{", suffix: "}"));
     if (toExecute.isNotEmpty) {
       final List<String> movements = splitByCurly(command[1]);
-      final StringBuffer buffer = StringBuffer();
       for (final String move in movements) {
         buffer
           ..write(" go($move) ")
           ..writeAll(toExecute, " ");
       }
-      _parse(buffer.toString(), false);
     } else {
       final List<Pair<int, int>> origin = _sortCells(splitByCurly(command[0]));
       final List<Pair<int, int>> destination =
@@ -214,8 +213,10 @@ class CATInterpreter {
       final List<String> colors = <String>[];
       for (final Pair<int, int> i in destination) {
         for (final Pair<int, int> j in origin) {
-          final int row = j.first + (i.first - j.first);
+          final int row =
+              (j.first + (i.first - j.first)) + (j.first - origin.first.first);
           final int column = i.second + (i.second - (i.second - j.second));
+          print("$row $column");
           final Iterable<String> rowKeys =
               _rows.filterValues((int p0) => p0 == row).keys;
           final Iterable<String> columnKeys =
@@ -227,22 +228,21 @@ class CATInterpreter {
             return;
           }
           newDestinations.add(
-            "${rowKeys.first}"
-            "${columnKeys.first}",
+            "${rowKeys.first}${columnKeys.first}",
           );
-          colors.add(CatColors
-              .values[_commandCaller.board.getBoard[j.first][j.second]].name);
+          colors.add(
+            CatColors
+                .values[_commandCaller.board.getBoard[j.first][j.second]].name,
+          );
         }
       }
-      final StringBuffer buffer = StringBuffer();
       for (int i = 0; i < newDestinations.length; i++) {
         buffer
           ..write(" go(${newDestinations[i]}) ")
           ..write(" paint(${colors[i]}) ");
       }
-      _parse(buffer.toString(), false);
     }
-
+    _parse(buffer.toString(), false);
     _commandCaller.board.move.copyMode = false;
   }
 
