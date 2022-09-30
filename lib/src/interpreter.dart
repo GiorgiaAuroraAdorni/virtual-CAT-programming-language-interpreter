@@ -216,9 +216,19 @@ class CATInterpreter {
         for (final Pair<int, int> j in origin) {
           final int row = j.first + (i.first - j.first);
           final int column = i.second + (i.second - (i.second - j.second));
+          final Iterable<String> rowKeys =
+              _rows.filterValues((int p0) => p0 == row).keys;
+          final Iterable<String> columnKeys =
+              _columns.filterValues((int p0) => p0 == column).keys;
+          if (rowKeys.isEmpty || columnKeys.isEmpty) {
+            _commandCaller.board.move.copyMode = false;
+            _error = CatError.invalidMove;
+
+            return;
+          }
           newDestinations.add(
-            "${_rows.filterValues((int p0) => p0 == row).keys.first}"
-            "${_columns.filterValues((int p0) => p0 == column).keys.first}",
+            "${rowKeys.first}"
+            "${columnKeys.first}",
           );
           colors.add(CatColors
               .values[_commandCaller.board.getBoard[j.first][j.second]].name);
@@ -448,7 +458,7 @@ class CATInterpreter {
             return;
           }
       }
-      if (states) {
+      if (states && _error == CatError.none) {
         _results.addResult(
           commands[index],
           _commandCaller.board.getCross.copy(),
