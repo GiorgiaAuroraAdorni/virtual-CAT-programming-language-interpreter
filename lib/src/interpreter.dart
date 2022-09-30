@@ -216,7 +216,6 @@ class CATInterpreter {
           final int row =
               (j.first + (i.first - j.first)) + (j.first - origin.first.first);
           final int column = i.second + (i.second - (i.second - j.second));
-          print("$row $column");
           final Iterable<String> rowKeys =
               _rows.filterValues((int p0) => p0 == row).keys;
           final Iterable<String> columnKeys =
