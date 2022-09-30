@@ -2,7 +2,6 @@ import "dart:io";
 
 import "package:dartx/dartx.dart";
 import "package:interpreter/cat_interpreter.dart";
-import "package:interpreter/src/models/basic_shape.dart";
 import "package:path/path.dart";
 
 void main(List<String> arguments) {
@@ -28,10 +27,12 @@ void main(List<String> arguments) {
             }
           ]
         }''';
-  String command =
-      """mirror({paint({blue,yellow},:,square),go(C3),paint({blue,blue,yellow,yellow},:,down)},vertical)""";
-  CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
-  Pair<Results, CatError> result = interpreter.validateOnScheme(command, 10);
+  // mirror({paint({blue,yellow},:,square),go(C3),paint({blue,blue,yellow,yellow},:,down)},vertical)
+  // e3,c5,a3
+  const String command =
+      """paint({blue,yellow},:,square), copy({c2,c1},{e3,c5,a3,c3})""";
+  final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
+  final Pair<Results, CatError> result = interpreter.validateOnScheme(command, 10);
 
   print(result.second);
   List<BasicShape> states = result.first.getStates;

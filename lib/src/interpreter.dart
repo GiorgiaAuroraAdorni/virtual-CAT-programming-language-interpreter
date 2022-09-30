@@ -197,16 +197,55 @@ class CATInterpreter {
     _commandCaller.board.move.copyMode = true;
     final List<String> toExecute =
         splitCommands(command[0].removeSurrounding(prefix: "{", suffix: "}"));
-    final List<String> movements = splitByCurly(command[1]);
-    final StringBuffer buffer = StringBuffer();
-    for (final String move in movements) {
-      buffer
-        ..write(" go($move) ")
-        ..writeAll(toExecute, " ");
+    if (toExecute.isNotEmpty) {
+      final List<String> movements = splitByCurly(command[1]);
+      final StringBuffer buffer = StringBuffer();
+      for (final String move in movements) {
+        buffer
+          ..write(" go($move) ")
+          ..writeAll(toExecute, " ");
+      }
+      _parse(buffer.toString(), false);
+    } else {
+      final List<Pair<int, int>> origin = _sortCells(splitByCurly(command[0]));
+      final List<Pair<int, int>> destination =
+          _sortCells(splitByCurly(command[1]));
+      final List<String> newDestinations = <String>[];
+      final List<String> colors = <String>[];
+      for (final Pair<int, int> i in destination) {
+        for (final Pair<int, int> j in origin) {
+          final int row = j.first + (i.first - j.first);
+          final int column = i.second + (i.second - (i.second - j.second));
+          newDestinations.add(
+            "${_rows.filterValues((int p0) => p0 == row).keys.first}"
+            "${_columns.filterValues((int p0) => p0 == column).keys.first}",
+          );
+          colors.add(CatColors
+              .values[_commandCaller.board.getBoard[j.first][j.second]].name);
+        }
+      }
+      final StringBuffer buffer = StringBuffer();
+      for (int i = 0; i < newDestinations.length; i++) {
+        buffer
+          ..write(" go(${newDestinations[i]}) ")
+          ..write(" paint(${colors[i]}) ");
+      }
+      _parse(buffer.toString(), false);
     }
-    _parse(buffer.toString(), false);
+
     _commandCaller.board.move.copyMode = false;
   }
+
+  List<Pair<int, int>> _sortCells(List<String> input) => input
+      .map((String s) => Pair<int, int>(_rows[s[0]]!, _columns[s[1]]!))
+      .toList()
+    ..sort((Pair<int, int> a, Pair<int, int> b) {
+      if (a.first == b.first && a.second == b.second) {
+        return 0;
+      }
+
+      return ((6 - a.first) + a.second) < ((6 - b.first) + b.second) ? -1 : 1;
+    });
 
   /// It calls the mirrorHorizontal or mirrorVertical function in the Dart code,
   /// depending on the value of the direction parameter
