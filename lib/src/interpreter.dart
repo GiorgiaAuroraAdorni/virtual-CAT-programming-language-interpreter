@@ -229,8 +229,6 @@ class CATInterpreter {
     final List<String> colors = <String>[];
     for (final Pair<int, int> i in destination) {
       for (final Pair<int, int> j in origin) {
-        final int dist =
-            (i.first - j.first).abs() + (i.second - j.second).abs();
         final int row =
             (j.first + (i.first - j.first)) + (j.first - origin.first.first);
         final int column = (j.second + (i.second - j.second)) +
@@ -259,14 +257,14 @@ class CATInterpreter {
 
   List<Pair<int, int>> _sortCells(List<String> input) => input
       .map((String s) => Pair<int, int>(_rows[s[0]]!, _columns[s[1]]!))
-      .toList()
-    ..sort((Pair<int, int> a, Pair<int, int> b) {
-      if (a.first == b.first && a.second == b.second) {
-        return 0;
-      }
-
-      return ((6 - a.first) + a.second) < ((6 - b.first) + b.second) ? -1 : 1;
-    });
+      .toList();
+    // ..sort((Pair<int, int> a, Pair<int, int> b) {
+    //   if (a.first == b.first && a.second == b.second) {
+    //     return 0;
+    //   }
+    //
+    //   return ((6 - a.first) + a.second) < ((6 - b.first) + b.second) ? -1 : 1;
+    // });
 
   /// It calls the mirrorHorizontal or mirrorVertical function in the Dart code,
   /// depending on the value of the direction parameter
