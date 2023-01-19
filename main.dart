@@ -30,7 +30,7 @@ void main(List<String> arguments) {
   // mirror({paint({blue,yellow},:,square),go(C3),paint({blue,blue,yellow,yellow},:,down)},vertical)
   // e3,c5,a3
   const String command =
-      """paint({blue,yellow},:,square), COPY({d1,c1,c2,d2},{e3})""";
+      """paint({blue,yellow},:,{c3,c2})""";
   final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
   final Pair<Results, CatError> result = interpreter.validateOnScheme(command, 10);
 

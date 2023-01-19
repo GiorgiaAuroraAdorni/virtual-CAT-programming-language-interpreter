@@ -145,45 +145,57 @@ class CATInterpreter {
   /// Returns:
   ///   A list of strings.
   void _paint(List<String> command) {
-    final List<int> colors = <int>[];
-    for (final String e in splitByCurly(command[0])) {
-      final CatColors color = containsColor(e.trim());
-      if (color != CatColors.NaC) {
-        colors.add(color.index);
-      } else {
-        _error = CatError.invalidColor;
+    final List<String> colors = splitByCurly(command.first);
+    final List<int> colorsParsed =
+        colors.map((String e) => containsColor(e.trim()).index).toList();
+    if (colorsParsed.contains(CatColors.NaC.index)) {
+      _error = CatError.invalidColor;
 
-        return;
-      }
+      return;
     }
     if (command.length == 1) {
       _commandCaller.color(
         "color",
-        <int>[colors[0]],
+        <int>[colorsParsed[0]],
       );
 
       return;
     }
     final int column = _commandCaller.board.move.column;
     final int row = _commandCaller.board.move.row;
-    final String color = command[2]
-        .split(" ")
-        .where((String element) => element.isNotNullOrEmpty)
-        .mapIndexed((int index, String p1) => index == 0 ? p1 : p1.capitalize())
-        .map((String e) => e.replaceAll("-", ""))
-        .join();
-    bool call = false;
-    try {
-      final int repetitions = command[1].toInt();
-      call = _commandCaller.color(color, <dynamic>[colors, repetitions]);
-    } on FormatException {
-      call = _commandCaller.color(color, <dynamic>[
-        colors,
-      ]);
-    }
+    if (command.last.startsWith("{") && command.last.endsWith("}")) {
+      final List<String> destinations = splitByCurly(command.last);
+      final StringBuffer newCommand = StringBuffer();
+      int j = 0;
+      for (final String i in destinations) {
+        newCommand
+          ..write("go($i)")
+          ..write("paint(${colors[j]})");
+        j = (j + 1) % colors.length;
+      }
+      _parse(newCommand.toString(), false);
+    } else {
+      final String color = command[2]
+          .split(" ")
+          .where((String element) => element.isNotNullOrEmpty)
+          .mapIndexed(
+            (int index, String p1) => index == 0 ? p1 : p1.capitalize(),
+          )
+          .map((String e) => e.replaceAll("-", ""))
+          .join();
+      bool call = false;
+      try {
+        final int repetitions = command[1].toInt();
+        call = _commandCaller.color(color, <dynamic>[colors, repetitions]);
+      } on FormatException {
+        call = _commandCaller.color(color, <dynamic>[
+          colors,
+        ]);
+      }
 
-    if (!call) {
-      _error = CatError.invalidColoringCommand;
+      if (!call) {
+        _error = CatError.invalidColoringCommand;
+      }
     }
     _commandCaller.board.move.toPosition(row, column);
   }
@@ -258,13 +270,6 @@ class CATInterpreter {
   List<Pair<int, int>> _sortCells(List<String> input) => input
       .map((String s) => Pair<int, int>(_rows[s[0]]!, _columns[s[1]]!))
       .toList();
-    // ..sort((Pair<int, int> a, Pair<int, int> b) {
-    //   if (a.first == b.first && a.second == b.second) {
-    //     return 0;
-    //   }
-    //
-    //   return ((6 - a.first) + a.second) < ((6 - b.first) + b.second) ? -1 : 1;
-    // });
 
   /// It calls the mirrorHorizontal or mirrorVertical function in the Dart code,
   /// depending on the value of the direction parameter
