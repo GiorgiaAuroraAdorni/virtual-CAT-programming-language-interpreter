@@ -186,10 +186,10 @@ class CATInterpreter {
       bool call = false;
       try {
         final int repetitions = command[1].toInt();
-        call = _commandCaller.color(color, <dynamic>[colors, repetitions]);
+        call = _commandCaller.color(color, <dynamic>[colorsParsed, repetitions]);
       } on FormatException {
         call = _commandCaller.color(color, <dynamic>[
-          colors,
+          colorsParsed,
         ]);
       }
 
