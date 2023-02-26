@@ -242,46 +242,43 @@ class CATInterpreter {
     List<String> toExecute,
   ) {
     final List<List<String>> ofSetCommands = <List<String>>[toExecute];
-    final String fistPosition = movements.first;
-    final Pair<int, int> fistPositionCoordinates =
-        Pair<int, int>(_rows[fistPosition[0]]!, _columns[fistPosition[1]]!);
+    final List<String> fistPosition = movements.first.trim().split("");
     final List<Pair<int, int>> offsets = <Pair<int, int>>[];
-    for (final String i in toExecute) {
-      if (i.startsWith("go")) {
-        final String el = i.replaceAll(RegExp("[go()]"), "");
-        offsets.add(
-          Pair<int, int>(
-            fistPositionCoordinates.first - _rows[el[0]]!,
-            fistPositionCoordinates.second - _columns[el[1]]!,
-          ),
-        );
+    if (_rows.containsKey(fistPosition[0]) &&
+        _columns.containsKey(fistPosition[1])) {
+      final Pair<int, int> fistPositionCoordinates =
+          Pair<int, int>(_rows[fistPosition[0]]!, _columns[fistPosition[1]]!);
+      for (final String i in toExecute) {
+        if (i.startsWith("go")) {
+          final List<String> el =
+              i.replaceAll(RegExp("[go()]"), "").trim().split("");
+          if (_rows.containsKey(el[0]) && _columns.containsKey(el[1])) {
+            offsets.add(
+              Pair<int, int>(
+                fistPositionCoordinates.first - _rows[el[0]]!,
+                fistPositionCoordinates.second - _columns[el[1]]!,
+              ),
+            );
+          }
+        }
       }
     }
-    final List<List<String>> newPositionsMovements = <List<String>>[];
-    for (int i = 1; i < movements.length; i++) {
-      final String position = movements[i];
-      final Pair<int, int> positionCoordinates =
-          Pair<int, int>(_rows[position[0]]!, _columns[position[1]]!);
-      final List<String> newPositions = <String>[];
-      for (final Pair<int, int> j in offsets) {
-        final String rowPosition = _rows.keys.firstWhere(
-          (String element) =>
-              _rows[element] == positionCoordinates.first - j.first,
-        );
-        final String columnPosition = _columns.keys.firstWhere(
-          (String element) =>
-              _columns[element] == positionCoordinates.second - j.second,
-        );
-        newPositions.add("$rowPosition$columnPosition");
-      }
-      newPositionsMovements.add(newPositions);
-    }
+    final List<List<String>> newPositionsMovements = _newPositionsMovements(
+      movements,
+      offsets,
+    );
     for (final List<String> i in newPositionsMovements) {
       int j = 0;
       final List<String> modifiedCommands = <String>[];
       for (final String k in toExecute) {
         if (k.startsWith("go")) {
-          modifiedCommands.add("go(${i[j]})");
+          final List<String> oldPosition = k.trim().split("");
+          if (_rows.containsKey(oldPosition[0]) &&
+              _columns.containsKey(oldPosition[1])) {
+            modifiedCommands.add("go(${i[j]})");
+          } else {
+            modifiedCommands.add(k);
+          }
           j++;
         } else {
           modifiedCommands.add(k);
@@ -291,6 +288,35 @@ class CATInterpreter {
     }
 
     return ofSetCommands;
+  }
+
+  List<List<String>> _newPositionsMovements(
+    List<String> movements,
+    List<Pair<int, int>> offsets,
+  ) {
+    final List<List<String>> newPositionsMovements = <List<String>>[];
+    for (int i = 1; i < movements.length; i++) {
+      final List<String> newPositions = <String>[];
+      final List<String> position = movements[i].trim().split("");
+      if (_rows.containsKey(position[0]) && _columns.containsKey(position[1])) {
+        final Pair<int, int> positionCoordinates =
+            Pair<int, int>(_rows[position[0]]!, _columns[position[1]]!);
+        for (final Pair<int, int> j in offsets) {
+          final String rowPosition = _rows.keys.firstWhere(
+            (String element) =>
+                _rows[element] == positionCoordinates.first - j.first,
+          );
+          final String columnPosition = _columns.keys.firstWhere(
+            (String element) =>
+                _columns[element] == positionCoordinates.second - j.second,
+          );
+          newPositions.add("$rowPosition$columnPosition");
+        }
+      }
+      newPositionsMovements.add(newPositions);
+    }
+
+    return newPositionsMovements;
   }
 
   Pair<List<String>, List<String>> _copyCells(List<String> command) {
