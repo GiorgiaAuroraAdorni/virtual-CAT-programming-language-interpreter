@@ -8,7 +8,6 @@ import "package:interpreter/src/utils/colors.dart";
 import "package:interpreter/src/utils/errors.dart";
 import "package:interpreter/src/utils/helper.dart";
 import "package:interpreter/src/utils/shape.dart";
-import "dart:math";
 
 /// This class is a Dart
 /// interpreter for the CAT language.
@@ -186,7 +185,8 @@ class CATInterpreter {
       bool call = false;
       try {
         final int repetitions = command[1].toInt();
-        call = _commandCaller.color(color, <dynamic>[colorsParsed, repetitions]);
+        call =
+            _commandCaller.color(color, <dynamic>[colorsParsed, repetitions]);
       } on FormatException {
         call = _commandCaller.color(color, <dynamic>[
           colorsParsed,
@@ -213,10 +213,14 @@ class CATInterpreter {
         splitCommands(command[0].removeSurrounding(prefix: "{", suffix: "}"));
     if (toExecute.isNotEmpty) {
       final List<String> movements = splitByCurly(command[1]);
-      for (final String move in movements) {
+      final List<List<String>> newCommands = _ofSetCommands(
+        movements,
+        toExecute,
+      );
+      for (int i = 0; i < movements.length; i++) {
         buffer
-          ..write(" go($move) ")
-          ..writeAll(toExecute, " ");
+          ..write(" go(${movements[i]}) ")
+          ..writeAll(newCommands[i], " ");
       }
     } else {
       final Pair<List<String>, List<String>> newDestinationsAndColors =
@@ -231,6 +235,62 @@ class CATInterpreter {
     }
     _parse(buffer.toString(), false);
     _commandCaller.board.move.copyMode = false;
+  }
+
+  List<List<String>> _ofSetCommands(
+    List<String> movements,
+    List<String> toExecute,
+  ) {
+    final List<List<String>> ofSetCommands = <List<String>>[toExecute];
+    final String fistPosition = movements.first;
+    final Pair<int, int> fistPositionCoordinates =
+        Pair<int, int>(_rows[fistPosition[0]]!, _columns[fistPosition[1]]!);
+    final List<Pair<int, int>> offsets = <Pair<int, int>>[];
+    for (final String i in toExecute) {
+      if (i.startsWith("go")) {
+        final String el = i.replaceAll(RegExp("[go()]"), "");
+        offsets.add(
+          Pair<int, int>(
+            fistPositionCoordinates.first - _rows[el[0]]!,
+            fistPositionCoordinates.second - _columns[el[1]]!,
+          ),
+        );
+      }
+    }
+    final List<List<String>> newPositionsMovements = <List<String>>[];
+    for (int i = 1; i < movements.length; i++) {
+      final String position = movements[i];
+      final Pair<int, int> positionCoordinates =
+          Pair<int, int>(_rows[position[0]]!, _columns[position[1]]!);
+      final List<String> newPositions = <String>[];
+      for (final Pair<int, int> j in offsets) {
+        final String rowPosition = _rows.keys.firstWhere(
+          (String element) =>
+              _rows[element] == positionCoordinates.first - j.first,
+        );
+        final String columnPosition = _columns.keys.firstWhere(
+          (String element) =>
+              _columns[element] == positionCoordinates.second - j.second,
+        );
+        newPositions.add("$rowPosition$columnPosition");
+      }
+      newPositionsMovements.add(newPositions);
+    }
+    for (final List<String> i in newPositionsMovements) {
+      int j = 0;
+      final List<String> modifiedCommands = <String>[];
+      for (final String k in toExecute) {
+        if (k.startsWith("go")) {
+          modifiedCommands.add("go(${i[j]})");
+          j++;
+        } else {
+          modifiedCommands.add(k);
+        }
+      }
+      ofSetCommands.add(modifiedCommands);
+    }
+
+    return ofSetCommands;
   }
 
   Pair<List<String>, List<String>> _copyCells(List<String> command) {
