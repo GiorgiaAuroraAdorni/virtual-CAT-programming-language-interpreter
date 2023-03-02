@@ -116,7 +116,7 @@ void schema_2() {
       expect(
           interpreter
               .validateOnScheme(
-                  "PAINT({blue}, 4, square), GO(A3), PAINT({blue}, :, up), GO(right), PAINT({yellow}, :, up), GO(C5), PAINT({yellow}, 4, square)",
+                  "PAINT({blue}, 4, square bottom left), GO(A3), PAINT({blue}, :, up), GO(right), PAINT({yellow}, :, up), GO(C5), PAINT({yellow}, 4, square bottom left)",
                   2)
               .first
               .completed,
@@ -142,7 +142,7 @@ void schema_2() {
       expect(
           interpreter
               .validateOnScheme(
-                  "PAINT({blue}, 4, square), GO(A3), PAINT({blue}, :, up), FILL_EMPTY(yellow)",
+                  "PAINT({blue}, 4, square bottom left), GO(A3), PAINT({blue}, :, up), FILL_EMPTY(yellow)",
                   2)
               .first
               .completed,
@@ -529,7 +529,7 @@ void valid_patters() {
     test("", () {
       interpreter.reset();
       var response = interpreter.validateOnScheme(
-          "paint({green},1,square),mirror(vertical),go(c4),paint({blue},1,square),mirror(vertical)",
+          "paint({green},1,square bottom left),mirror(vertical),go(c4),paint({blue},1,square bottom left),mirror(vertical)",
           1);
       expect(response.first.completed, isFalse);
       expect(response.second, equals(CatError.none));
@@ -537,7 +537,7 @@ void valid_patters() {
     test("", () {
       interpreter.reset();
       var response = interpreter.validateOnScheme(
-          "mirror({paint({green},1,square)},vertical),go(c4),mirror({paint({blue},1,square)},vertical)",
+          "mirror({paint({green},1,square bottom left)},vertical),go(c4),mirror({paint({blue},1,square bottom left)},vertical)",
           1);
       expect(response.first.completed, isFalse);
       expect(response.second, equals(CatError.none));
@@ -560,7 +560,7 @@ void valid_patters() {
     test("", () {
       interpreter.reset();
       var response = interpreter.validateOnScheme(
-          "paint({red},1,square),mirror({c1,d1},vertical)", 1);
+          "paint({red},1,square bottom left),mirror({c1,d1},vertical)", 1);
       expect(response.first.completed, isFalse);
       expect(response.second, equals(CatError.none));
     });
@@ -607,7 +607,7 @@ void valid_patters() {
     test("", () {
       interpreter.reset();
       var response = interpreter.validateOnScheme(
-          "go(a4),mirror({mirror({paint({red,blue,yellow},3,up)},horizontal)},vertical),go(c1),mirror({paint({blue},1,square)},vertical)",
+          "go(a4),mirror({mirror({paint({red,blue,yellow},3,up)},horizontal)},vertical),go(c1),mirror({paint({blue},1,square bottom left)},vertical)",
           1);
       expect(response.first.completed, isFalse);
       expect(response.second, equals(CatError.none));
@@ -631,7 +631,7 @@ void valid_patters() {
     test("", () {
       interpreter.reset();
       var response = interpreter.validateOnScheme(
-          "paint({yellow,red,yellow},:,right),go(up),paint({red,yellow,yellow},:,right),go(a3),paint({yellow,yellow,red},1,square),go(e3),paint({yellow,red,yellow,red},1,square)",
+          "paint({yellow,red,yellow},:,right),go(up),paint({red,yellow,yellow},:,right),go(a3),paint({yellow,yellow,red},1,square bottom left),go(e3),paint({yellow,red,yellow,red},1,square bottom left)",
           1);
       expect(response.first.completed, isFalse);
       expect(response.second, equals(CatError.none));
