@@ -272,7 +272,7 @@ class CATInterpreter {
       final List<String> modifiedCommands = <String>[];
       for (final String k in toExecute) {
         if (k.startsWith("go")) {
-          final List<String> oldPosition = k.trim().split("");
+          final List<String> oldPosition = k.replaceAll(RegExp("[go()]"), "").trim().split("");
           if (_rows.containsKey(oldPosition[0]) &&
               _columns.containsKey(oldPosition[1])) {
             modifiedCommands.add("go(${i[j]})");
