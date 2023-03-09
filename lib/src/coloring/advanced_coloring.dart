@@ -219,6 +219,29 @@ class Coloring extends BasicColoring {
   /// Color with a square shape from the current position.
   ///
   /// Requires a list of [colors].
+  bool squareBottomLeftReverse(List<int> colors, [int? n]) {
+    final int originalRow = move.row;
+    final int originalColumn = move.column;
+    if (move.up() && move.right() && move.down()) {
+      move.toPosition(originalRow, originalColumn);
+      color(colors[0 % colors.length]);
+      move.up();
+      color(colors[1 % colors.length]);
+      move.right();
+      color(colors[2 % colors.length]);
+      move.down();
+      color(colors[3 % colors.length]);
+
+      return true;
+    }
+    move.toPosition(originalRow, originalColumn);
+
+    return false;
+  }
+
+  /// Color with a square shape from the current position.
+  ///
+  /// Requires a list of [colors].
   bool squareBottomRight(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
@@ -230,6 +253,29 @@ class Coloring extends BasicColoring {
       move.left();
       color(colors[2 % colors.length]);
       move.down();
+      color(colors[3 % colors.length]);
+
+      return true;
+    }
+    move.toPosition(originalRow, originalColumn);
+
+    return false;
+  }
+
+  /// Color with a square shape from the current position.
+  ///
+  /// Requires a list of [colors].
+  bool squareBottomRightReverse(List<int> colors, [int? n]) {
+    final int originalRow = move.row;
+    final int originalColumn = move.column;
+    if (move.left() && move.up() && move.right()) {
+      move.toPosition(originalRow, originalColumn);
+      color(colors[0 % colors.length]);
+      move.left();
+      color(colors[1 % colors.length]);
+      move.up();
+      color(colors[2 % colors.length]);
+      move.right();
       color(colors[3 % colors.length]);
 
       return true;
@@ -265,6 +311,29 @@ class Coloring extends BasicColoring {
   /// Color with a square shape from the current position.
   ///
   /// Requires a list of [colors].
+  bool squareTopLeftReverse(List<int> colors, [int? n]) {
+    final int originalRow = move.row;
+    final int originalColumn = move.column;
+    if (move.right() && move.down() && move.left()) {
+      move.toPosition(originalRow, originalColumn);
+      color(colors[0 % colors.length]);
+      move.right();
+      color(colors[1 % colors.length]);
+      move.down();
+      color(colors[2 % colors.length]);
+      move.left();
+      color(colors[3 % colors.length]);
+
+      return true;
+    }
+    move.toPosition(originalRow, originalColumn);
+
+    return false;
+  }
+
+  /// Color with a square shape from the current position.
+  ///
+  /// Requires a list of [colors].
   bool squareTopRight(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
@@ -276,6 +345,29 @@ class Coloring extends BasicColoring {
       move.down();
       color(colors[2 % colors.length]);
       move.right();
+      color(colors[3 % colors.length]);
+
+      return true;
+    }
+    move.toPosition(originalRow, originalColumn);
+
+    return false;
+  }
+
+  /// Color with a square shape from the current position.
+  ///
+  /// Requires a list of [colors].
+  bool squareTopRightReverse(List<int> colors, [int? n]) {
+    final int originalRow = move.row;
+    final int originalColumn = move.column;
+    if (move.down() && move.right() && move.up()) {
+      move.toPosition(originalRow, originalColumn);
+      color(colors[0 % colors.length]);
+      move.down();
+      color(colors[1 % colors.length]);
+      move.right();
+      color(colors[2 % colors.length]);
+      move.up();
       color(colors[3 % colors.length]);
 
       return true;
