@@ -360,12 +360,12 @@ class Coloring extends BasicColoring {
   bool squareTopRightReverse(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.down() && move.right() && move.up()) {
+    if (move.down() && move.left() && move.up()) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.down();
       color(colors[1 % colors.length]);
-      move.right();
+      move.left();
       color(colors[2 % colors.length]);
       move.up();
       color(colors[3 % colors.length]);
