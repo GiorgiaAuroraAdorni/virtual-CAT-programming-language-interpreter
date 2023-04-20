@@ -487,6 +487,50 @@ void other_schemas() {
               .completed,
           isTrue);
     });
+    test("3", () {
+      const json =
+          '{"data":[{"index":1,"array":[[0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0], [4, 2, 3, 3, 2, 4], [4, 2, 3, 3, 2, 4], [0, 0, 3, 3, 0, 0], [0, 0, 3, 3, 0, 0]]}]}';
+      final CATInterpreter interpreter = CATInterpreter(json, Shape.cross);
+      interpreter.reset();
+      expect(interpreter.getResults.getStates.length, equals(1));
+      expect(interpreter.getResults.getCommands.length, equals(1));
+      expect(interpreter.getResults.completed, isFalse);
+      expect(interpreter.board.move.column, equals(0));
+      expect(interpreter.board.move.row, equals(3));
+      expect(
+          interpreter.board.getCross.getGrid,
+          equals([
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+          ]));
+      BasicShape start = Cross.fromList([
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+      ]);
+      interpreter.board.joinBoards(start);
+      Pair<Results, CatError> response =  interpreter
+          .validateOnScheme(
+          "go(F3), MIRROR(horizontal)",
+          1);
+      BasicShape expected = Cross.fromList([
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 1, 0, 0],
+      ]);
+      expect(response.second, equals(CatError.none));
+      expect(response.first.getStates.last, equals(expected));
+    });
   });
 }
 
