@@ -436,7 +436,7 @@ class BasicColoring {
   bool mirrorVerticalLeftRight() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
-        if(_shape.grid[i][j] != 0) {
+        if(_shape.grid[j][i] != 0) {
           _shape.grid[j][5 - i] = _shape.grid[j][i];
         }
       }
@@ -453,7 +453,7 @@ class BasicColoring {
   bool mirrorVerticalRightLeft() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
-        if(_shape.grid[i][j] != 0) {
+        if(_shape.grid[j][i] != 0) {
           _shape.grid[j][5 - i] = _shape.grid[j][i];
         }
       }

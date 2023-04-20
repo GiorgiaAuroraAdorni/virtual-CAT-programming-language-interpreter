@@ -449,11 +449,12 @@ void other_schemas() {
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0],
           ]));
+      var results =interpreter
+          .validateOnScheme(
+          "GO(up) PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({blue}, 3, up), MIRROR(horizontal), MIRROR(vertical)",
+          1);
       expect(
-          interpreter
-              .validateOnScheme(
-                  "GO(up) PAINT({yellow}), GO(right), PAINT({red}), GO(right), PAINT({blue}, 3, up), MIRROR(horizontal) MIRROR(vertical)",
-                  1)
+          results
               .first
               .completed,
           isTrue);
