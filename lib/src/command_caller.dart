@@ -27,22 +27,26 @@ class CommandCaller {
 
   /// It's creating a map of functions that can be called by name.
   late final Map<String, Function> _coloring = <String, Function>{
+    // Directions
     "up": board.up,
     "down": board.down,
     "left": board.left,
     "right": board.right,
-    "squareBottomLeft": board.squareBottomLeft,
-    "squareBottomRight": board.squareBottomRight,
-    "squareTopLeft": board.squareTopLeft,
-    "squareTopRight": board.squareTopRight,
-    "squareBottomLeftReverse": board.squareBottomLeftReverse,
-    "squareBottomRightReverse": board.squareBottomRightReverse,
-    "squareTopLeftReverse": board.squareTopLeftReverse,
-    "squareTopRightReverse": board.squareTopRightReverse,
+    // Square
+    "squareRightUpLeft": board.squareRightUpLeft,
+    "squareUpLeftDown": board.squareUpLeftDown,
+    "squareDownRightUp": board.squareDownRightUp,
+    "squareLeftDownRight": board.squareLeftDownRight,
+    "squareUpRightDown": board.squareUpRightDown,
+    "squareLeftUpRight": board.squareLeftUpRight,
+    "squareRightDownLeft": board.squareRightDownLeft,
+    "squareDownLeftUp": board.squareDownLeftUp,
+    // Diagonal
     "diagonalUpLeft": board.diagonalUpLeft,
     "diagonalUpRight": board.diagonalUpRight,
     "diagonalDownLeft": board.diagonalDownLeft,
     "diagonalDownRight": board.diagonalDownRight,
+    // L
     "lUpLeft": board.lUpLeft,
     "lUpRight": board.lUpRight,
     "lDownLeft": board.lDownLeft,
@@ -51,6 +55,7 @@ class CommandCaller {
     "lLeftDown": board.lLeftDown,
     "lRightUp": board.lRightUp,
     "lRightDown": board.lRightDown,
+    // Zig-zag
     "zigzagLeftUpDown": board.zigzagLeftUpDown,
     "zigzagLeftDownUp": board.zigzagLeftDownUp,
     "zigzagRightUpDown": board.zigzagRightUpDown,
@@ -59,10 +64,12 @@ class CommandCaller {
     "zigzagUpRightLeft": board.zigzagUpRightLeft,
     "zigzagDownLeftRight": board.zigzagDownLeftRight,
     "zigzagDownRightLeft": board.zigzagDownRightLeft,
+    // Mirror
     "mirrorVertical": board.mirrorVertical,
     "mirrorHorizontal": board.mirrorHorizontal,
     "mirrorCellHorizontal": board.mirrorCellHorizontal,
     "mirrorCellVertical": board.mirrorCellVertical,
+    // Color
     "fillEmpty": board.fillEmpty,
     "color": board.color,
   };
