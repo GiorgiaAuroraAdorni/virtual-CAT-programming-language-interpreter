@@ -41,13 +41,13 @@ class Cross implements BasicShape {
   /// Overriding the `==` operator.
   @override
   bool operator ==(Object other) {
-    if(other is! Cross){
+    if (other is! Cross) {
       return false;
     }
-    for(int i =0; i< grid.length; i++){
-      for(int j = 0; i<grid[i].length; j++){
-        if(validatePosition(i, j)){
-          if(other.grid[i][j] != grid[i][j]){
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[i].length; j++) {
+        if (validatePosition(i, j)) {
+          if (other.grid[i][j] != grid[i][j]) {
             return false;
           }
         }
@@ -61,8 +61,8 @@ class Cross implements BasicShape {
   /// containing the same elements.
   @override
   Cross copy() => Cross.fromList(
-    grid.map((List<int> e) => <int>[...e]).toList(),
-  );
+        grid.map((List<int> e) => <int>[...e]).toList(),
+      );
 
   /// It prints the cross
   ///
