@@ -4,7 +4,6 @@ import "package:interpreter/src/models/basic_shape.dart";
 
 /// It's a class that allows you to color a shape
 class BasicColoring {
-
   /// Creating a constructor for the class BasicColoring.
   BasicColoring(BasicShape shape) : _shape = shape;
 
@@ -263,9 +262,12 @@ class BasicColoring {
   /// Returns:
   ///   A boolean value.
   bool fillEmpty(int color) {
-    for (final List<int> line in _shape.grid) {
-      for (int i = 0; i < 6; i++) {
-        line[i] = line[i] == _defaultColor ? color : line[i];
+    for (int i = 0; i < _shape.grid.length; i++) {
+      for (int j = 0; j < _shape.grid[i].length; j++) {
+        if (_shape.validatePosition(i, j)) {
+          _shape.grid[i][j] =
+              _shape.grid[i][j] == _defaultColor ? color : _shape.grid[i][j];
+        }
       }
     }
 
@@ -403,7 +405,7 @@ class BasicColoring {
   bool mirrorHorizontalUpDown() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
-        if(_shape.grid[i][j] != 0 && _shape.grid[5 - i][j] == 0){
+        if (_shape.grid[i][j] != 0 && _shape.grid[5 - i][j] == 0) {
           _shape.grid[5 - i][j] = _shape.grid[i][j];
         }
       }
@@ -419,7 +421,7 @@ class BasicColoring {
   bool mirrorHorizontalDownUp() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
-        if(_shape.grid[i][j] != 0 && _shape.grid[5 - i][j] == 0) {
+        if (_shape.grid[i][j] != 0 && _shape.grid[5 - i][j] == 0) {
           _shape.grid[5 - i][j] = _shape.grid[i][j];
         }
       }
@@ -436,7 +438,7 @@ class BasicColoring {
   bool mirrorVerticalLeftRight() {
     for (final int i in 0.rangeTo(2)) {
       for (final int j in 0.rangeTo(5)) {
-        if(_shape.grid[j][i] != 0 && _shape.grid[j][5 - i] == 0) {
+        if (_shape.grid[j][i] != 0 && _shape.grid[j][5 - i] == 0) {
           _shape.grid[j][5 - i] = _shape.grid[j][i];
         }
       }
@@ -453,7 +455,7 @@ class BasicColoring {
   bool mirrorVerticalRightLeft() {
     for (final int i in 3.rangeTo(5)) {
       for (final int j in 0.rangeTo(5)) {
-        if(_shape.grid[j][i] != 0 && _shape.grid[j][5 - i] == 0) {
+        if (_shape.grid[j][i] != 0 && _shape.grid[j][5 - i] == 0) {
           _shape.grid[j][5 - i] = _shape.grid[j][i];
         }
       }
