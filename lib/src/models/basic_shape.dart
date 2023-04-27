@@ -11,4 +11,23 @@ abstract class BasicShape {
 
   /// It's a getter that returns the grid.
   List<List<int>> get getGrid;
+
+  @override
+  bool operator ==(Object other) {
+    if (other is! BasicShape) {
+      return false;
+    }
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[i].length; j++) {
+        if (validatePosition(i, j)) {
+          if (other.grid[i][j] != grid[i][j]) {
+            return false;
+          }
+        }
+      }
+    }
+
+    return true;
+  }
+
 }
