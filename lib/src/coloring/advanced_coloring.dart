@@ -199,7 +199,7 @@ class Coloring extends BasicColoring {
   bool squareRightUpLeft(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.right() && move.up() && move.left()) {
+    if (move.right(1, false) && move.up(1, false) && move.left(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.right();
@@ -222,7 +222,7 @@ class Coloring extends BasicColoring {
   bool squareUpRightDown(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.up() && move.right() && move.down()) {
+    if (move.up(1, false) && move.right(1, false) && move.down(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.up();
@@ -245,7 +245,7 @@ class Coloring extends BasicColoring {
   bool squareUpLeftDown(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.up() && move.left() && move.down()) {
+    if (move.up(1, false) && move.left(1, false) && move.down(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.up();
@@ -268,7 +268,7 @@ class Coloring extends BasicColoring {
   bool squareLeftUpRight(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.left() && move.up() && move.right()) {
+    if (move.left(1, false) && move.up(1, false) && move.right(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.left();
@@ -291,7 +291,7 @@ class Coloring extends BasicColoring {
   bool squareDownRightUp(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.down() && move.right() && move.up()) {
+    if (move.down(1, false) && move.right(1, false) && move.up(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.down();
@@ -314,7 +314,7 @@ class Coloring extends BasicColoring {
   bool squareRightDownLeft(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.right() && move.down() && move.left()) {
+    if (move.right(1, false) && move.down(1, false) && move.left(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.right();
@@ -337,7 +337,7 @@ class Coloring extends BasicColoring {
   bool squareLeftDownRight(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.left() && move.down() && move.right()) {
+    if (move.left(1, false) && move.down(1, false) && move.right(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.left();
@@ -360,7 +360,7 @@ class Coloring extends BasicColoring {
   bool squareDownLeftUp(List<int> colors, [int? n]) {
     final int originalRow = move.row;
     final int originalColumn = move.column;
-    if (move.down() && move.left() && move.up()) {
+    if (move.down(1, false) && move.left(1, false) && move.up(1, false)) {
       move.toPosition(originalRow, originalColumn);
       color(colors[0 % colors.length]);
       move.down();

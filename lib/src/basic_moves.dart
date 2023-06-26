@@ -175,7 +175,7 @@ class BasicMoves {
   /// down(2);
   /// ...
   /// ```
-  bool down([int n = 1]) {
+  bool down([int n = 1, bool alternate = true]) {
     if (n <= 0) {
       return false;
     }
@@ -186,7 +186,7 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode && _alternativePosition(newRow, true);
+    return copyMode && _alternativePosition(newRow, true) && alternate;
   }
 
   /// Change position left position by [n] cells.
@@ -198,7 +198,7 @@ class BasicMoves {
   /// left(2);
   /// ...
   /// ```
-  bool left([int n = 1]) {
+  bool left([int n = 1, bool alternate = true]) {
     if (n <= 0) {
       return false;
     }
@@ -209,7 +209,7 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode && _alternativePosition(newColumn, false);
+    return copyMode && _alternativePosition(newColumn, false) && alternate;
   }
 
   /// Change position right position by [n] cells.
@@ -221,7 +221,7 @@ class BasicMoves {
   /// right(2);
   /// ...
   /// ```
-  bool right([int n = 1]) {
+  bool right([int n = 1, bool alternate = true]) {
     if (n <= 0) {
       return false;
     }
@@ -232,7 +232,7 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode && _alternativePosition(newColumn, false);
+    return copyMode && _alternativePosition(newColumn, false) && alternate;
   }
 
   /// Move to an arbitrary position [row,column].
@@ -266,7 +266,7 @@ class BasicMoves {
   /// up(2);
   /// ...
   /// ```
-  bool up([int n = 1]) {
+  bool up([int n = 1, bool alternate = true]) {
     if (n <= 0) {
       return false;
     }
@@ -277,7 +277,7 @@ class BasicMoves {
       return true;
     }
 
-    return copyMode && _alternativePosition(newRow, true);
+    return copyMode && _alternativePosition(newRow, true) && alternate;
   }
 
   bool _alternativePosition(int val, bool axis) {
