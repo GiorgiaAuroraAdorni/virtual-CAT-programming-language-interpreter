@@ -4,6 +4,10 @@
 ///
 library cat_interpreter;
 
+export "src/basic_moves.dart" show BasicMoves;
+export "src/coloring/advanced_coloring.dart" show AdvancedColoring;
+export "src/coloring/basic_coloring.dart" show BasicColoring;
+export "src/command_caller.dart" show CommandCaller;
 export "src/interpreter.dart" show CATInterpreter;
 export "src/models/basic_shape.dart" show BasicShape;
 export "src/models/cross.dart" show Cross;
