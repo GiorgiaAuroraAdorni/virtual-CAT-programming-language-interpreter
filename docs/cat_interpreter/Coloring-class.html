@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Coloring class from the cat_interpreter library, for the Dart programming language.">
+  <title>Coloring class - cat_interpreter library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">interpreter</a></li>
+    <li><a href="../cat_interpreter/cat_interpreter-library.html">cat_interpreter</a></li>
+    <li class="self-crumb">Coloring class</li>
+  </ol>
+  <div class="self-name">Coloring</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-class">Coloring</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>It's a class that extends the BasicColoring class
+and adds a bunch of methods that color the cross in different ways</p>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+  <dt>Inheritance</dt>
+  <dd>
+    <ul class="gt-separated dark clazz-relationships">
+      <li><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object-class.html">Object</a></li>
+        <li><a href="../cat_interpreter/BasicColoring-class.html">BasicColoring</a></li>
+      <li>Coloring</li>
+    </ul>
+  </dd>
+
+        
+        
+
+
+
+        
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+
+    <dl class="constructor-summary-list">
+        <dt id="Coloring" class="callable">
+          <span class="name"><a href="../cat_interpreter/Coloring/Coloring.html">Coloring</a></span><span class="signature">(<span class="parameter" id="-param-shape"><span class="type-annotation"><a href="../cat_interpreter/BasicShape-class.html">BasicShape</a></span> <span class="parameter-name">shape</span></span>)</span>
+        </dt>
+        <dd>
+          Creating a new instance of the Coloring class, which is a subclass of the
+Coloring class.
+        </dd>
+    </dl>
+  </section>
+
+    <section class="summary offset-anchor inherited" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="getBoard" class="property inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/getBoard.html">getBoard</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span>&gt;</span></span> 
+
+</dt>
+<dd class="inherited">
+  It's a getter that returns the cross.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getCross" class="property inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/getCross.html">getCross</a></span>
+  <span class="signature">&#8594; <a href="../cat_interpreter/BasicShape-class.html">BasicShape</a></span> 
+
+</dt>
+<dd class="inherited">
+  It's a getter that returns the cross object.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span> 
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="move" class="property inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/move.html">move</a></span>
+  <span class="signature">&#8594; <a href="../cat_interpreter/BasicMoves-class.html">BasicMoves</a></span> 
+
+</dt>
+<dd class="inherited">
+  Creating a new instance of the BasicMoves class, and passing in the
+validatePosition function as a parameter.
+  <div class="features"><span class="feature">late</span><span class="feature">final</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/Type-class.html">Type</a></span> 
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+      </dl>
+    </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="buildOffset" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/buildOffset.html">buildOffset</a></span><span class="signature">(<wbr><span class="parameter" id="buildOffset-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="buildOffset-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It takes a list of colors and an offset,
+and returns a new list of colors with the offset applied
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="color" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/color.html">color</a></span><span class="signature">(<wbr><span class="parameter" id="color-param-color"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">color</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color the current position.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="diagonalDownLeft" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/diagonalDownLeft.html">diagonalDownLeft</a></span><span class="signature">(<wbr><span class="parameter" id="diagonalDownLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="diagonalDownLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color in diagonal with a direction down left from
+a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="diagonalDownRight" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/diagonalDownRight.html">diagonalDownRight</a></span><span class="signature">(<wbr><span class="parameter" id="diagonalDownRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="diagonalDownRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color in diagonal with a direction down right from
+a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="diagonalUpLeft" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/diagonalUpLeft.html">diagonalUpLeft</a></span><span class="signature">(<wbr><span class="parameter" id="diagonalUpLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="diagonalUpLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color in diagonal with a direction up left from
+a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="diagonalUpRight" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/diagonalUpRight.html">diagonalUpRight</a></span><span class="signature">(<wbr><span class="parameter" id="diagonalUpRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="diagonalUpRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color in diagonal with a direction up right from
+a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="down" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/down.html">down</a></span><span class="signature">(<wbr><span class="parameter" id="down-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="down-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color down from a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="fillEmpty" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/fillEmpty.html">fillEmpty</a></span><span class="signature">(<wbr><span class="parameter" id="fillEmpty-param-color"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">color</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  If the color of the cell is the default color, then change it to the color
+passed in.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="joinBoards" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/joinBoards.html">joinBoards</a></span><span class="signature">(<wbr><span class="parameter" id="joinBoards-param-shape"><span class="type-annotation"><a href="../cat_interpreter/BasicShape-class.html">BasicShape</a></span> <span class="parameter-name">shape</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It copies the cross from the parameter to the global variable.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="lDownLeft" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lDownLeft.html">lDownLeft</a></span><span class="signature">(<wbr><span class="parameter" id="lDownLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lDownLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction down left from a starting position
+  
+
+</dd>
+
+        <dt id="lDownRight" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lDownRight.html">lDownRight</a></span><span class="signature">(<wbr><span class="parameter" id="lDownRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lDownRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction down right from a starting position
+  
+
+</dd>
+
+        <dt id="left" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/left.html">left</a></span><span class="signature">(<wbr><span class="parameter" id="left-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="left-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color left from a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="lLeftDown" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lLeftDown.html">lLeftDown</a></span><span class="signature">(<wbr><span class="parameter" id="lLeftDown-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lLeftDown-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction left down from a starting position
+  
+
+</dd>
+
+        <dt id="lLeftUp" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lLeftUp.html">lLeftUp</a></span><span class="signature">(<wbr><span class="parameter" id="lLeftUp-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lLeftUp-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction left up from a starting position
+  
+
+</dd>
+
+        <dt id="lRightDown" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lRightDown.html">lRightDown</a></span><span class="signature">(<wbr><span class="parameter" id="lRightDown-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lRightDown-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction right down from a starting position
+  
+
+</dd>
+
+        <dt id="lRightUp" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lRightUp.html">lRightUp</a></span><span class="signature">(<wbr><span class="parameter" id="lRightUp-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lRightUp-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction right up from a starting position
+  
+
+</dd>
+
+        <dt id="lUpLeft" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lUpLeft.html">lUpLeft</a></span><span class="signature">(<wbr><span class="parameter" id="lUpLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lUpLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction up left from a starting position
+  
+
+</dd>
+
+        <dt id="lUpRight" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/lUpRight.html">lUpRight</a></span><span class="signature">(<wbr><span class="parameter" id="lUpRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="lUpRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an L shape with direction up right from a starting position
+  
+
+</dd>
+
+        <dt id="mirrorCellHorizontal" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/mirrorCellHorizontal.html">mirrorCellHorizontal</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It mirrors a current cell horizontally
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="mirrorCellVertical" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/mirrorCellVertical.html">mirrorCellVertical</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It mirrors a current cell vertically
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="mirrorHorizontal" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/mirrorHorizontal.html">mirrorHorizontal</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  If the row is less than or equal to 2,
+then mirror the piece horizontally up to down.
+Otherwise, mirror the piece horizontally down to up
+  
+
+</dd>
+
+        <dt id="mirrorHorizontalDownUp" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/mirrorHorizontalDownUp.html">mirrorHorizontalDownUp</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It takes the bottom half of the cross and mirrors it to the top half
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="mirrorHorizontalUpDown" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/mirrorHorizontalUpDown.html">mirrorHorizontalUpDown</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It takes the top half of the cross and mirrors it to the bottom half
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="mirrorVertical" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/mirrorVertical.html">mirrorVertical</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  If the column is less than or equal to 2,
+then mirror the piece left to right,
+otherwise mirror the piece right to left
+  
+
+</dd>
+
+        <dt id="mirrorVerticalLeftRight" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/mirrorVerticalLeftRight.html">mirrorVerticalLeftRight</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It takes the first three columns of the cross and mirrors them to the last
+three columns
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="mirrorVerticalRightLeft" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/mirrorVerticalRightLeft.html">mirrorVerticalRightLeft</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  It takes the last three columns of the cross and mirrors them to the first
+three columns
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="right" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/right.html">right</a></span><span class="signature">(<wbr><span class="parameter" id="right-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="right-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color right from a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="squareDownLeftUp" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareDownLeftUp.html">squareDownLeftUp</a></span><span class="signature">(<wbr><span class="parameter" id="squareDownLeftUp-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareDownLeftUp-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="squareDownRightUp" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareDownRightUp.html">squareDownRightUp</a></span><span class="signature">(<wbr><span class="parameter" id="squareDownRightUp-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareDownRightUp-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="squareLeftDownRight" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareLeftDownRight.html">squareLeftDownRight</a></span><span class="signature">(<wbr><span class="parameter" id="squareLeftDownRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareLeftDownRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="squareLeftUpRight" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareLeftUpRight.html">squareLeftUpRight</a></span><span class="signature">(<wbr><span class="parameter" id="squareLeftUpRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareLeftUpRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="squareRightDownLeft" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareRightDownLeft.html">squareRightDownLeft</a></span><span class="signature">(<wbr><span class="parameter" id="squareRightDownLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareRightDownLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="squareRightUpLeft" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareRightUpLeft.html">squareRightUpLeft</a></span><span class="signature">(<wbr><span class="parameter" id="squareRightUpLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareRightUpLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="squareUpLeftDown" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareUpLeftDown.html">squareUpLeftDown</a></span><span class="signature">(<wbr><span class="parameter" id="squareUpLeftDown-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareUpLeftDown-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="squareUpRightDown" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/squareUpRightDown.html">squareUpRightDown</a></span><span class="signature">(<wbr><span class="parameter" id="squareUpRightDown-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="squareUpRightDown-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with a square shape from the current position.
+  
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="up" class="callable inherited">
+  <span class="name"><a href="../cat_interpreter/BasicColoring/up.html">up</a></span><span class="signature">(<wbr><span class="parameter" id="up-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="up-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Color up from a current position defined by the movement.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="zigzagDownLeftRight" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagDownLeftRight.html">zigzagDownLeftRight</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagDownLeftRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagDownLeftRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction down left right
+from a starting position
+  
+
+</dd>
+
+        <dt id="zigzagDownRightLeft" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagDownRightLeft.html">zigzagDownRightLeft</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagDownRightLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagDownRightLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction down right left
+from a starting position
+  
+
+</dd>
+
+        <dt id="zigzagLeftDownUp" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagLeftDownUp.html">zigzagLeftDownUp</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagLeftDownUp-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagLeftDownUp-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction left down up
+from a starting position
+  
+
+</dd>
+
+        <dt id="zigzagLeftUpDown" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagLeftUpDown.html">zigzagLeftUpDown</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagLeftUpDown-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagLeftUpDown-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction left up down
+from a starting position
+  
+
+</dd>
+
+        <dt id="zigzagRightDownUp" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagRightDownUp.html">zigzagRightDownUp</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagRightDownUp-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagRightDownUp-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction right down up
+from a starting position
+  
+
+</dd>
+
+        <dt id="zigzagRightUpDown" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagRightUpDown.html">zigzagRightUpDown</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagRightUpDown-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagRightUpDown-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction right up down
+from a starting position
+  
+
+</dd>
+
+        <dt id="zigzagUpLeftRight" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagUpLeftRight.html">zigzagUpLeftRight</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagUpLeftRight-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagUpLeftRight-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction up left right
+from a starting position
+  
+
+</dd>
+
+        <dt id="zigzagUpRightLeft" class="callable">
+  <span class="name"><a href="../cat_interpreter/Coloring/zigzagUpRightLeft.html">zigzagUpRightLeft</a></span><span class="signature">(<wbr><span class="parameter" id="zigzagUpRightLeft-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="zigzagUpRightLeft-param-n">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">n</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Color with an zig-zag pattern with direction up right left
+from a starting position
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.0.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../index.html">interpreter</a></li>
+  <li><a href="../cat_interpreter/cat_interpreter-library.html">cat_interpreter</a></li>
+  <li class="self-crumb">Coloring class</li>
+</ol>
+
+
+    <h5>cat_interpreter library</h5>
+    <ol>
+      <li class="section-title"><a href="../cat_interpreter/cat_interpreter-library.html#classes">Classes</a></li>
+        <li><a href="../cat_interpreter/BasicColoring-class.html">BasicColoring</a></li>
+        <li><a href="../cat_interpreter/BasicMoves-class.html">BasicMoves</a></li>
+        <li><a href="../cat_interpreter/BasicShape-class.html">BasicShape</a></li>
+        <li><a href="../cat_interpreter/CATInterpreter-class.html">CATInterpreter</a></li>
+        <li><a href="../cat_interpreter/Coloring-class.html">Coloring</a></li>
+        <li><a href="../cat_interpreter/CommandCaller-class.html">CommandCaller</a></li>
+        <li><a href="../cat_interpreter/Cross-class.html">Cross</a></li>
+        <li><a href="../cat_interpreter/Results-class.html">Results</a></li>
+        <li><a href="../cat_interpreter/Schemes-class.html">Schemes</a></li>
+        <li><a href="../cat_interpreter/Square-class.html">Square</a></li>
+
+
+
+
+
+      <li class="section-title"><a href="../cat_interpreter/cat_interpreter-library.html#functions">Functions</a></li>
+        <li><a href="../cat_interpreter/schemesFromJson.html">schemesFromJson</a></li>
+        <li><a href="../cat_interpreter/splitByCurly.html">splitByCurly</a></li>
+        <li><a href="../cat_interpreter/splitCommand.html">splitCommand</a></li>
+        <li><a href="../cat_interpreter/splitCommands.html">splitCommands</a></li>
+
+      <li class="section-title"><a href="../cat_interpreter/cat_interpreter-library.html#enums">Enums</a></li>
+        <li><a href="../cat_interpreter/CatError.html">CatError</a></li>
+        <li><a href="../cat_interpreter/Shape.html">Shape</a></li>
+
+
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <ol>
+
+        <li class="section-title"><a href="../cat_interpreter/Coloring-class.html#constructors">Constructors</a></li>
+          <li><a href="../cat_interpreter/Coloring/Coloring.html">Coloring</a></li>
+
+
+        <li class="section-title inherited">
+          <a href="../cat_interpreter/Coloring-class.html#instance-properties">Properties</a>
+        </li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/getBoard.html">getBoard</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/getCross.html">getCross</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/move.html">move</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+        <li class="section-title"><a href="../cat_interpreter/Coloring-class.html#instance-methods">Methods</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/buildOffset.html">buildOffset</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/color.html">color</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/diagonalDownLeft.html">diagonalDownLeft</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/diagonalDownRight.html">diagonalDownRight</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/diagonalUpLeft.html">diagonalUpLeft</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/diagonalUpRight.html">diagonalUpRight</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/down.html">down</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/fillEmpty.html">fillEmpty</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/joinBoards.html">joinBoards</a></li>
+          <li><a href="../cat_interpreter/Coloring/lDownLeft.html">lDownLeft</a></li>
+          <li><a href="../cat_interpreter/Coloring/lDownRight.html">lDownRight</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/left.html">left</a></li>
+          <li><a href="../cat_interpreter/Coloring/lLeftDown.html">lLeftDown</a></li>
+          <li><a href="../cat_interpreter/Coloring/lLeftUp.html">lLeftUp</a></li>
+          <li><a href="../cat_interpreter/Coloring/lRightDown.html">lRightDown</a></li>
+          <li><a href="../cat_interpreter/Coloring/lRightUp.html">lRightUp</a></li>
+          <li><a href="../cat_interpreter/Coloring/lUpLeft.html">lUpLeft</a></li>
+          <li><a href="../cat_interpreter/Coloring/lUpRight.html">lUpRight</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/mirrorCellHorizontal.html">mirrorCellHorizontal</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/mirrorCellVertical.html">mirrorCellVertical</a></li>
+          <li><a href="../cat_interpreter/Coloring/mirrorHorizontal.html">mirrorHorizontal</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/mirrorHorizontalDownUp.html">mirrorHorizontalDownUp</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/mirrorHorizontalUpDown.html">mirrorHorizontalUpDown</a></li>
+          <li><a href="../cat_interpreter/Coloring/mirrorVertical.html">mirrorVertical</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/mirrorVerticalLeftRight.html">mirrorVerticalLeftRight</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/mirrorVerticalRightLeft.html">mirrorVerticalRightLeft</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/right.html">right</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareDownLeftUp.html">squareDownLeftUp</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareDownRightUp.html">squareDownRightUp</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareLeftDownRight.html">squareLeftDownRight</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareLeftUpRight.html">squareLeftUpRight</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareRightDownLeft.html">squareRightDownLeft</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareRightUpLeft.html">squareRightUpLeft</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareUpLeftDown.html">squareUpLeftDown</a></li>
+          <li><a href="../cat_interpreter/Coloring/squareUpRightDown.html">squareUpRightDown</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/toString.html">toString</a></li>
+          <li class="inherited"><a href="../cat_interpreter/BasicColoring/up.html">up</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagDownLeftRight.html">zigzagDownLeftRight</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagDownRightLeft.html">zigzagDownRightLeft</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagLeftDownUp.html">zigzagLeftDownUp</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagLeftUpDown.html">zigzagLeftUpDown</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagRightDownUp.html">zigzagRightDownUp</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagRightUpDown.html">zigzagRightUpDown</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagUpLeftRight.html">zigzagUpLeftRight</a></li>
+          <li><a href="../cat_interpreter/Coloring/zigzagUpRightLeft.html">zigzagUpRightLeft</a></li>
+
+        <li class="section-title inherited"><a href="../cat_interpreter/Coloring-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    interpreter
+      1.0.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

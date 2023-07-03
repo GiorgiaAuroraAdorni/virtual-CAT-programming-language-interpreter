@@ -736,6 +736,19 @@ class Coloring extends BasicColoring {
     return mirrorVerticalRightLeft();
   }
 
+  /// The function `_zigzagHelper` takes in a parameter, a list of colors, and two
+  /// functions, and returns true if a specific condition is met, otherwise false.
+  ///
+  /// Args:
+  ///   param (int): An integer representing the number of iterations in the loop.
+  ///   colors (List<int>): A list of integers representing colors.
+  ///   function1 (Function1<int, bool>): A function that takes an integer parameter
+  /// and returns a boolean value.
+  ///   function2 (Function1<int, bool>): The parameter `function2` is a function
+  /// that takes an integer as input and returns a boolean value.
+  ///
+  /// Returns:
+  ///   a boolean value.
   bool _zigzagHelper(
     int param,
     List<int> colors,

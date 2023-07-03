@@ -69,12 +69,17 @@
     </section>
     
 <section class="desc markdown">
-  <p>Move to an arbitrary position <code>row,column</code>.</p>
-<p>Return true on success.</p>
-<pre class="language-dart"><code class="language-dart">toPosition(0,0);
-toPosition(3,5);
-...
-</code></pre>
+  <p>The function <code>toPosition</code> sets the row and column values if they are valid and
+returns true, otherwise it returns false.</p>
+<p>Args:
+row (int): The row parameter represents the row number of a position in a
+grid or matrix.
+column (int): The "column" parameter represents the column index of a
+position in a grid or matrix.</p>
+<p>Returns:
+a boolean value. It returns true if the position (row, column) is valid and
+successfully sets the internal variables _row and _column to the given values.
+It returns false if the position is not valid.</p>
 </section>
 
 

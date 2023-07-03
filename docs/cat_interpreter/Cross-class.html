@@ -99,6 +99,10 @@
         </dt>
         <dd>
           Construct cross from an existing 6x6 matrix.
+<code>Cross.fromList(this.grid);</code> is a constructor in the <code>Cross</code> class that takes
+a 2D list <code>grid</code> as a parameter. It creates a new instance of the <code>Cross</code>
+class by assigning the <code>grid</code> parameter to the <code>grid</code> property of the new
+instance. This allows you to create a <code>Cross</code> object from an existing 2D list.
         </dd>
     </dl>
   </section>
@@ -113,7 +117,11 @@
 
 </dt>
 <dd>
-  A map that maps the numbers to the colors.
+  The code <code>Map&lt;int, Styles&gt; colors = &lt;int, Styles&gt;{...};</code> is creating a map
+called <code>colors</code> that maps integers to <code>Styles</code> objects. The keys of the map
+are integers, and the values are <code>Styles</code> objects. Each integer represents a
+color code, and the corresponding <code>Styles</code> object represents the color
+associated with that code.
   <div class="features"><span class="feature">read / write</span></div>
 
 </dd>
@@ -124,7 +132,11 @@
 
 </dt>
 <dd>
-  A getter for the cross.
+  The <code>@override List&lt;List&lt;int&gt;&gt; get getGrid =&gt; grid;</code> is a getter method that
+overrides the <code>getGrid</code> getter method from the <code>BasicShape</code> interface. It
+returns the <code>grid</code> property, which is a 2D list representing the cross. This
+allows other classes that implement the <code>BasicShape</code> interface to access the
+<code>grid</code> property of the <code>Cross</code> class.
   <div class="features"><span class="feature">read-only</span><span class="feature">override</span></div>
 
 </dd>
@@ -135,7 +147,14 @@
 
 </dt>
 <dd>
-  A getter for the cross.
+  The <code>@override late final List&lt;List&lt;int&gt;&gt; grid;</code> is declaring a late final
+variable <code>grid</code> of type <code>List&lt;List&lt;int&gt;&gt;</code>. The <code>@override</code> annotation
+indicates that this variable is overriding a property from a superclass or
+implementing an interface. In this case, it is overriding the <code>grid</code> property
+from the <code>BasicShape</code> interface. The <code>late</code> keyword indicates that the
+variable will be initialized at a later point before it is accessed. The
+<code>final</code> keyword indicates that the variable cannot be reassigned once it is
+initialized.
   <div class="features"><span class="feature">late</span><span class="feature">final</span><span class="feature">override</span></div>
 
 </dd>
@@ -146,7 +165,8 @@
 
 </dt>
 <dd>
-  The hash code for this object.
+  The <code>@override int get hashCode =&gt; Object.hash(grid, colors);</code> is overriding
+the <code>hashCode</code> getter method from the <code>Object</code> class.
   <div class="features"><span class="feature">read-only</span><span class="feature">override</span></div>
 
 </dd>
@@ -219,7 +239,7 @@ containing the same elements.
 
 </dt>
 <dd>
-  Validate <code>row, column</code> position.
+  The function validates if a given position is within a specific range.
   <div class="features"><span class="feature">override</span></div>
 
 </dd>
@@ -275,6 +295,7 @@ containing the same elements.
         <li><a href="../cat_interpreter/BasicMoves-class.html">BasicMoves</a></li>
         <li><a href="../cat_interpreter/BasicShape-class.html">BasicShape</a></li>
         <li><a href="../cat_interpreter/CATInterpreter-class.html">CATInterpreter</a></li>
+        <li><a href="../cat_interpreter/Coloring-class.html">Coloring</a></li>
         <li><a href="../cat_interpreter/CommandCaller-class.html">CommandCaller</a></li>
         <li><a href="../cat_interpreter/Cross-class.html">Cross</a></li>
         <li><a href="../cat_interpreter/Results-class.html">Results</a></li>

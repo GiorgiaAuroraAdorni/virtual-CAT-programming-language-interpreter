@@ -3,7 +3,13 @@ class BasicMoves {
   /// A constructor that receives a function as a parameter.
   BasicMoves(this.validatePosition);
 
+  /// The line `int _column = 0;` is declaring a private instance variable `_column`
+  /// of type `int` and initializing it with a value of 0. This variable represents
+  /// the column position of the CAT.
   int _column = 0;
+  /// The line `int _row = 3;` is declaring a private instance variable `_row` of
+  /// type `int` and initializing it with a value of 3. This variable represents the
+  /// row position of the CAT.
   int _row = 3;
 
   /// A flag that indicates if the CAT is in copy mode.
@@ -235,14 +241,20 @@ class BasicMoves {
     return copyMode && _alternativePosition(newColumn, false) && alternate;
   }
 
-  /// Move to an arbitrary position [row,column].
+
+  /// The function `toPosition` sets the row and column values if they are valid and
+  /// returns true, otherwise it returns false.
   ///
-  /// Return true on success.
-  /// ```dart
-  /// toPosition(0,0);
-  /// toPosition(3,5);
-  /// ...
-  /// ```
+  /// Args:
+  ///   row (int): The row parameter represents the row number of a position in a
+  /// grid or matrix.
+  ///   column (int): The "column" parameter represents the column index of a
+  /// position in a grid or matrix.
+  ///
+  /// Returns:
+  ///   a boolean value. It returns true if the position (row, column) is valid and
+  /// successfully sets the internal variables _row and _column to the given values.
+  /// It returns false if the position is not valid.
   bool toPosition(int row, int column) {
     if (validatePosition(row, column)) {
       _row = row;
@@ -254,6 +266,7 @@ class BasicMoves {
     return false;
   }
 
+  /// The function returns a string representation of the row and column positions.
   @override
   String toString() => "Row position: $_row\nColumn position:$_column";
 
@@ -280,6 +293,19 @@ class BasicMoves {
     return copyMode && _alternativePosition(newRow, true) && alternate;
   }
 
+  /// The function `_alternativePosition` checks if a given value can be assigned to
+  /// a specific position on a grid, and updates the position accordingly.
+  ///
+  /// Args:
+  ///   val (int): The parameter `val` is an integer value that represents the
+  /// position on either the row or column axis.
+  ///   axis (bool): The "axis" parameter is a boolean value that determines whether
+  /// the alternative position should be calculated along the column axis (if true)
+  /// or the row axis (if false).
+  ///
+  /// Returns:
+  ///   a boolean value. It returns true if the position is successfully validated
+  /// and updated, and false otherwise.
   bool _alternativePosition(int val, bool axis) {
     if (axis) {
       if (_column > 3) {
