@@ -246,12 +246,12 @@ void fillEmpty() {
     expect(
       board.getBoard,
       equals([
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 1, 1, 0, 0],
         [1, 1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 1, 1, 0, 0],
       ]),
     );
     expect(board.move.column, equals(0));
@@ -264,12 +264,12 @@ void fillEmpty() {
     expect(
       board.getBoard,
       equals([
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 1, 1, 0, 0],
         [1, 1, 1, 1, 1, 1],
         [2, 2, 2, 2, 2, 2],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 1, 1, 0, 0],
       ]),
     );
     expect(board.move.column, equals(5));
@@ -283,12 +283,12 @@ void fillEmpty() {
     expect(
       board.getBoard,
       equals([
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 3, 1, 1],
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 1, 3, 0, 0],
         [1, 1, 1, 3, 1, 1],
         [2, 2, 2, 3, 3, 3],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 1, 1, 0, 0],
       ]),
     );
     expect(board.move.column, equals(3));
@@ -299,7 +299,7 @@ void fillEmpty() {
 void square() {
   test("Color square from starting position", () {
     Coloring board = Coloring(Shape.cross.build);
-    expect(board.squareBottomLeft([1]), isTrue);
+    expect(board.squareRightUpLeft([1]), isTrue);
     expect(
       board.getBoard,
       equals([
@@ -316,7 +316,7 @@ void square() {
   });
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
-    expect(board.squareBottomLeft([1, 2]), isTrue);
+    expect(board.squareRightUpLeft([1, 2]), isTrue);
     expect(
       board.getBoard,
       equals([
@@ -333,7 +333,7 @@ void square() {
   });
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
-    expect(board.squareBottomLeft([1, 2, 3]), isTrue);
+    expect(board.squareRightUpLeft([1, 2, 3]), isTrue);
     expect(
       board.getBoard,
       equals([
@@ -350,7 +350,7 @@ void square() {
   });
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
-    expect(board.squareBottomLeft([1, 2, 3, 4]), isTrue);
+    expect(board.squareRightUpLeft([1, 2, 3, 4]), isTrue);
     expect(
       board.getBoard,
       equals([
@@ -368,14 +368,14 @@ void square() {
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
     expect(board.move.up(), isTrue);
-    expect(board.squareBottomLeft([1, 2, 3, 4]), isFalse);
+    expect(board.squareRightUpLeft([1, 2, 3, 4]), isFalse);
     expect(board.move.column, equals(0));
     expect(board.move.row, equals(2));
   });
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
     expect(board.move.up(), isTrue);
-    expect(board.squareTopLeft([1, 2, 3, 4]), isTrue);
+    expect(board.squareDownRightUp([1, 2, 3, 4]), isTrue);
     expect(
       board.getBoard,
       equals([
@@ -393,7 +393,7 @@ void square() {
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
     expect(board.move.right(), isTrue);
-    expect(board.squareBottomRight([1, 2, 3, 4]), isTrue);
+    expect(board.squareUpLeftDown([1, 2, 3, 4]), isTrue);
     expect(
       board.getBoard,
       equals([
@@ -411,7 +411,7 @@ void square() {
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
     expect(board.move.diagonalUpRight(), isTrue);
-    expect(board.squareTopRight([1, 2, 3, 4]), isTrue);
+    expect(board.squareLeftDownRight([1, 2, 3, 4]), isTrue);
     expect(
       board.getBoard,
       equals([
@@ -429,7 +429,7 @@ void square() {
   test("Color square from starting position alternate", () {
     Coloring board = Coloring(Shape.cross.build);
     expect(board.move.diagonalUpRight(), isTrue);
-    expect(board.squareBottomLeft([1, 2, 3, 4]), isFalse);
+    expect(board.squareRightUpLeft([1, 2, 3, 4]), isFalse);
     expect(
       board.getBoard,
       equals([
