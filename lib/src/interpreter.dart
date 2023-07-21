@@ -200,6 +200,47 @@ class CATInterpreter {
     _commandCaller.board.move.toPosition(row, column);
   }
 
+  /// It takes a list of commands and a list of positions where to copy the
+  /// commands.
+  /// Args:
+  ///   commands (List<String>): The commands to execute
+  ///   positions (List<String>): The positions where tto repeat the commands
+  void repeatCommands(List<String> commands, List<String> positions) {
+    final StringBuffer buffer = StringBuffer();
+    final List<String> movements = positions;
+    final List<List<String>> newCommands = _ofSetCommands(
+      movements,
+      commands,
+    );
+    for (int i = 0; i < movements.length; i++) {
+      buffer
+        ..write(" go(${movements[i]}) ")
+        ..writeAll(newCommands[i], " ");
+    }
+    _parse(buffer.toString(), false);
+    _commandCaller.board.move.copyMode = false;
+  }
+
+  /// It takes a list of origin cells and a list of destination cells,
+  /// the color of the origin cells is copied to the destination cells.
+  /// Args:
+  ///   origin (List<String>): Origin cells from where to copy the colors
+  ///   destinations (List<String>): Destination cells
+  void copyCells(List<String> origin, List<String> destination) {
+    final StringBuffer buffer = StringBuffer();
+    final Pair<List<String>, List<String>> newDestinationsAndColors =
+        _copyCells(origin, destination);
+    final List<String> newDestinations = newDestinationsAndColors.first;
+    final List<String> colors = newDestinationsAndColors.second;
+    for (int i = 0; i < newDestinations.length; i++) {
+      buffer
+        ..write(" go(${newDestinations[i]}) ")
+        ..write(" paint(${colors[i]}) ");
+    }
+    _parse(buffer.toString(), false);
+    _commandCaller.board.move.copyMode = false;
+  }
+
   /// It takes a list of commands, splits them by curly braces,
   /// and then executes the first command
   /// for each of the second command's values.
@@ -208,33 +249,16 @@ class CATInterpreter {
   ///   command (List<String>): The command that was passed in.
   void _copy(List<String> command) {
     _commandCaller.board.move.copyMode = true;
-    final StringBuffer buffer = StringBuffer();
     final List<String> toExecute =
         splitCommands(command[0].removeSurrounding(prefix: "{", suffix: "}"));
     if (toExecute.isNotEmpty) {
-      final List<String> movements = splitByCurly(command[1]);
-      final List<List<String>> newCommands = _ofSetCommands(
-        movements,
-        toExecute,
-      );
-      for (int i = 0; i < movements.length; i++) {
-        buffer
-          ..write(" go(${movements[i]}) ")
-          ..writeAll(newCommands[i], " ");
-      }
+      repeatCommands(toExecute, splitByCurly(command[1]));
     } else {
-      final Pair<List<String>, List<String>> newDestinationsAndColors =
-          _copyCells(command);
-      final List<String> newDestinations = newDestinationsAndColors.first;
-      final List<String> colors = newDestinationsAndColors.second;
-      for (int i = 0; i < newDestinations.length; i++) {
-        buffer
-          ..write(" go(${newDestinations[i]}) ")
-          ..write(" paint(${colors[i]}) ");
-      }
+      final List<String> origin = splitByCurly(command[0]);
+      final List<String> destination =
+      splitByCurly(command[1]);
+      copyCells(origin, destination);
     }
-    _parse(buffer.toString(), false);
-    _commandCaller.board.move.copyMode = false;
   }
 
   List<List<String>> _ofSetCommands(
@@ -272,7 +296,8 @@ class CATInterpreter {
       final List<String> modifiedCommands = <String>[];
       for (final String k in toExecute) {
         if (k.startsWith("go")) {
-          final List<String> oldPosition = k.replaceAll(RegExp("[go()]"), "").trim().split("");
+          final List<String> oldPosition =
+              k.replaceAll(RegExp("[go()]"), "").trim().split("");
           if (_rows.containsKey(oldPosition[0]) &&
               _columns.containsKey(oldPosition[1])) {
             modifiedCommands.add("go(${i[j]})");
@@ -319,18 +344,21 @@ class CATInterpreter {
     return newPositionsMovements;
   }
 
-  Pair<List<String>, List<String>> _copyCells(List<String> command) {
-    final List<Pair<int, int>> origin = _sortCells(splitByCurly(command[0]));
-    final List<Pair<int, int>> destination =
-        _sortCells(splitByCurly(command[1]));
+  Pair<List<String>, List<String>> _copyCells(
+    List<String> origin,
+    List<String> destination,
+  ) {
+    final List<Pair<int, int>> originLocal = _sortCells(origin);
+    final List<Pair<int, int>> destinationLocal =
+        _sortCells(destination);
     final List<String> newDestinations = <String>[];
     final List<String> colors = <String>[];
-    for (final Pair<int, int> i in destination) {
-      for (final Pair<int, int> j in origin) {
-        final int row =
-            (j.first + (i.first - j.first)) + (j.first - origin.first.first);
+    for (final Pair<int, int> i in destinationLocal) {
+      for (final Pair<int, int> j in originLocal) {
+        final int row = (j.first + (i.first - j.first)) +
+            (j.first - originLocal.first.first);
         final int column = (j.second + (i.second - j.second)) +
-            (j.second - origin.first.second);
+            (j.second - originLocal.first.second);
         final Iterable<String> rowKeys =
             _rows.filterValues((int p0) => p0 == row).keys;
         final String columnKeys = "${column + 1}";
@@ -362,7 +390,7 @@ class CATInterpreter {
   ///
   /// Args:
   ///   direction (String): The direction to mirror the board.
-  void _mirrorBoard(String direction) {
+  void mirrorBoard(String direction) {
     switch (direction) {
       case "horizontal":
         {
@@ -389,7 +417,7 @@ class CATInterpreter {
   /// Args:
   ///   cells (List<String>): A list of cells to mirror.
   ///   direction (String): The direction to mirror the cells in.
-  void _mirrorCells(List<String> cells, String direction) {
+  void mirrorCells(List<String> cells, String direction) {
     switch (direction) {
       case "horizontal":
         {
@@ -433,7 +461,7 @@ class CATInterpreter {
   /// Args:
   ///   commands (List<String>): The list of commands to mirror.
   ///   direction (String): The direction to mirror the board.
-  void _mirrorCommands(List<String> commands, String direction) {
+  void mirrorCommands(List<String> commands, String direction) {
     final CommandCaller newCaller = CommandCaller(shape);
     final CommandCaller oldCaller = _commandCaller;
     _commandCaller = newCaller;
@@ -442,7 +470,7 @@ class CATInterpreter {
       oldCaller.board.move.column,
     );
     _parse(commands.join(","), false);
-    _mirrorBoard(direction);
+    mirrorBoard(direction);
     oldCaller.board.joinBoards(_commandCaller.board.getCross);
     _commandCaller = oldCaller;
   }
@@ -455,7 +483,7 @@ class CATInterpreter {
   ///   command (List<String>): The command that was entered by the user.
   void _mirror(List<String> command) {
     if (command.length == 1) {
-      _mirrorBoard(command.last);
+      mirrorBoard(command.last);
 
       return;
     }
@@ -470,11 +498,11 @@ class CATInterpreter {
       }
     }
     if (isCell) {
-      _mirrorCells(toEvaluate, command.last);
+      mirrorCells(toEvaluate, command.last);
 
       return;
     } else {
-      _mirrorCommands(toEvaluate, command.last);
+      mirrorCommands(toEvaluate, command.last);
 
       return;
     }
@@ -502,12 +530,12 @@ class CATInterpreter {
   /// and the index of the color.
   ///
   /// Args:
-  ///   el (List<String>): The list of arguments passed to the command.
+  ///   colors (List<String>): The list of colors, only the first color is used.
   ///
   /// Returns:
   ///   The return type is void.
-  void _fillEmpty(List<String> el) {
-    final CatColors color = containsColor(el.first);
+  void fillEmpty(List<String> colors) {
+    final CatColors color = containsColor(colors.first);
     if (color != CatColors.NaC) {
       _commandCaller.color("fillEmpty", <dynamic>[color.index]);
     } else {
@@ -543,7 +571,7 @@ class CATInterpreter {
           _go(el);
           break;
         case "fill_empty":
-          _fillEmpty(el);
+          fillEmpty(el);
           break;
         case "copy":
           _copy(el);
