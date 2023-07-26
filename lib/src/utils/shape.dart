@@ -1,7 +1,4 @@
 import "package:interpreter/cat_interpreter.dart";
-import "package:interpreter/src/models/basic_shape.dart";
-import "package:interpreter/src/models/cross.dart";
-import "package:interpreter/src/models/square.dart";
 
 /// A factory that returns a `BasicShape` object.
 enum Shape {

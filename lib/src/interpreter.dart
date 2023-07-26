@@ -115,21 +115,36 @@ class CATInterpreter {
         )
         .toList();
     final String move = splited.join();
-    bool call = _commandCaller.move(move, <int>[repetitions]);
-    if (!call) {
-      if (splited[0].length == 2 &&
-          _rows.containsKey(splited[0][0]) &&
-          _columns.containsKey(splited[0][1])) {
-        call = _commandCaller.move(
-          "toPosition",
-          <int>[_rows[splited[0][0]]!, _columns[splited[0][1]]!],
-        );
-      } else {
-        _error = CatError.invalidCell;
-
-        return;
-      }
+    go(move, repetitions);
+    if (_error == CatError.invalidMove) {
+      goCell(splited[0]);
     }
+  }
+
+  void goCell(String cell) {
+    bool call = true;
+    if (cell.length == 2 &&
+        _rows.containsKey(cell[0]) &&
+        _columns.containsKey(cell[1])) {
+      call = _commandCaller.move(
+        "toPosition",
+        <int>[_rows[cell[0]]!, _columns[cell[1]]!],
+      );
+    } else {
+      _error = CatError.invalidCell;
+
+      return;
+    }
+    if (!call) {
+      _error = CatError.invalidMove;
+
+      return;
+    }
+    _error = CatError.none;
+  }
+
+  void go(String move, int repetitions) {
+    final bool call = _commandCaller.move(move, <int>[repetitions]);
     if (!call) {
       _error = CatError.invalidMove;
     }
@@ -145,6 +160,20 @@ class CATInterpreter {
   ///   A list of strings.
   void _paint(List<String> command) {
     final List<String> colors = splitByCurly(command.first);
+    if (command.length == 1) {
+      paintSingleCell(colors.first);
+
+      return;
+    }
+    if (command.last.startsWith("{") && command.last.endsWith("}")) {
+      final List<String> destinations = splitByCurly(command.last);
+      paintMultileCells(colors, destinations);
+    } else {
+      paintPattern(colors, command[1], command[2]);
+    }
+  }
+
+  void paintPattern(List<String> colors, String repetitions, String pattern) {
     final List<int> colorsParsed =
         colors.map((String e) => containsColor(e.trim()).index).toList();
     if (colorsParsed.contains(CatColors.NaC.index)) {
@@ -152,52 +181,66 @@ class CATInterpreter {
 
       return;
     }
-    if (command.length == 1) {
-      _commandCaller.color(
-        "color",
-        <int>[colorsParsed[0]],
-      );
+    final int column = _commandCaller.board.move.column;
+    final int row = _commandCaller.board.move.row;
+    final String color = pattern
+        .split(" ")
+        .where((String element) => element.isNotNullOrEmpty)
+        .mapIndexed(
+          (int index, String p1) => index == 0 ? p1 : p1.capitalize(),
+        )
+        .map((String e) => e.replaceAll("-", ""))
+        .join();
+    bool call = false;
+    try {
+      final int repetitionsParsed = repetitions.toInt();
+      call = _commandCaller
+          .color(color, <dynamic>[colorsParsed, repetitionsParsed]);
+    } on FormatException {
+      call = _commandCaller.color(color, <dynamic>[
+        colorsParsed,
+      ]);
+    }
+
+    if (!call) {
+      _error = CatError.invalidColoringCommand;
+    }
+    _commandCaller.board.move.toPosition(row, column);
+  }
+
+  void paintMultileCells(List<String> colors, List<String> cellsPositions) {
+    final List<int> colorsParsed =
+        colors.map((String e) => containsColor(e.trim()).index).toList();
+    if (colorsParsed.contains(CatColors.NaC.index)) {
+      _error = CatError.invalidColor;
 
       return;
     }
     final int column = _commandCaller.board.move.column;
     final int row = _commandCaller.board.move.row;
-    if (command.last.startsWith("{") && command.last.endsWith("}")) {
-      final List<String> destinations = splitByCurly(command.last);
-      final StringBuffer newCommand = StringBuffer();
-      int j = 0;
-      for (final String i in destinations) {
-        newCommand
-          ..write("go($i)")
-          ..write("paint(${colors[j]})");
-        j = (j + 1) % colors.length;
-      }
-      _parse(newCommand.toString(), false);
-    } else {
-      final String color = command[2]
-          .split(" ")
-          .where((String element) => element.isNotNullOrEmpty)
-          .mapIndexed(
-            (int index, String p1) => index == 0 ? p1 : p1.capitalize(),
-          )
-          .map((String e) => e.replaceAll("-", ""))
-          .join();
-      bool call = false;
-      try {
-        final int repetitions = command[1].toInt();
-        call =
-            _commandCaller.color(color, <dynamic>[colorsParsed, repetitions]);
-      } on FormatException {
-        call = _commandCaller.color(color, <dynamic>[
-          colorsParsed,
-        ]);
-      }
-
-      if (!call) {
-        _error = CatError.invalidColoringCommand;
-      }
+    final StringBuffer newCommand = StringBuffer();
+    int j = 0;
+    for (final String i in cellsPositions) {
+      newCommand
+        ..write("go($i)")
+        ..write("paint(${colors[j]})");
+      j = (j + 1) % colors.length;
     }
+    _parse(newCommand.toString(), false);
     _commandCaller.board.move.toPosition(row, column);
+  }
+
+  void paintSingleCell(String color) {
+    final int colorParsed = containsColor(color.trim()).index;
+    if (colorParsed == CatColors.NaC.index) {
+      _error = CatError.invalidColor;
+
+      return;
+    }
+    _commandCaller.color(
+      "color",
+      <int>[colorParsed],
+    );
   }
 
   /// It takes a list of commands and a list of positions where to copy the
@@ -255,8 +298,7 @@ class CATInterpreter {
       repeatCommands(toExecute, splitByCurly(command[1]));
     } else {
       final List<String> origin = splitByCurly(command[0]);
-      final List<String> destination =
-      splitByCurly(command[1]);
+      final List<String> destination = splitByCurly(command[1]);
       copyCells(origin, destination);
     }
   }
@@ -349,8 +391,7 @@ class CATInterpreter {
     List<String> destination,
   ) {
     final List<Pair<int, int>> originLocal = _sortCells(origin);
-    final List<Pair<int, int>> destinationLocal =
-        _sortCells(destination);
+    final List<Pair<int, int>> destinationLocal = _sortCells(destination);
     final List<String> newDestinations = <String>[];
     final List<String> colors = <String>[];
     for (final Pair<int, int> i in destinationLocal) {
