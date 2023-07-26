@@ -251,9 +251,33 @@ class CATInterpreter {
   void repeatCommands(List<String> commands, List<String> positions) {
     final StringBuffer buffer = StringBuffer();
     final List<String> movements = positions;
+    final List<String> modifiedCommands = <String>[];
+    for (final String i in commands) {
+      if (i.startsWith("paint")) {
+        final List<String> splittedCommand = splitCommand(i);
+        if (splittedCommand.length == 3) {
+          final List<String> colors = splitByCurly(splittedCommand.second);
+          final List<String> cellsPositions = splitByCurly(splittedCommand.last);
+          final List<String> newCommand = [];
+          int j = 0;
+          for (final String i in cellsPositions) {
+            newCommand
+              ..add("go($i)")
+              ..add("paint(${colors[j]})");
+            j = (j + 1) % colors.length;
+          }
+          modifiedCommands.addAll(newCommand);
+        } else {
+          modifiedCommands.add(i);
+        }
+      } else {
+        modifiedCommands.add(i);
+      }
+    }
+
     final List<List<String>> newCommands = _ofSetCommands(
       movements,
-      commands,
+      modifiedCommands,
     );
     for (int i = 0; i < movements.length; i++) {
       buffer
