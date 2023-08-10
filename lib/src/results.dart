@@ -65,7 +65,7 @@ class Results {
       final List<String> tokenized = splitCommand(_commands[i]);
       switch (tokenized.first) {
         case "paint":
-          lineScore = tokenized.length == 2 ? 0 : 1;
+          lineScore = tokenized.length == 2 ? 0 : splitByCurly(tokenized[1]).length == 1 ? 1 : 2;
           break;
         case "fill_empty":
           lineScore = 1;
