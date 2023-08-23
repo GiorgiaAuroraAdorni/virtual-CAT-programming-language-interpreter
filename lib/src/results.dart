@@ -60,7 +60,7 @@ class Results {
 
   int _partialCATScoreCalculator() {
     int score = 0;
-    for (int i = 0; i < _commands.length; i++) {
+    for (int i = 1; i < _commands.length; i++) {
       int lineScore = 0;
       final List<String> tokenized = splitCommand(_commands[i]);
       switch (tokenized.first) {
