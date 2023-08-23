@@ -58,14 +58,18 @@ class Results {
     _positions.removeLast();
   }
 
-  int _partialCATScoreCalculator(){
+  int _partialCATScoreCalculator() {
     int score = 0;
-    for(int i = 1; i < _commands.length; i++){
+    for (int i = 0; i < _commands.length; i++) {
       int lineScore = 0;
       final List<String> tokenized = splitCommand(_commands[i]);
       switch (tokenized.first) {
         case "paint":
-          lineScore = tokenized.length == 2 ? 0 : splitByCurly(tokenized[1]).length == 1 ? 1 : 2;
+          lineScore = tokenized.length == 2
+              ? 0
+              : splitByCurly(tokenized[1]).length == 1
+                  ? 1
+                  : 2;
           break;
         case "fill_empty":
           lineScore = 1;
