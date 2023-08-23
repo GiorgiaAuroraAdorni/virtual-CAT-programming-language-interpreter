@@ -176,7 +176,7 @@ class CATInterpreter {
   void paintPattern(List<String> colors, String repetitions, String pattern) {
     final List<int> colorsParsed =
         colors.map((String e) => containsColor(e.trim()).index).toList();
-    if (colorsParsed.contains(CatColors.NaC.index)) {
+    if (colorsParsed.contains(CatColors.NaC.index) || colors.isEmpty) {
       _error = CatError.invalidColor;
 
       return;
@@ -211,7 +211,7 @@ class CATInterpreter {
   void paintMultileCells(List<String> colors, List<String> cellsPositions) {
     final List<int> colorsParsed =
         colors.map((String e) => containsColor(e.trim()).index).toList();
-    if (colorsParsed.contains(CatColors.NaC.index)) {
+    if (colorsParsed.contains(CatColors.NaC.index) || colors.isEmpty) {
       _error = CatError.invalidColor;
 
       return;
@@ -220,6 +220,11 @@ class CATInterpreter {
     final int row = _commandCaller.board.move.row;
     final StringBuffer newCommand = StringBuffer();
     int j = 0;
+    if(cellsPositions.isEmpty){
+      _error = CatError.invalidCell;
+
+      return;
+    }
     for (final String i in cellsPositions) {
       newCommand
         ..write("go($i)")
