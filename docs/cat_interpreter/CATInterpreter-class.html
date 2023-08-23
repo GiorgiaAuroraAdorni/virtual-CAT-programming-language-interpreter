@@ -164,6 +164,111 @@ to the <code>schemes</code> variable.
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="copyCells" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/copyCells.html">copyCells</a></span><span class="signature">(<wbr><span class="parameter" id="copyCells-param-origin"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">origin</span>, </span><span class="parameter" id="copyCells-param-destination"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">destination</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It takes a list of origin cells and a list of destination cells,
+the color of the origin cells is copied to the destination cells.
+Args:
+origin (List<string>): Origin cells from where to copy the colors
+destinations (List<string>): Destination cells</string></string>
+  
+
+</dd>
+
+        <dt id="fillEmpty" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/fillEmpty.html">fillEmpty</a></span><span class="signature">(<wbr><span class="parameter" id="fillEmpty-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">colors</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  If the first element of the list is a valid color, then call the <code>color</code>
+function of the <code>commandCaller</code> object with the <code>fillEmpty</code> command
+and the index of the color.
+  
+
+</dd>
+
+        <dt id="go" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/go.html">go</a></span><span class="signature">(<wbr><span class="parameter" id="go-param-move"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">move</span>, </span><span class="parameter" id="go-param-repetitions"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">repetitions</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="goCell" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/goCell.html">goCell</a></span><span class="signature">(<wbr><span class="parameter" id="goCell-param-cell"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">cell</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="mirrorBoard" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/mirrorBoard.html">mirrorBoard</a></span><span class="signature">(<wbr><span class="parameter" id="mirrorBoard-param-direction"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">direction</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It calls the mirrorHorizontal or mirrorVertical function in the Dart code,
+depending on the value of the direction parameter
+  
+
+</dd>
+
+        <dt id="mirrorCells" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/mirrorCells.html">mirrorCells</a></span><span class="signature">(<wbr><span class="parameter" id="mirrorCells-param-cells"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">cells</span>, </span><span class="parameter" id="mirrorCells-param-direction"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">direction</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It takes a list of cells and a direction,
+and then it moves to each cell and
+calls the appropriate mirror function
+  
+
+</dd>
+
+        <dt id="mirrorCommands" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/mirrorCommands.html">mirrorCommands</a></span><span class="signature">(<wbr><span class="parameter" id="mirrorCommands-param-commands"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">commands</span>, </span><span class="parameter" id="mirrorCommands-param-direction"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">direction</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It creates a new command caller,
+copies the board from the old command caller,
+parses the commands,
+mirrors the board,
+and then joins the crosses from the
+new board to the old board.
+  
+
+</dd>
+
         <dt id="noSuchMethod" class="callable inherited">
   <span class="name"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
@@ -174,6 +279,62 @@ to the <code>schemes</code> variable.
 <dd class="inherited">
   Invoked when a nonexistent method or property is accessed.
   <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="paintMultileCells" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/paintMultileCells.html">paintMultileCells</a></span><span class="signature">(<wbr><span class="parameter" id="paintMultileCells-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="paintMultileCells-param-cellsPositions"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">cellsPositions</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="paintPattern" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/paintPattern.html">paintPattern</a></span><span class="signature">(<wbr><span class="parameter" id="paintPattern-param-colors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span><span class="parameter" id="paintPattern-param-repetitions"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">repetitions</span>, </span><span class="parameter" id="paintPattern-param-pattern"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">pattern</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="paintSingleCell" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/paintSingleCell.html">paintSingleCell</a></span><span class="signature">(<wbr><span class="parameter" id="paintSingleCell-param-color"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">color</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="repeatCommands" class="callable">
+  <span class="name"><a href="../cat_interpreter/CATInterpreter/repeatCommands.html">repeatCommands</a></span><span class="signature">(<wbr><span class="parameter" id="repeatCommands-param-commands"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">commands</span>, </span><span class="parameter" id="repeatCommands-param-positions"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">positions</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It takes a list of commands and a list of positions where to copy the
+commands.
+Args:
+commands (List<string>): The commands to execute
+positions (List<string>): The positions where tto repeat the commands</string></string>
+  
 
 </dd>
 
@@ -207,7 +368,7 @@ to a new instance of the <code>CommandCaller</code> class
 
         <dt id="validateOnScheme" class="callable">
   <span class="name"><a href="../cat_interpreter/CATInterpreter/validateOnScheme.html">validateOnScheme</a></span><span class="signature">(<wbr><span class="parameter" id="validateOnScheme-param-code"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">code</span>, </span><span class="parameter" id="validateOnScheme-param-schemeIndex"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.0.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">schemeIndex</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/dartx/1.1.0/dartx_io/Pair-class.html">Pair</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cat_interpreter/Results-class.html">Results</a></span>, <span class="type-parameter"><a href="../cat_interpreter/CatError.html">CatError</a></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/dartx/1.2.0/dartx_io/Pair-class.html">Pair</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cat_interpreter/Results-class.html">Results</a></span>, <span class="type-parameter"><a href="../cat_interpreter/CatError.html">CatError</a></span>&gt;</span></span>
   </span>
   
 
@@ -314,7 +475,18 @@ to a new instance of the <code>CommandCaller</code> class
           <li><a href="../cat_interpreter/CATInterpreter/shape.html">shape</a></li>
 
         <li class="section-title"><a href="../cat_interpreter/CATInterpreter-class.html#instance-methods">Methods</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/copyCells.html">copyCells</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/fillEmpty.html">fillEmpty</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/go.html">go</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/goCell.html">goCell</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/mirrorBoard.html">mirrorBoard</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/mirrorCells.html">mirrorCells</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/mirrorCommands.html">mirrorCommands</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/paintMultileCells.html">paintMultileCells</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/paintPattern.html">paintPattern</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/paintSingleCell.html">paintSingleCell</a></li>
+          <li><a href="../cat_interpreter/CATInterpreter/repeatCommands.html">repeatCommands</a></li>
           <li><a href="../cat_interpreter/CATInterpreter/reset.html">reset</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/3.0.0/dart-core/Object/toString.html">toString</a></li>
           <li><a href="../cat_interpreter/CATInterpreter/validateOnScheme.html">validateOnScheme</a></li>
