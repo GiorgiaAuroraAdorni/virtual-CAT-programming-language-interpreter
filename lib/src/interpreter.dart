@@ -121,6 +121,9 @@ class CATInterpreter {
     }
   }
 
+  /// It takes a string, checks if it is a valid cell, and if it is,
+  /// it calls the move function of the command caller with the string and
+  /// a list of integers
   void goCell(String cell) {
     bool call = true;
     if (cell.length == 2 &&
@@ -143,6 +146,9 @@ class CATInterpreter {
     _error = CatError.none;
   }
 
+  /// It takes a string and an integer, checks if the string is a valid move,
+  /// and if it is, it calls the move function of the command caller with the
+  /// string and a list of integers
   void go(String move, int repetitions) {
     final bool call = _commandCaller.move(move, <int>[repetitions]);
     if (!call) {
@@ -167,12 +173,15 @@ class CATInterpreter {
     }
     if (command.last.startsWith("{") && command.last.endsWith("}")) {
       final List<String> destinations = splitByCurly(command.last);
-      paintMultileCells(colors, destinations);
+      paintMultipleCells(colors, destinations);
     } else {
       paintPattern(colors, command[1], command[2]);
     }
   }
 
+  /// It takes a string, checks if it is a valid color, and if it is,
+  /// it calls the color function of the command caller with the string and
+  /// a list of integers with the current position of the board
   void paintPattern(List<String> colors, String repetitions, String pattern) {
     final List<int> colorsParsed =
         colors.map((String e) => containsColor(e.trim()).index).toList();
@@ -208,7 +217,10 @@ class CATInterpreter {
     _commandCaller.board.move.toPosition(row, column);
   }
 
-  void paintMultileCells(List<String> colors, List<String> cellsPositions) {
+  /// It takes a string, checks if it is a valid color, and if it is,
+  /// it calls the color function of the command caller with the string and
+  /// a list of integers with the current position of the board
+  void paintMultipleCells(List<String> colors, List<String> cellsPositions) {
     final List<int> colorsParsed =
         colors.map((String e) => containsColor(e.trim()).index).toList();
     if (colorsParsed.contains(CatColors.NaC.index) || colors.isEmpty) {
@@ -235,6 +247,9 @@ class CATInterpreter {
     _commandCaller.board.move.toPosition(row, column);
   }
 
+  /// It takes a string, checks if it is a valid color, and if it is,
+  /// it calls the color function of the command caller with the string and
+  /// a list of integers with the current position of the board
   void paintSingleCell(String color) {
     final int colorParsed = containsColor(color.trim()).index;
     if (colorParsed == CatColors.NaC.index) {
