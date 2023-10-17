@@ -1,6 +1,7 @@
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?logo=dart&logoColor=white&style=flat) 
 
 # virtual-CAT-programming-language-interpreter
+[![DOI](https://zenodo.org/badge/605107045.svg)](https://zenodo.org/badge/latestdoi/605107045)
 
 The virtual CAT Interpreter is a component of the [virtual Cross Array Task (CAT) platform](https://github.com/GiorgiaAuroraAdorni/virtual-CAT-app). 
 It plays a crucial role in translating student actions, which include gesture interactions and arranged visual programming blocks, into executable machine-readable instructions. 
