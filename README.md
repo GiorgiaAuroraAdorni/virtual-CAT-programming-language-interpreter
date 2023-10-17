@@ -1,5 +1,5 @@
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?logo=dart&logoColor=white&style=flat) 
-[![Dart](https://github.com/vladimir98vk/CAT-symbolic-programming-language-interpreter/actions/workflows/dart.yml/badge.svg)](https://github.com/vladimir98vk/CAT-symbolic-programming-language-interpreter/actions/workflows/dart.yml)
+
 # virtual-CAT-programming-language-interpreter
 
 The virtual CAT Interpreter is a component of the [virtual Cross Array Task (CAT) platform](https://github.com/GiorgiaAuroraAdorni/virtual-CAT-app). 
@@ -20,6 +20,4 @@ The user is provided real-time feedback, including the current progress on the c
 
 ## Integration
 
-We've developed a dedicated Dart package to seamlessly integrate the interpreter within the Virtual CAT application. This package is imported into the Flutter project, ensuring that the interpreter functions seamlessly within the application.
-
-[Documentation]([link-to-documentation](https://giorgiaauroraadorni.github.io/virtual-CAT-programming-language-interpreter/)https://giorgiaauroraadorni.github.io/virtual-CAT-programming-language-interpreter/)
+The documentation of the Dart package is available here: [virtual-CAT-programming-language-interpreter Documentation]([link-to-documentation](https://giorgiaauroraadorni.github.io/virtual-CAT-programming-language-interpreter/)https://giorgiaauroraadorni.github.io/virtual-CAT-programming-language-interpreter/)
