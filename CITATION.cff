@@ -1,0 +1,10 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Adorni
+  given-names: Giorgia
+- family-names: Karpenko
+  given-names: Volodymyr
+title: "virtual CAT programming language interpreter"
+version: 1.0.0
+date-released: 2023-10-17
