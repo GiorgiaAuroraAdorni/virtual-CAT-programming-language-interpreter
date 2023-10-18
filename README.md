@@ -1,23 +1,17 @@
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?logo=dart&logoColor=white&style=flat) 
 
-# virtual-CAT-programming-language-interpreter
+# virtual CAT programming language interpreter
 [![DOI](https://zenodo.org/badge/605107045.svg)](https://zenodo.org/badge/latestdoi/605107045)
 
-The virtual CAT Interpreter is a component of the [virtual Cross Array Task (CAT) platform](https://github.com/GiorgiaAuroraAdorni/virtual-CAT-app). 
-It plays a crucial role in translating student actions, which include gesture interactions and arranged visual programming blocks, into executable machine-readable instructions. 
-This interpreter analyses user input and converts these actions into a formal algorithm specified using the CAT programming language.
+The virtual CAT programming language interpreter is a software component of the [virtual Cross Array Task (CAT) platform](https://github.com/GiorgiaAuroraAdorni/virtual-CAT-app).
+Its primary role is to translate user actions, including gesture interactions and arranged visual programming blocks, into executable machine-readable instructions, a formal algorithm specified using the CAT programming language.
 
-## Validation of Commands
+Before executing these commands, the interpreter meticulously validates them to identify potential semantic errors. 
+While the design of the interface inherently prevents syntax errors, semantic discrepancies, such as attempting to move beyond board boundaries or using incorrect patterns, are addressed by the interpreter. 
+Upon successful validation, it executes the code, offering users real-time feedback on their progress, including visual updates on the colouring cross and the CAT-score. 
+In cases where errors are detected during execution, the interpreter adeptly manages them, promptly notifying users and even providing suggestions for corrections. 
+In essence, the interpreter acts as a bridge, ensuring seamless communication between the user's input and the application's core functionalities.
 
-Each command that makes up the algorithm, such as colour selections and other operations, undergoes a rigorous validation process. 
-This process is designed to identify and address semantic errors. 
-Notably, the platform's interface has been thoughtfully designed with predefined programming blocks and buttons. This design inherently eliminates the need for syntax checking, significantly streamlining the process. However, semantic errors can still occur during command execution. 
-For example, they might occur when users attempt to move outside the board boundaries using invalid directions or apply an inappropriate pattern for a colouring command.
-
-## Real-time Feedback
-
-Once the validation process is complete and the code is deemed error-free, the interpreter executes it. 
-The user is provided real-time feedback, including the current progress on the colouring cross and the CAT-score. If the interpreter detects errors during execution, it handles them by providing users with error notifications and potential suggestions for correction.
 
 ## Integration
 
