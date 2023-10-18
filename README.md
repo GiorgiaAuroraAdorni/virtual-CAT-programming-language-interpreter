@@ -19,4 +19,4 @@ The interpreter acts as a bridge, ensuring seamless communication between the us
 
 ## Integration
 
-The documentation of the Dart package is available here: [virtual-CAT-programming-language-interpreter Documentation]([link-to-documentation](https://giorgiaauroraadorni.github.io/virtual-CAT-programming-language-interpreter/)https://giorgiaauroraadorni.github.io/virtual-CAT-programming-language-interpreter/)
+The documentation of the Dart package is available here: [virtual-CAT-programming-language-interpreter Documentation](https://giorgiaauroraadorni.github.io/virtual-CAT-programming-language-interpreter/)
