@@ -44,8 +44,8 @@ The documentation of the Dart package is available here: [virtual-CAT-programmin
 
 **[2]** Adorni, G. (2023). Dataset from the pilot study of the virtual CAT platform for algorithmic thinking skills assessment in Swiss Compulsory Education. Zenodo Dataset. https://doi.org/10.5281/zenodo.10018292
 
-**[3]** Adorni, G., & Karpenko, V. (2023). virtual CAT: An app for algorithmic thinking assessment within Swiss compulsory education. Zenodo Software. https://doi.org/10.5281/zenodo.10027851
+**[3]** Adorni, G., & Piatti, S., & Karpenko, V. (2023). virtual CAT: An app for algorithmic thinking assessment within Swiss compulsory education. Zenodo Software. https://doi.org/10.5281/zenodo.10027851
 On GitHub: https://github.com/GiorgiaAuroraAdorni/virtual-CAT-app/
 
-**[4]** Adorni, G. (2023). virtual CAT data infrastructure. Zenodo Software. https://doi.org/10.5281/zenodo.10015011
+**[4]** Adorni, G., & Karpenko, V. (2023). virtual CAT data infrastructure. Zenodo Software. https://doi.org/10.5281/zenodo.10015011
 On GitHub: https://github.com/GiorgiaAuroraAdorni/virtual-CAT-data-infrastructure
