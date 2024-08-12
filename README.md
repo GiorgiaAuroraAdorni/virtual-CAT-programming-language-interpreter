@@ -42,7 +42,7 @@ The documentation of the Dart package is available here: [virtual-CAT-programmin
 
 **[1]** A. Piatti, G. Adorni, L. El-Hamamsy, L. Negrini, D. Assaf, L. Gambardella & F. Mondada. (2022). The CT-cube: A framework for the design and the assessment of computational thinking activities. Computers in Human Behavior Reports, 5, 100166. https://doi.org/10.1016/j.chbr.2021.100166
 
-**[2]** Adorni, G. (2023). Dataset from the pilot study of the virtual CAT platform for algorithmic thinking skills assessment in Swiss Compulsory Education. Zenodo Dataset. https://doi.org/10.5281/zenodo.10018292
+**[2]** Adorni, G. (2023). Dataset for algorithmic thinking skills assessment: Results from the virtual CAT pilot study in Swiss compulsory education. Zenodo Dataset. https://doi.org/10.5281/zenodo.10018292
 
 **[3]** Adorni, G., & Piatti, S., & Karpenko, V. (2023). virtual CAT: An app for algorithmic thinking assessment within Swiss compulsory education. Zenodo Software. https://doi.org/10.5281/zenodo.10027851
 On GitHub: https://github.com/GiorgiaAuroraAdorni/virtual-CAT-app/
